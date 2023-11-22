@@ -1,57 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
+    <link rel="icon" type="image/png" href="Photograph_Manish Shah.png" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0px 10px;
+        padding: 0;
+      }
 
-    th {
-      background-color: #f2f2f2;
-    }
+      .header {
+        text-align: center;
+        padding: 20px;
+        background-color: #3498db;
+        color: #ffffff;
+      }
 
+      .header img {
+        width: 150px; /* Adjust the size as needed */
+        height: 150px; /* Set the height to match the width for a perfect circle */
+        border-radius: 50%;
+        /* margin-right: 10px; */
+      }
 
-    
-    
-  </style>
-  <title>Table Example</title>
-</head>
-<body>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-<table>
-  <thead>
-    <tr>
-      <th>Sn</th>
-      <th>Name</th>
-      <th>Link</th>
-      <th>Code</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Cart Design</td>
-      <td><a href="./HtmlCss_Assignment1/Basic Card/firstProject.html">Visit</a></td>
-      <td><a href="">link1</a></td>
-    </c<>
-    <tr>
-      <td>2</td>
-      <td>Responsive Card</td>
-      <td><a href="./HtmlCss_Assignment1/Responsive_Card/responsibeCard.html">Visit</a></td>
-      <td><code><a href="">link2</a></code></td>
-    </tr>
-    <!-- Add more rows as needed -->
-  </tbody>
-</table>
+      thead {
+        background-color: #3498db;
+        color: #ffffff;
+      }
 
-</body>
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 12px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      a {
+        text-decoration: none;
+        color: #3498db;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      code {
+        background-color: #ecf0f1;
+        padding: 2px 6px;
+        font-family: Consolas, monospace;
+        color: #3498db;
+      }
+      h1 {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <title>Assignment Portal</title>
+  </head>
+  <body>
+    <div class="header">
+      <img src="Photograph_Manish Shah.png" alt="User Image" />
+      <h1>MANISH SHAH</h1>
+      <h1>Roll No : 30</h1>
+      <h1>Group : j</h1>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sn</th>
+          <th>Name</th>
+          <th>Link</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Basic Cart Design</td>
+          <td>
+            <a href="./HtmlCss_Assignment1/Basic Card/firstProject.html"
+              >Visit</a
+            >
+          </td>
+          <td>
+            <code
+              ><a
+                href="https://github.com/smanish2055/smanish2055.github.io/tree/Assignments/HtmlCss_Assignment1/Basic%20Card"
+                >link1</a
+              ></code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Responsive Card</td>
+          <td>
+            <a href="./HtmlCss_Assignment1/Responsive_Card/responsibeCard.html"
+              >Visit</a
+            >
+          </td>
+          <td>
+            <code
+              ><a
+                href="https://github.com/smanish2055/smanish2055.github.io/tree/Assignments/HtmlCss_Assignment1/Responsive_Card"
+                >link2</a
+              ></code
+            >
+          </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </body>
 </html>
