@@ -35,6 +35,7 @@ h1 {
   color: #fff;
   border: 2px solid #fff;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .img1 {
