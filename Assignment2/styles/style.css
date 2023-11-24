@@ -396,7 +396,7 @@ button {
 }
 
 header {
-  background-color: #5D55FF;
+  background-color: #5d55ff;
 }
 header .container {
   max-width: 1408px;
@@ -487,6 +487,18 @@ header .header__footer {
 }
 .nav-body-right .mobile__image img {
   width: 100%;
+}
+.nav-body-right .mobile__image1 {
+  display: none;
+}
+@media screen and (max-width: 770px) {
+  .nav-body-right .mobile__image1 {
+    display: block;
+  }
+  .nav-body-right .mobile__image {
+    display: none;
+    width: 100%;
+  }
 }
 
 .card {
@@ -670,7 +682,7 @@ main .section3 {
 .footer {
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
+  background-color: #EFEEFF;
   flex-basis: 100%;
 }
 @media screen and (max-width: 770px) {
@@ -720,6 +732,12 @@ main .section3 {
   padding: 32px;
   background-color: #1D1C31;
   color: #FFFFFF;
+}
+@media screen and (max-width: 770px) {
+  .footer__subscription {
+    background-color: white;
+    color: black;
+  }
 }
 .footer__subscription--title {
   font-size: 20px;

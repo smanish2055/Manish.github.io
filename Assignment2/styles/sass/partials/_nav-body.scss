@@ -24,6 +24,10 @@
       font-weight: 400;
       margin-top: 32px;
       margin-bottom: 32px;
+
+     
+
+
     }
   }
   .proportion-rate {
@@ -70,5 +74,25 @@
       }
 
     }
+    .mobile__image1{
+      display: none;
+    }
+
+      @media screen and (max-width: $small) {
+
+        // padding: 10px;
+          .mobile__image1{
+      display: block;
+    }
+           .mobile__image{
+      display: none;
+      // justify-content:flex-end;
+      // margin-left: 300px;
+  
+     width: 100%;
+
+    }
+
+       }
   }
 }
