@@ -1,14 +1,21 @@
 body {
   background-color: #343d33;
-  padding: 92px 179px;
+ 
+  /* padding: 92px 179px; */
   
 }
+.container{
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 80px;
+}
+
 .content {
   display: flex;
   gap: 89px;
   /* margin-bottom: 80px; */
-  position: relative;
-  z-index: 2;
+  /* position: relative; */
+  /* z-index: 2; */
 }
 
 h1 {

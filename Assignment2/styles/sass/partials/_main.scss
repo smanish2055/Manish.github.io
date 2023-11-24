@@ -1,0 +1,81 @@
+main {
+  background: #fff;
+  .main__container {
+    max-width: 1408px;
+    @media screen and (min-width: $large) {
+      margin: auto;
+      width: 80%;
+    }
+
+    &__header {
+      color: var(--Text, #1d1c31);
+      font-family: Plus Jakarta Sans;
+      font-size: 40px;
+      font-weight: 700;
+      // letter-spacing: -0.8px;
+      margin: 0;
+    //   margin-top: 120px;
+  @media screen and (max-width: $small) {
+      text-align: center;
+
+    }
+
+    }
+
+
+    .section2__card__overlay1{
+   position: relative;
+    p:first-child {
+      color: var(--Text, #1D1C31);
+      font-family: Plus Jakarta Sans;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 52px;
+      letter-spacing: -0.8px;
+      margin: 0;
+    }
+
+    p:nth-child(2) {
+      color: rgba(29, 28, 49, 0.60);
+      font-family: Plus Jakarta Sans;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+    }
+
+    img {
+      margin-right: 24px;
+    }
+  
+
+  &__image {
+    border-radius: 8px;
+    margin: 113px 0 120px 0;
+
+    img {
+      width: 80%;
+      display: block;
+      border-radius: 8px;
+    }
+  }
+display: none;
+
+  @media screen and (max-width: 770px) {
+    display: block;
+  }
+
+}
+  }
+
+  .section3{
+      max-width: 1408px;
+    @media screen and (min-width: $large) {
+      margin: auto;
+      width: 80%;
+
+    
+    }
+
+  }
+}

@@ -1,0 +1,77 @@
+.section2 {
+  position: relative;
+
+  &__card__overlay {
+    position: absolute;
+    top: 50%;
+    right: 24%;
+    transform: translate(50%, -50%);
+    background-color: #FFFF;
+    box-shadow: 0px 24px 64px -12px rgba(26, 24, 65, 0.06);
+    padding: 20px;
+    border-radius: 8px;
+    width: 46%;
+
+    p:first-child {
+      color: var(--Text, #1D1C31);
+      font-family: Plus Jakarta Sans;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 52px;
+      letter-spacing: -0.8px;
+      margin: 0;
+    }
+
+    p:nth-child(2) {
+      color: rgba(29, 28, 49, 0.60);
+      font-family: Plus Jakarta Sans;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 28px;
+    }
+
+    img {
+      margin-right: 24px;
+    }
+
+
+     @media screen and (max-width: $medium) {
+      top: 82%;
+      right: 33%;
+
+
+     }
+  }
+
+  &__image {
+    border-radius: 8px;
+    margin: 113px 0 120px 0;
+
+    img {
+      width: 80%;
+      display: block;
+      border-radius: 8px;
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    &__card__overlay {
+      width: 100%;
+      right: -26px;
+      top: auto;
+      bottom: -289px;
+      transform: translate(0, 0);
+      display: none;
+      
+    }
+
+    &__image {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
