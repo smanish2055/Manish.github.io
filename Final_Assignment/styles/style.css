@@ -414,7 +414,7 @@ main .container__body {
   display: flex;
   gap: 74px;
   padding: 50px 70px 0px 50px;
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
 }
 @media only screen and (max-width: 475px) {
   main .container__body {
@@ -578,7 +578,7 @@ main .banner .img4 img {
 }
 
 .vaccination__schedule {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
 }
 .vaccination__schedule__content {
   display: flex;
@@ -712,7 +712,7 @@ main .banner .img4 img {
 }
 
 .form__container {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
   padding: 63px 71px 63px 71px;
 }
 .form__container__formstart {
@@ -722,7 +722,7 @@ main .banner .img4 img {
   border-radius: 20px 20px 0px 0px;
   background: #2a2e5a;
   height: 101px;
-  color: #FFF;
+  color: #fff;
   font-family: Montserrat;
   font-size: 1.5vw;
   font-style: normal;
@@ -790,7 +790,7 @@ main .banner .img4 img {
 .form__container form .form__result .btn {
   flex: 1;
   border-radius: 10px;
-  color: #FFF;
+  color: #fff;
   border: 3px solid #17C2EC;
   background: rgba(196, 196, 196, 0.1);
   padding: 20px 25px;
@@ -834,7 +834,7 @@ main .banner .img4 img {
 }
 
 .whyVaccinated {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
   padding: 0px 70px 0px 50px;
   padding-bottom: 10vh;
 }
@@ -1029,7 +1029,7 @@ main .banner .img4 img {
 
 .getVaccineReg {
   background: rgba(255, 255, 255, 0.5019607843);
-  background-image: url("../../../assets/regbackground.png");
+  background-image: url("../assets/regbackground.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1171,7 +1171,7 @@ main .banner .img4 img {
   top: -3.75828877vh; /* -18px */
 }
 .getVaccineReg .getVaccineReg__form__content2__content .injection {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
   border-radius: 20px;
   width: 80%;
 }
@@ -1189,7 +1189,7 @@ main .banner .img4 img {
 }
 
 .covidPrevention {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
 }
 .covidPrevention__container1 {
   width: 50%; /* Set a width for the container */
@@ -1197,7 +1197,7 @@ main .banner .img4 img {
   text-align: center;
 }
 .covidPrevention__para1 p {
-  color: #FFF;
+  color: #fff;
   font-family: Montserrat;
   font-size: 2.125vw;
   font-style: normal;
@@ -1216,7 +1216,7 @@ main .banner .img4 img {
   margin: 0;
 }
 .covidPrevention__para2 .p1 {
-  color: #17C2EC;
+  color: #17c2ec;
 }
 .covidPrevention__para3 p {
   color: rgba(255, 255, 255, 0.5);
@@ -1343,7 +1343,7 @@ main .banner .img4 img {
 }
 
 .footer__last {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
   background-size: cover;
   padding: 49.04vh 4.56vw 1.04vh 5.25vw;
   position: relative;
@@ -1469,7 +1469,7 @@ main .banner .img4 img {
   width: 50%;
 }
 .last__main__content__content1 .para1 {
-  color: #17C2EC;
+  color: #17c2ec;
   font-size: 24px;
   font-weight: 700;
   margin: 0;
@@ -1518,8 +1518,8 @@ main .banner .img4 img {
   width: 30vw; /* Adjust the width as needed */
   border: 1px solid #ccc;
   border-radius: 2vw; /* Adjust the border-radius as needed */
-  background-image: url("../../../assets/jar.png");
-  background-color: #17C2EC;
+  background-image: url("../assets/jar.png");
+  background-color: #17c2ec;
   color: white;
   overflow: hidden;
   margin-right: 2vw;

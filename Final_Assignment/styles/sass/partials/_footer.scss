@@ -1,22 +1,21 @@
 .footer__container__content {
-  //  background:url("../../../assets/bg-gray.png"), lightgray 50% / cover no-repeat, rgba(255, 255, 255, 0.50);
+  //  background:url("../assets/bg-gray.png"), lightgray 50% / cover no-repeat, rgba(255, 255, 255, 0.50);
   // width: 100%;
   height: 21vh;
   background-color: #8b979b;
   position: relative;
 
   @media only screen and (max-width: $small) {
-       display: none;
-       border-radius: 50px;
-background: rgba(196, 196, 196, 0.15);
-        }
+    display: none;
+    border-radius: 50px;
+    background: rgba(196, 196, 196, 0.15);
+  }
 
-          @media only screen and (max-width: $medium) {
-       display: none;
-       border-radius: 50px;
-background: rgba(196, 196, 196, 0.15);
-
-        }
+  @media only screen and (max-width: $medium) {
+    display: none;
+    border-radius: 50px;
+    background: rgba(196, 196, 196, 0.15);
+  }
 
   // background-color: #17C2EC;
 }
@@ -27,8 +26,8 @@ background: rgba(196, 196, 196, 0.15);
   align-items: center;
   position: relative;
   z-index: 3;
-       margin-bottom: -17vh;
-    top: -162px;
+  margin-bottom: -17vh;
+  top: -162px;
   &__content2 {
     width: 46.9vw;
     height: 57.5vh;
@@ -82,7 +81,7 @@ background: rgba(196, 196, 196, 0.15);
           font-size: 1vh;
           padding: 1vh;
         }
-        
+
         @media only screen and (max-width: $medium) {
           // font-size: 1vh;
           padding: 1vh;
@@ -100,7 +99,7 @@ background: rgba(196, 196, 196, 0.15);
         @media only screen and (max-width: $small) {
           padding: 1vh;
         }
-          @media only screen and (max-width: $medium) {
+        @media only screen and (max-width: $medium) {
           padding: 0vh;
         }
 
@@ -116,7 +115,7 @@ background: rgba(196, 196, 196, 0.15);
 }
 
 .footer__last {
-  background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
   background-size: cover;
   padding: 49.04vh 4.56vw 1.04vh 5.25vw;
   position: relative;
@@ -142,7 +141,7 @@ background: rgba(196, 196, 196, 0.15);
 }
 
 .footer__last__content__content1 {
-  color: #fff; 
+  color: #fff;
   &::after {
     content: "";
     display: block;

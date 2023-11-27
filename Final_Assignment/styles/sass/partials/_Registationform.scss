@@ -1,6 +1,6 @@
 .getVaccineReg {
   background: #ffffff80;
-  background-image: url("../../../assets/regbackground.png");
+  background-image: url("../assets/regbackground.png");
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -23,8 +23,6 @@
       justify-content: center;
       gap: 0px;
     }
-
-    
 
     gap: 17.1875vw;
 
@@ -117,12 +115,10 @@
 
         @media only screen and (max-width: $medium) {
           width: 35vw;
-        
         }
 
         @media only screen and (max-width: $small) {
           width: 35vw;
-           
         }
       }
 
@@ -157,23 +153,21 @@
         top: -3.75828877vh; /* -18px */
       }
       .injection {
-        background-image: url("../../../assets/bg-image.png");
+        background-image: url("../assets/bg-image.png");
         border-radius: 20px;
         width: 80%;
-             @media only screen and (max-width: $medium) {
-        width: 100%;
-        height: 80%;
-        // justify-content: center;
-      }
+        @media only screen and (max-width: $medium) {
+          width: 100%;
+          height: 80%;
+          // justify-content: center;
+        }
 
-      @media only screen and (max-width: $small) {
-        // align-items: center;
-        width: 100%;
-         height: 80%;
+        @media only screen and (max-width: $small) {
+          // align-items: center;
+          width: 100%;
+          height: 80%;
+        }
       }
-      }
-
- 
     }
   }
 }

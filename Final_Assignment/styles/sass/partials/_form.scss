@@ -1,14 +1,11 @@
-
-
 .form__container {
-   background-image: url("../../../assets/bg-image.png");
+  background-image: url("../assets/bg-image.png");
 
   padding: 63px 71px 63px 71px;
 
-  
   &__formstart {
     // border-radius: 20px;
-    background: rgba(196, 196, 196, 0.10);
+    background: rgba(196, 196, 196, 0.1);
   }
 
   form {
@@ -16,7 +13,7 @@
       border-radius: 20px 20px 0px 0px;
       background: $result-background-color;
       height: 101px;
-      color: #FFF;
+      color: #fff;
       font-family: Montserrat;
       font-size: 1.5vw;
       font-style: normal;
@@ -27,11 +24,9 @@
       white-space: nowrap;
     }
 
-
     .form__result,
     .form__check {
       width: 100%; // Set width to 100%
-   
     }
 
     .form__result {
@@ -41,27 +36,25 @@
       margin-left: 5vw;
       padding-top: 4vh;
       // margin-top:3vh;
-flex-wrap: wrap;
+      flex-wrap: wrap;
 
+      @media only screen and (max-width: $small) {
+        flex-direction: column;
+        //  align-items: center;
+        margin-top: 3vh;
+        padding: 0;
+        gap: 2vh;
+        margin-top: 0;
+      }
 
-@media only screen and (max-width: $small) {
- flex-direction: column;
-//  align-items: center;
- margin-top: 3vh;
- padding: 0;
- gap: 2vh;
- margin-top: 0;
-}
-
-
-@media only screen and (max-width: $medium) {
-  flex-direction: column;
- //  align-items: center;
-  // margin-top: 3vh;
-  padding-top: 6vh;
-  // padding-bottom: 6vh;
-  gap: 2vh;
- }
+      @media only screen and (max-width: $medium) {
+        flex-direction: column;
+        //  align-items: center;
+        // margin-top: 3vh;
+        padding-top: 6vh;
+        // padding-bottom: 6vh;
+        gap: 2vh;
+      }
       .forminput1,
       .forminput2 {
         flex: 1; // Make the inputs flexible to share the available space
@@ -76,77 +69,66 @@ flex-wrap: wrap;
         @media only screen and (max-width: $small) {
           width: 59vw;
           gap: 2vw;
-          
-         }
-         @media only screen and (max-width: $medium) {
+        }
+        @media only screen and (max-width: $medium) {
           width: 59vw;
           gap: 2vw;
-          
-         }
-        
+        }
       }
 
       .forminput2 {
         border-radius: 10px;
-border: 3px solid rgba(196, 196, 196, 0.15);
-
+        border: 3px solid rgba(196, 196, 196, 0.15);
       }
 
       .btn {
         flex: 1; // Make the button flexible to share the available space
         border-radius: 10px;
-        color: #FFF;
+        color: #fff;
         border: 3px solid $primary-border-color;
-        background: rgba(196, 196, 196, 0.10);
+        background: rgba(196, 196, 196, 0.1);
         padding: 20px 25px;
         display: inline-flex;
-padding:1.5vh 2.5vw;;
-justify-content: center;
-align-items: center;
-// gap: 10px;
-font-family: Montserrat;
+        padding: 1.5vh 2.5vw;
+        justify-content: center;
+        align-items: center;
+        // gap: 10px;
+        font-family: Montserrat;
 
-cursor: pointer;
-font-size: 24px;
-font-weight: 700;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 700;
 
-@media only screen and (max-width: $small) {
-  padding: 2.5vh 11.5vw;
-
-  
-}
-@media only screen and (max-width: $medium) {
-  padding: 2.5vh 11.5vw;
-}
-
-
-
+        @media only screen and (max-width: $small) {
+          padding: 2.5vh 11.5vw;
+        }
+        @media only screen and (max-width: $medium) {
+          padding: 2.5vh 11.5vw;
+        }
       }
     }
 
     .form__check {
       padding-bottom: 3vh;
-      
+
       p {
         text-align: center;
-        color:$primary-border-color; // Adjust the color as needed
+        color: $primary-border-color; // Adjust the color as needed
         margin-left: 5vw;
-        margin-top:8vh;
+        margin-top: 8vh;
         margin-right: 12vw;
 
-      
         border-radius: 20px;
-background: rgba(196, 196, 196, 0.05);
-// font-size: 24px;
-font-weight: 700;
-font-family: Montserrat;
-padding-top: 20px;
-padding-bottom:20px ;
+        background: rgba(196, 196, 196, 0.05);
+        // font-size: 24px;
+        font-weight: 700;
+        font-family: Montserrat;
+        padding-top: 20px;
+        padding-bottom: 20px;
 
-a{
-  color: $primary-border-color;
-}
-
+        a {
+          color: $primary-border-color;
+        }
       }
     }
   }

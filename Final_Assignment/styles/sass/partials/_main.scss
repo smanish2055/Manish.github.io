@@ -3,8 +3,7 @@ main {
     display: flex;
     gap: 74px;
     padding: 50px 70px 0px 50px;
-     background-image: url("../../../assets/bg-image.png");
-
+    background-image: url("../assets/bg-image.png");
 
     @media only screen and (max-width: $small) {
       display: flex;
@@ -14,13 +13,13 @@ main {
       gap: 0px;
     }
 
-        @media only screen and (max-width: $medium) {
+    @media only screen and (max-width: $medium) {
       flex-direction: column;
     }
 
     &__content1 {
       // width: 50%;
-     
+
       p:first-child {
         color: $primary;
         font-size: 24px;
@@ -28,7 +27,7 @@ main {
         font-weight: 700;
         // margin-bottom: 40px;
         @media only screen and (max-width: $small) {
-            font-size: 20px;
+          font-size: 20px;
           font-style: normal;
           font-weight: 600;
           margin: 0;
@@ -41,7 +40,7 @@ main {
         font-size: 48px;
         font-style: normal;
         font-weight: 800;
-        .hero{
+        .hero {
           color: $primary;
         }
         @media only screen and (max-width: $small) {
@@ -63,7 +62,7 @@ main {
         margin-bottom: 70px;
         @media only screen and (max-width: $small) {
           margin-bottom: 30px;
-            font-size: 20px;
+          font-size: 20px;
           font-style: normal;
           font-weight: 600;
         }
@@ -71,9 +70,9 @@ main {
       &-button {
         display: flex;
         justify-content: center; /* Align buttons to the center horizontally */
-          @media only screen and (max-width: $medium) {
-       justify-content: flex-start;
-    }
+        @media only screen and (max-width: $medium) {
+          justify-content: flex-start;
+        }
 
         .btn1,
         .btn2 {
@@ -169,7 +168,7 @@ main {
       figure img {
         width: 100%;
         @media only screen and (max-width: $small) {
-           width: 350px;
+          width: 350px;
         }
       }
     }
@@ -201,7 +200,6 @@ main {
         // width: 335.742px;
         margin-bottom: 10px;
         padding-top: 18px;
-     
       }
     }
   }
@@ -210,13 +208,13 @@ main {
     display: flex;
     justify-content: space-around;
     align-items: center;
-   background: #7f7f7f;
-     @media only screen and (max-width: $small) {
-       background:$white;
-     }
-     @media only screen and (max-width: $medium) {
-       background:$white;
-     }
+    background: #7f7f7f;
+    @media only screen and (max-width: $small) {
+      background: $white;
+    }
+    @media only screen and (max-width: $medium) {
+      background: $white;
+    }
     //   @media only screen and (min-width: $large) {
     //     width: 4vw;
     //     margin: 0;
@@ -238,7 +236,4 @@ main {
     width: 10vw;
     padding: -99vw;
   }
-
-
-  
 }

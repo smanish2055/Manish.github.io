@@ -1,22 +1,21 @@
 .whyVaccinated {
-   background-image: url("../../../assets/bg-image.png");
-
+  background-image: url("../assets/bg-image.png");
 
   padding: 0px 70px 0px 50px;
-      padding-bottom: 10vh;
+  padding-bottom: 10vh;
   &__title {
     display: flex;
     // justify-content: space-between;
     gap: 20vw;
 
     @media only screen and (max-width: $medium) {
-        flex-direction: column;
-       //  align-items: center;
-        // margin-top: 3vh;
-        padding-top: 6vh;
-        // padding-bottom: 6vh;
-        gap: 2vh;
-       }
+      flex-direction: column;
+      //  align-items: center;
+      // margin-top: 3vh;
+      padding-top: 6vh;
+      // padding-bottom: 6vh;
+      gap: 2vh;
+    }
 
     &__c1 {
       width: 100%;
@@ -50,10 +49,8 @@
     margin-top: 10vh;
     gap: 4vw;
     @media only screen and (max-width: $medium) {
-        flex-direction: column;
-     
-        
-       }
+      flex-direction: column;
+    }
   }
 
   &__content1 {
@@ -63,12 +60,10 @@
     width: 50%;
 
     @media only screen and (max-width: $medium) {
-        flex-direction: column;
-        height:90vh;
-        width: 61vw;
-     
-        
-       }
+      flex-direction: column;
+      height: 90vh;
+      width: 61vw;
+    }
 
     .img1 {
       margin: 2vw;
@@ -118,15 +113,10 @@
     gap: 3vw;
 
     @media only screen and (max-width: $small) {
-        flex-direction: column;
-      
-            flex-direction: column;
-           
-        
-            
-           
-        
-       }
+      flex-direction: column;
+
+      flex-direction: column;
+    }
 
     &__con1 {
       width: 15vw;
@@ -139,9 +129,8 @@
         flex-direction: column;
         height: 64vh;
         width: 33vw;
-        
-       }
-     
+      }
+
       .img1 {
         border-radius: 20.956px;
         padding: 0.5vw;
@@ -180,16 +169,11 @@
       border: 2.994px solid rgba(255, 255, 255, 0.5);
       padding: 4vw;
 
-    
-        @media only screen and (max-width: $medium) {
-            flex-direction: column;
-            height: 64vh;
-            width: 33vw;
-        
-            
-           }
-        
-       
+      @media only screen and (max-width: $medium) {
+        flex-direction: column;
+        height: 64vh;
+        width: 33vw;
+      }
 
       .img1 {
         border-radius: 20.956px;
