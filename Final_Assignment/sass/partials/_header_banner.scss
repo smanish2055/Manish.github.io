@@ -1,0 +1,166 @@
+.header__section
+{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: space-between;
+
+    &_desc
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        &_subHeading
+        {
+            color: $primary-clr;
+            font-size: 12px;
+            @media screen and (min-width:$tablet-breakpoint) 
+            {
+                 font-size: calc($tablet-font-size - 2px);
+            }
+            @media screen and (min-width:$desktop-breakpoint) 
+            {
+                font-size: calc($desktop-font-size - 2px);
+            }
+        }
+        &_heading
+        {
+            color: $white;
+            font-size: $mobile-heading-font-size;
+            span {
+                color:$primary-clr;
+            }
+            @media screen and (min-width:$tablet-breakpoint)
+            {
+                font-size: $tablet-heading-font-size;
+            }
+            @media screen and (min-width:$desktop-breakpoint)
+            {
+                font-size: $desktop-heading-font-size;
+            }
+        }
+        &_detail
+        {
+            color: $text-clr;
+            font-size: $mobile-font-size;
+            text-align: start;
+
+            @media screen and (min-width:$tablet-breakpoint) {
+                // width: 45%;
+                font-size: $tablet-font-size;
+            }
+            @media screen and (min-width:$tablet-breakpoint) {
+                    font-size: $desktop-font-size;
+            }
+           
+        }
+        &_button
+        {
+           
+            display: flex;
+            gap: 5px;
+            font-size: 10px;
+            margin-top: 20px;
+            
+
+            &_get
+            {
+                padding: $button-padding;
+                background-color: $primary-clr;
+                color: $white;
+                font-weight: $button-font-weight;
+                width: 170px;
+
+                &:hover
+                {
+                    @include white-background-on-hover;
+                    
+                }
+
+                @media screen and (min-width:$tablet-breakpoint) {
+                    width:210px ;
+                    font-size: $tablet-font-size;
+                }
+                @media screen and (min-width:$desktop-breakpoint) {
+                    width: 200px;
+                    font-size: $desktop-font-size;
+                }
+            }
+            &_help
+            {
+                padding: $button-padding;
+                color: $white;
+                font-weight: $button-font-weight;
+                background-color: transparent;
+                border: 2px solid $primary-clr;
+                width: 150px;
+
+                &:hover
+
+                {
+                    @include primary-background-on-hover
+                }
+
+                @media screen and (min-width:$tablet-breakpoint)
+                {
+                    width: 210px;
+                    font-size: $tablet-font-size;
+                }
+                                
+                @media screen and (min-width:$desktop-breakpoint) 
+                {
+                    width: 200px;
+                    font-size: $desktop-font-size;
+                }
+            }
+
+            @media screen and (min-width:$tablet-breakpoint) {
+                gap:20px
+            }
+        }
+    }
+
+     &_figure
+     {
+        min-width:80vw ;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+
+        &_image
+        {
+            width: 95%;
+
+            @media screen and (min-width:$tablet-breakpoint) {
+                width: 60%;
+            }
+            @media screen and (min-width:$desktop-breakpoint) {
+                width: 95%;
+            }
+        }
+
+        @media screen and (min-width:$tablet-breakpoint)
+        {
+            justify-content: center;    
+        }
+       
+        @media screen and (min-width:$laptop-breakpoint)
+        {
+            justify-content: space-between;    
+        }
+
+        
+
+        @media screen and (min-width:$desktop-breakpoint) {
+            min-width: 40vw;
+            
+        }
+
+     }   
+
+     @media screen and (min-width:$desktop-breakpoint) {
+            flex-direction: row;
+            
+     }
+
+}

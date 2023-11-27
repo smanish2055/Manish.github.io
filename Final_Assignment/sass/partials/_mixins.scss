@@ -1,0 +1,40 @@
+@mixin logo-design
+{
+    content: "";
+    display: block;
+    border: 1px solid $primary-clr;
+    width: 50%;
+}
+
+@mixin white-text-on-hover
+{
+    color:$white;
+    transition: color 500ms ease;
+}
+@mixin primary-text-on-hover
+{
+    color:$primary-clr;
+    transition:  color 500ms ease;
+}
+
+
+@mixin primary-background-on-hover
+{
+    background-color: $primary-clr;
+    color:$white;
+    transition: background-color 500ms ease, color 500ms ease;
+}
+
+@mixin white-background-on-hover
+{
+    background-color: $white;
+    color:$primary-clr;
+    transition: background-color 500ms ease, color 500ms ease;}
+
+@mixin cursor
+{
+    cursor: pointer;
+    user-select: none;
+}
+
+

@@ -1,0 +1,52 @@
+//color 
+
+$black:#000;
+$primary-clr:#17c2ec;
+$white:#fff;
+$text-clr:darken($white,30);
+
+//font-size
+
+$base-font-size:16px;
+$desktop-font-size:24px;
+$mobile-font-size:14px;
+$tablet-font-size:20px;
+
+
+//breakpoint
+
+$mobile-breakpoint:576px;
+$tablet-breakpoint:768px;
+$laptop-breakpoint:1024px;
+$desktop-breakpoint:1400px;
+
+//backgroud-clr
+
+$bg-clr: #cecfce;
+$button-bg-clr:#c4c4c41a;
+$card-bg-clr:#c4c4c480;
+$section-bg-clr:#c4c4c40d;
+
+// font weight
+
+$bold-text-font-weight:700;
+$button-font-weight:700;
+$heading-font-weight:700;
+$text-font-weight:500;
+$sm-text-font-weight:400;
+
+//heading font-size
+$mobile-heading-font-size:24px;
+$tablet-heading-font-size:36px;
+$desktop-heading-font-size:48px;
+
+//logo font-size
+$mobile-logo-font-size:18px;
+$tablet-logo-font-size:25px;
+$desktop-logo-font-size:32px;
+
+//others
+$border-radius:20px;
+$box-shadow:0px 4px 4px 0px #00000040;
+$button-padding:20px 25px;
+$transition:500ms ease
