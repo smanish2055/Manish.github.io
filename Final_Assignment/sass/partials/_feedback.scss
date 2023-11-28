@@ -1,0 +1,229 @@
+.main__feedback
+{
+
+    margin-top: 30px; 
+    
+
+    &_subHeading
+    {
+        font-size: $mobile-font-size;
+        color: $primary-clr;
+        text-align: center;
+        font-weight: $heading-font-weight;
+
+
+        @media screen and (min-width:$tablet) 
+        {
+            font-size: $tablet-font-size;
+
+        }
+        
+        @media screen and (min-width:$desktop)
+         {
+            font-size: $desktop-font-size;
+         }
+    }
+
+    &_mainHeading
+    {
+        font-size: 18px;
+        color: $black;
+        text-align: center;
+        font-weight: $heading-font-weight;
+
+        @media screen and (min-width:$tablet)
+         {
+            font-size: $tablet-heading-font-size;
+         }
+        
+        @media screen and (min-width:$desktop) 
+        {
+            font-size: $desktop-heading-font-size;
+        }
+    }
+
+    &_desc
+    {
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 30px;
+
+
+        @media screen and (min-width:$tablet)
+         {
+            font-size: 14px;
+         }
+        
+        @media screen and (min-width:$desktop) 
+        {
+            font-size: 16px;
+        }
+    }
+
+    &_cardsPanel
+    {   
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: -24px;
+        
+
+        &_card
+        {
+            // background: rgba(255,255,255,0.3);
+            background-color: #e1e2e1;
+            border: 0.5px solid #e1e2e1;
+            box-shadow: $box-shadow;
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+            padding-top: 30px;
+            margin-bottom: 30px;
+            
+           
+            
+
+
+            &_person
+            {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                
+
+                &_image
+                {
+                    width: 53px;
+                    @media screen and (min-width:$tablet) 
+                    {
+                        width: 70px;
+                        margin-top: 21px;
+                    }
+                 
+                }
+
+                &_details
+                {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    
+                    &_name
+                    {
+                        font-weight: $heading-font-weight;
+                        font-size:12px;
+                        color: $black;
+                        
+                      
+
+                        @media screen and (min-width:$tablet) 
+                        {
+                            font-size: 14px;
+                        }
+                        
+                        @media screen and (min-width:$desktop) 
+                        {
+                            font-size: 16px;
+                        }
+                    }
+                    &_location
+                    {
+                      font-weight: $bold-text-font-weight;
+                       
+
+                        @media screen and (min-width:$tablet) {
+                            margin-top: 20px;
+                        }
+                        
+                        @media screen and (min-width:$desktop) {}
+                    }
+                
+                }
+
+             
+
+               
+            }
+
+             &_desc 
+             {
+                // color: $black;
+                font-size: $mobile-font-size;
+                text-align: center;
+            
+                &:hover
+                {
+                   color: $white;
+                }
+
+                @media screen and (min-width:$tablet) 
+                {
+                   font-size: $tablet-font-size;
+                }
+            
+               @media screen and (min-width:$desktop)
+                {
+                    font-size: $desktop-font-size;
+                }
+             }
+
+             &:hover
+             {
+             background-color: $primary-clr;
+             }
+
+            @media screen and (min-width:$tablet)
+             {
+                    max-width: 50%;
+                    margin: auto;
+                    margin-top:30px ;
+             }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                flex-basis: 30%;
+                align-self: stretch;
+            }
+        }
+
+
+       
+        
+        @media screen and (min-width:$desktop) 
+        {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+ 
+
+}
+
+
+
+.dose_image
+{
+position: absolute;
+top: -60%;
+left: 50%;
+transform: translate(-50%,50%);
+height: 100%;
+width: auto;
+
+@media screen and (min-width:$tablet)
+ {
+    height: 120%;
+    top: -80%;
+ }
+
+@media screen and (min-width:$desktop) 
+{   
+    top: -25%;
+    left: 22%;
+    height: 150%;
+    transform: translate(0%,0%);
+}
+
+}
+

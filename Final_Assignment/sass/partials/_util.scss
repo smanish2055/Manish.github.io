@@ -1,11 +1,11 @@
 .container
 {
     padding: 0px 35px;
-    @media screen and (min-width:$tablet-breakpoint) {
+    @media screen and (min-width:$tablet) {
             width: 90%;
             margin: 0px auto;
     }
-    @media screen and (min-width: $desktop-breakpoint) {
+    @media screen and (min-width: $desktop) {
         width: 90%;
         margin: 0px auto;
     }

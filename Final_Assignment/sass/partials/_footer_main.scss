@@ -1,0 +1,185 @@
+.footer__getQuote_section_wrapper
+{
+    width:100%;
+    position: relative;
+    height: 20%;
+    margin-top: 40px;
+.footer__getQuote
+{
+    
+    width: 90%;
+    margin: auto;
+    padding: 10px 3px;
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+    &_card
+    {
+        width: 90%;
+        background-color: $primary-clr;
+        border-radius: 10px;
+        color: $white;
+        margin: auto;
+        padding: 10px;
+       
+
+        
+
+        &_heading
+        {   
+            text-align: center;
+            font-weight: $heading-font-weight;
+            font-size: 20px;
+
+
+            @media screen and (min-width:$tablet) 
+            {
+                font-size: 28px;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                font-size: 36px;
+            }
+        }
+
+        &_desc
+        {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+ 
+
+            @media screen and (min-width:$tablet) 
+            {
+                font-size: 14px;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {   
+                font-size: 16px;
+            }
+        }
+
+        &_form
+        {
+          
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            // min-width: 220px;
+            min-height: 40px;
+
+            &_input
+            {
+                align-self: stretch;
+                flex-basis: 70%;
+                outline: none;
+                border: none;
+                border-radius: 10px 0px 0px 10px ;
+                padding: 8px;
+
+
+                @media screen and (min-width:$tablet) 
+                {
+                    font-size: 14px;
+                }
+                
+                @media screen and (min-width:$desktop) 
+                {
+                    font-size: 16px;
+                    ;
+                }
+            }
+
+            &_button
+            {
+                flex-basis: 20%;
+                align-self: stretch;
+                border-radius: 0px 20px 20px 0px;
+                background: #0B153C;
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+                position: relative;
+
+                &:hover
+                {
+                    background-color: lighten(#0B153C,5);
+                    transition: background-color 500ms ease;
+                }
+
+                img
+                {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 23px; 
+                    
+                }
+
+                
+
+                @media screen and (min-width:$tablet) 
+                {
+
+                }
+                
+                @media screen and (min-width:$desktop) 
+                {
+
+                }
+            }
+
+            @media screen and (min-width:$tablet) 
+            {
+                margin-top: 25px;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                margin-top: 30px;
+            }
+        }
+
+        @media screen and (min-width:$tablet) 
+        {
+            padding: 30px;
+        }
+        
+        @media screen and (min-width:$desktop) {}
+    }
+
+    @media screen and (min-width:$tablet) 
+    {
+        max-width: 70%;
+        margin: auto;
+        margin-top: 50px;
+        
+    }
+    
+    @media screen and (min-width:$desktop) 
+    {
+        max-width: 50%;
+        margin: auto;
+        margin-top: 80px;
+    }
+}
+
+    @media screen and (min-width:$tablet)
+     {
+        margin-top: 50px;
+     }
+
+    @media screen and (min-width:$desktop) 
+    {
+        margin-top: 60px;
+    }
+}

@@ -1,0 +1,131 @@
+header{
+    background-image: url('./assets/desktop_header_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+ 
+
+.header
+{
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    padding: 40px;
+
+
+    &__logo
+    {
+     
+        cursor: pointer;
+        color: $white;
+        font-size: $mobile-logo-font-size;
+        font-weight: $heading-font-weight;
+        flex-basis: 20%;
+
+        &::after
+        {
+             content: "";
+    display: block;
+    border-bottom: 3px solid $primary_clr; 
+    margin-top: 4px; 
+   width: 79.681px;
+height: 2.39px;
+        
+         
+
+
+            @media screen and (min-width:$tablet) {
+                width: 45%;
+            
+                border-radius: 2px;
+            }
+            @media screen and (min-width:1400px) {
+                width: 45%;
+              
+                border-radius: 2px;
+            }
+
+        }
+    
+
+     
+
+    }
+
+    &__nav
+    {
+        color: $text-clr;
+        flex-basis: 40%;
+        display: none;
+
+        &_ul
+        {
+            display: flex;
+            justify-content: space-between;
+
+            &_list
+            {
+               cursor: pointer;
+                color: $text-clr;
+                font-size:18px;
+                position: relative;
+                
+                &:hover
+                {
+                    color: whitesmoke;
+                  
+                }
+
+            }
+        }
+
+        @media screen and (min-width:$laptop)
+         {
+            display: block;
+        }
+        @media screen and (min-width:$desktop) {
+            display: block;
+        }
+
+    }
+
+    &__status
+    {
+        display: none;
+        &_button
+        {
+            color: $primary-clr;
+            background-color: $button-bg-clr;
+            padding: $button-padding;
+            font-weight: $bold-text-font-weight;
+            width: 219px;
+            font-size: $desktop-font-size;
+
+            &:hover
+            {
+                 color: whitesmoke;
+                
+            }
+        }
+    
+        @media screen and (min-width:$desktop)
+        {
+            display: block;
+        }
+    }
+
+    &__burger
+    {
+       cursor: pointer;
+
+
+        @media screen and (min-width:$laptop) {
+            display:none;
+
+        }
+    }
+    
+}
+}

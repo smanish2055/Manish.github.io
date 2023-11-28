@@ -3,23 +3,23 @@
   @import './partials/base';
   @import './partials/util';
   @import './partials/mixins';
-  @import './partials/animations';
 
-  @import './partials/header_navigation';
-  @import './partials/header_banner';
-  @import './partials/header_schedule_vaccination';
+
+  @import './partials/header_nav';
+  @import './partials/header_body';
+  @import './partials/schedule_header';
   
   @import './partials/partner';
 
-  @import './partials/main_checkCovid';
-  @import './partials/main_whyVaccinated';
-  @import './partials/main_register_form';
-  @import './partials/main_prevention';
-  @import './partials/main_feedback';
+  @import './partials/checkCovid';
+  @import './partials/whyVaccinated';
+  @import './partials/register_form';
+  @import './partials/prevention';
+  @import './partials/_feedback';
 
 
-  @import './partials/footer_getQuote';
-  @import './partials/footer_navigation';
+  @import './partials/footer_main';
+  @import './partials/footer_nav';
 
 
   

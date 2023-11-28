@@ -1,0 +1,293 @@
+.main__whyVaccinated_wrapper
+{
+    width: 100%;
+    background-color: rgba(255,255,255,0.1);
+}
+.main__whyVaccinated
+{
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    &_header
+    {   
+    cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        // gap: px;
+
+        &_heading
+        {
+            color: $white;
+            font-weight: $heading-font-weight;
+            font-size: $mobile-heading-font-size;
+
+            @media screen and (min-width:$tablet) 
+            {
+                max-width: 60%;
+                font-size: $tablet-heading-font-size;
+            }
+            
+            @media screen and (min-width:$desktop)
+            {
+                flex-basis: 40%;
+                font-size: $desktop-heading-font-size;
+             }
+        }
+
+        &_desc
+        {
+            font-size: $mobile-font-size;
+            text-align: justify;
+
+            @media screen and (min-width:$tablet) 
+            {
+                max-width: 80%;
+                font-size: $tablet-font-size;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                flex-basis:40%;
+                font-size: $desktop-font-size;
+            }
+
+        }
+
+     
+        
+        @media screen and (min-width:$desktop) 
+        {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &_card
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        
+        &_panel
+        {
+            
+        border-radius: 20px 80px 20px 20px;
+        padding: 15px;
+        background: rgba(196, 196, 196, 0.20);
+        padding-bottom: 30px;
+
+        &_icon
+        {
+            padding: 7px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+
+            
+
+            @media screen and (min-width:$tablet) 
+            {
+                width: 70px;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                width: 80px;
+            }
+
+
+        }
+
+        &_heading
+        {   
+            color: $primary-clr;
+            font-size: $mobile-font-size;
+            font-weight: $heading-font-weight;
+            margin-top: 20px;
+
+            @media screen and (min-width:$tablet)
+            {
+                font-size: $tablet-heading-font-size;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                font-size: $desktop-font-size;
+            }
+        }
+
+        &_desc
+        {
+            font-size: 12px;
+            text-align: justify;
+            margin-top: 20px;
+            color: $white;
+
+            @media screen and (min-width:$tablet) 
+            {
+                font-size: 14px;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                font: 18px; 
+            }
+        }
+
+        &_button
+        {
+            display: flex;
+            gap: 5px;
+            color: $white;
+            font-weight: $bold-text-font-weight;
+            font-size: 12px;
+            background-color: transparent;
+            padding: 0px;
+            margin-top: 25px;
+            align-items: center;
+
+            &:hover
+            {
+                color:$primary-clr;
+            }
+
+
+            @media screen and (min-width:$tablet) 
+            {
+                font-size: $tablet-font-size;
+            }
+            
+            @media screen and (min-width:$desktop) 
+            {
+                font-size: $desktop-font-size;
+            }
+
+        }
+
+                @media screen and (min-width:$tablet) 
+                {
+                    flex-basis: 60%;
+                    
+                }
+        
+                @media screen and (min-width:$desktop) 
+                {
+                    flex-basis: 30%;
+                }
+
+
+
+        }
+
+        &_panel2
+        {
+            border-radius: 30px;
+            border: 2.994px solid rgba(255, 255, 255, 0.50);
+            padding: 15px;
+            padding-left: 30px;
+            background: transparent;
+            padding-bottom: 30px;
+            
+    
+               &_icon 
+               {
+                    padding: 7px;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 10px;
+    
+    
+    
+                    @media screen and (min-width:$tablet) {}
+    
+                    @media screen and (min-width:$desktop) {}
+    
+    
+                }
+    
+               &_heading 
+               {
+                   color: $white;
+                   font-size: $mobile-font-size;
+                   font-weight: $heading-font-weight;
+                   margin-top: 20px;
+    
+                   @media screen and (min-width:$tablet) {}
+    
+                   @media screen and (min-width:$desktop) {}
+               }
+    
+             
+    
+               &_button {
+                   display: flex;
+                   gap: 5px;
+                   color: $text-clr;
+                   font-weight: $bold-text-font-weight;
+                   font-size: 12px;
+                   background-color: transparent;
+                   padding: 0px;
+                   margin-top: 30px;
+                   align-items: center;
+                
+                   &:hover
+                   {
+                    @include primary-text-on-hover
+                   }
+    
+                   @media screen and (min-width:$tablet) 
+                   {
+                    font-size: $tablet-font-size;
+                   }
+    
+                  @media screen and (min-width:$desktop) 
+                  {
+                    font-size: $desktop-font-size;
+                    align-self: end;
+                  }
+    
+               }
+
+               &:nth-child(2)
+               {
+                @media screen and (min-width:$tablet) {
+                    margin-right: 10%;
+                }
+                @media screen and (min-width:$desktop) {
+                    margin-right: 0%;
+                    
+                }
+
+               }
+    
+               @media screen and (min-width:$tablet) 
+               {
+                flex-basis: 25%;
+                
+               }
+    
+               @media screen and (min-width:$desktop) {
+               align-self: end;
+               }
+    
+    
+    
+        }
+
+        @media screen and (min-width:$tablet) 
+        {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 20px;
+
+        }
+        
+        @media screen and (min-width:$desktop) 
+        {
+            margin-top: 30px;   
+        }
+
+    }
+
+
+
+}

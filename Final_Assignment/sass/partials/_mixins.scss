@@ -22,14 +22,15 @@
 {
     background-color: $primary-clr;
     color:$white;
-    transition: background-color 500ms ease, color 500ms ease;
+  
 }
 
 @mixin white-background-on-hover
 {
     background-color: $white;
     color:$primary-clr;
-    transition: background-color 500ms ease, color 500ms ease;}
+   
+}
 
 @mixin cursor
 {
