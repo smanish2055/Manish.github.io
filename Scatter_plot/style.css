@@ -1,0 +1,18 @@
+.container{
+    width: 30%;
+    background-color: azure;
+}
+
+
+.circle{
+
+position :relative;
+     height :20px;
+      width : 20px;
+
+     border-Radius : 50%;
+       background-Color :blue; 
+    
+
+
+}
