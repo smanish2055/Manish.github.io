@@ -40,5 +40,29 @@ function rendertodos(todos) {
     })
 };
 
+
+
 rendertodos(result)
-console.log(result)
+
+var ref = JSON.parse(localStorage.getItem('todos'));
+
+var search = document.getElementById("search-box");
+
+
+document.getElementById('search-button').addEventListener('click', () => {
+
+
+    var  searchValue= ref.filter((val) => {
+    return val.name === search.value;
+    })
+    
+    if (searchValue.length == 0) {
+
+        rendertodos(todos);
+    }
+    else {
+        rendertodos(searchValue);
+    }
+
+    
+})

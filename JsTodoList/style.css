@@ -39,6 +39,7 @@ header {
   color: #fff; /* Logo text color */
   font-size: 24px; /* Adjust the font size as needed */
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Style the navigation menu */
