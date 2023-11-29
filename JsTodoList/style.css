@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* background-color: aquamarine; */
+}
+/* Reset some default styles for better consistency */
+body, h1, h2, h3, p, figure, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a box-sizing border-box model to everything */
+* {
+  box-sizing: border-box;
+}
+
+/* Style the header */
+header {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Text color */
+  padding: 10px 0; /* Add some padding for better spacing */
+}
+
+/* Center the content within the container */
+.container {
+  width: 80%; /* Adjust the width as needed */
+  margin: 0 auto;
+}
+
+/* Style the navigation container */
+.container__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style the logo */
+.container__logo p {
+  color: #fff; /* Logo text color */
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold;
+}
+
+/* Style the navigation menu */
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul a{
+  text-decoration: none;
+  color:white;
+}
+
+nav li {
+  margin: 0 10px; /* Add some spacing between menu items */
+  cursor: pointer;
+}
+
+/* Style the links */
+nav li:hover {
+  text-decoration: underline;
+}
+
+
+h3{
+  text-align: center;
+}
+
+
+
+.todo-form{
+  margin: 0 auto;
+  width: 66%;
+  margin-top: 30px;
+}
+
+.file-list{
+  padding: 20px;
+  background: white;
+  border-radius: 3px;
+  width: 65%;
+  margin: 0 auto;
+
+
+}
+
+.todo-items{
+  min-width:350px;
+}
+
+
+.item{
+  background: #c0e0f6;
+  padding: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+ ul {
+  list-style-type: none;
+}
+
+.delete-button{
+  float: right;
+  background: #093a6f;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 3px 5px;
+  line-height: 20px;
+  margin-left: 10px;
+  font-size: 1.1rem;
+  font-weight: 550;
+
+}
+
+.checked{
+  text-decoration: line-through;
+}
+
+
+/* Basic styling for the form */
+.todo-form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.todo-input {
+  flex: 1; /* Take up all available space in the flex container */
+  padding: 8px;
+  font-size: 16px;
+}
+
+.add-button {
+      padding: 12px 16px;
+    font-size: 23px;
+  background-color: #4caf50; /* Green color */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Styling for the file list container */
+.file-list {
+  border: 1px solid #ddd; /* Light gray border */
+  padding: 10px;
+}
+
+/* Styling for the todo items list */
+.todo-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling for individual todo items */
+.todo-items li {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9; /* Light gray background */
+}
+
