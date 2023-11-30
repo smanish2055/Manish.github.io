@@ -92,6 +92,8 @@ dots.forEach((dot, index) => {
   });
 });
 
+
+// update carousel
 function updateCarousel() {
   initialValue = imageIndex * -600;
   imageWrapper.style.left = initialValue + "px";
