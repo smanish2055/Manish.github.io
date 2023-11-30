@@ -61,3 +61,35 @@
 .dot:hover {
   background-color: #717171;
 }
+
+
+.carousel-btn {
+  background-color: #3498db; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 60%;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #2980b9; /* Button background color on hover */
+}
+
+/* Style for the left chevron button */
+#prev {
+  margin-right: 10px; /* Add some space between the buttons */
+}
+
+/* Style for the right chevron button */
+#next {
+  margin-left: 10px; /* Add some space between the buttons */
+}
+
+/* Style for the Font Awesome icons */
+.carousel-btn i {
+  margin-right: 5px; /* Add space between the icon and the text */
+}
+
