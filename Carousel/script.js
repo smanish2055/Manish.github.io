@@ -2,7 +2,7 @@ var pre_img = document.getElementById("prev");
 var next_img = document.getElementById("next");
 var imageWrapper = document.querySelector(".image-wrapper");
 
-imageWrapper.style.width = pictures.length * 600 + "px";
+
 
 var container = document.querySelector(".container");
 var initialValue = 0;
@@ -30,6 +30,8 @@ let pictures = [
     path: "https://source.unsplash.com/160x160/?basketball",
   },
 ];
+
+imageWrapper.style.width = pictures.length * 600 + "px";
 
 // creating circular button present below carousel container
 pictures.forEach((ele, i) => {
