@@ -47,6 +47,7 @@ pictures.forEach((ele, i) => {
   wrap.className = "img";
   const img = document.createElement("img");
   img.src = ele.path;
+  // img.style.width = 100 % 
 
   wrap.appendChild(img);
   imageWrapper.appendChild(wrap);

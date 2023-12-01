@@ -36,8 +36,8 @@ header {
 
 /* Style the logo */
 .container__logo p {
-  color: #fff; /* Logo text color */
-  font-size: 24px; /* Adjust the font size as needed */
+  color: #fff; 
+  font-size: 24px; 
   font-weight: bold;
   cursor: pointer;
 }
@@ -54,7 +54,7 @@ nav ul a{
 }
 
 nav li {
-  margin: 0 10px; /* Add some spacing between menu items */
+  margin: 0 10px; 
   cursor: pointer;
 }
 
@@ -114,6 +114,7 @@ h3{
   margin-left: 10px;
   font-size: 1.1rem;
   font-weight: 550;
+  cursor: pointer;
 
 }
 
@@ -129,7 +130,7 @@ h3{
 }
 
 .todo-input {
-  flex: 1; /* Take up all available space in the flex container */
+  flex: 1; 
   padding: 8px;
   font-size: 16px;
   border-radius: 13px;
@@ -148,7 +149,7 @@ h3{
   border-radius: 13px;
 }
 
-/* Styling for the file list container */
+
 .file-list {
   border: 1px solid #ddd; /* Light gray border */
   padding: 10px;
@@ -187,4 +188,8 @@ h3{
       cursor: pointer;
     }
 
+
+  .checkbox{
+    cursor: pointer;
+  }
     

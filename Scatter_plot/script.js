@@ -14,15 +14,11 @@ class scatter{
         const c = document.createElement('div');
       
         c.className= "circle";
-     
         c.style.top = this.x + "px";
         c.style.left = this.y + "px";
 
         
-    
         container.appendChild(c);
-
-
 
 
         

@@ -1,173 +1,124 @@
-// var add = document.getElementById('add_contain');
-// var button = document.getElementById('btn');
-// var input = document.getElementById('input');
-// // console.log(input.value);
-// var checkBox = document.getElementsByClassName('my-class');
+const todoForm = document.querySelector(".todo-form");
 
+const todoInput = document.querySelector(".todo-input");
 
-const todoForm = document.querySelector('.todo-form');
-
-const todoInput = document.querySelector('.todo-input');
-
-
-const todoItemsList = document.querySelector('.todo-items');
-
-
-
-
+const todoItemsList = document.querySelector(".todo-items");
 
 var todos = [];
 
-
-todoForm.addEventListener('submit', (e) => {
-
-    e.preventDefault();
-    addTodo(todoInput.value);
-
-     
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addTodo(todoInput.value);
 });
 
-
 function addTodo(item) {
-    if (item.trim() !== '') {
-        const todo = {
-            id: Date.now(),
-            name: item,
-            completed: false
-        };
+  if (item.trim() !== "") {
+    const todo = {
+      id: Date.now(),
+      name: item,
+      completed: false,
+    };
 
-       
-        todos.push(todo);
-         addToLocalStrg(todos)
-       
-    } else {
-        alert("you have not enter any TODOs Item")
-    }
+    todos.push(todo);
+    addToLocalStrg(todos);
+  } else {
+    alert("you have not enter any TODOs Item");
+  }
 
-    todoInput.value = '';
-
+  todoInput.value = "";
 }
 
-
 function rendertodos(todos) {
-    todoItemsList.innerHTML = '';
+  todoItemsList.innerHTML = "";
 
-    todos.forEach(function (item) {
-        const checked = item.completed ? 'checked' : null;
+  todos.forEach(function (item) {
+    const checked = item.completed ? "checked" : null;
 
-        const li = document.createElement('li');
-        li.setAttribute('class', 'item');
-        li.setAttribute('data-key', item.id);
+    const li = document.createElement("li");
+    li.setAttribute("class", "item");
+    li.setAttribute("data-key", item.id);
 
-        if (item.completed == true) {
-            li.classList.add('checked');
-        }
+    if (item.completed == true) {
+      li.classList.add("checked");
+    }
 
-        li.innerHTML = `
+    li.innerHTML = `
         <input type="checkbox" class="checkbox" ${checked} >
         ${item.name}
         <button class="delete-button"> X </button>
         
         `;
 
-        todoItemsList.append(li);
-       
-        // addToLocalStrg(todos);
+    todoItemsList.append(li);
 
-    })
-};
-
+    // addToLocalStrg(todos);
+  });
+}
 
 function addToLocalStrg(todos) {
-    localStorage.setItem('todos', JSON.stringify(todos));
-    rendertodos(todos);
-    
+  localStorage.setItem("todos", JSON.stringify(todos));
+  rendertodos(todos);
 }
+
+// data get from local storage
 
 function getFormLocalStorage() {
-    const reference = localStorage.getItem('todos');
-    if (reference) {
-        todos = JSON.parse(reference);
-        rendertodos(todos);
-    }
-
+  const reference = localStorage.getItem("todos");
+  if (reference) {
+    todos = JSON.parse(reference);
+    rendertodos(todos);
+  }
 }
 
-
-
+// toggler  function
 function toggle(id) {
-    todos.forEach(function (item) {
-        if (item.id == id) {
-            item.completed = !item.completed;
-        }
-    });
+  todos.forEach(function (item) {
+    if (item.id == id) {
+      item.completed = !item.completed;
+    }
+  });
 
-    addToLocalStrg(todos);
-
+  addToLocalStrg(todos);
 }
 
-
+// deleting data from local storage
 function deleteTodo(id) {
-    todos = todos.filter(function (item) {
+  todos = todos.filter(function (item) {
+    return item.id != id;
+  });
 
-        
-        return item.id != id;
-    });
-
-    addToLocalStrg(todos);
+  addToLocalStrg(todos);
 }
-
 
 getFormLocalStorage();
 
+todoItemsList.addEventListener("click", function (event) {
+  if (event.target.type === "checkbox") {
+    toggle(event.target.parentElement.getAttribute("data-key"));
+  }
+  // check if that is a delete -button
 
-todoItemsList.addEventListener('click', function (event) {
-    if (event.target.type === 'checkbox') {
-        toggle(event.target.parentElement.getAttribute('data-key'));
-    }
-    // check if that is a delete -button
-
-    if (event.target.classList.contains('delete-button')) {
-
-        deleteTodo(event.target.parentElement.getAttribute('data-key'));
-        
-    }
-    
+  if (event.target.classList.contains("delete-button")) {
+    deleteTodo(event.target.parentElement.getAttribute("data-key"));
+  }
 });
 
-
-
 // search......
-var ref = JSON.parse(localStorage.getItem('todos'));
+var ref = JSON.parse(localStorage.getItem("todos"));
 
 var search = document.getElementById("search-box");
 
-
-document.getElementById('search-button').addEventListener('click', () => {
-
-
-    var  searchValue= ref.filter((val) => {
+document.getElementById("search-button").addEventListener("click", () => {
+  var searchValue = ref.filter((val) => {
     return val.name === search.value;
-    })
-    
-    if (searchValue.length == 0) {
+  });
 
-        rendertodos(todos);
-    }
-    else {
-        rendertodos(searchValue);
-    }
-
-    
-})
-
-
-
-
-
-
-
-
+  if (searchValue.length == 0) {
+    rendertodos(todos);
+  } else {
+    rendertodos(searchValue);
+  }
+});
 
 // var file_list = document.querySelector(".file-list");
 // var file_list1 = document.querySelector(".file-list1");
@@ -179,16 +130,11 @@ document.getElementById('search-button').addEventListener('click', () => {
 
 // var remaning = document.querySelector(".remaning");
 
-
-
-
 // complete.addEventListener('click', () => {
 //     file_list.style.display = 'none';
 //       file_list1.style.display = 'block';
-    
+
 // })
-
-
 
 // function addfn(data) {
 
@@ -196,29 +142,18 @@ document.getElementById('search-button').addEventListener('click', () => {
 //     add.innerHTML = '';
 //     addToLocalStorage(data);
 
+// data.forEach((value) => {
+//     console.log(value);
 
+//     para = document.createElement('div');
+//     para.className = 'my-class';
 
-    // data.forEach((value) => {
-    //     console.log(value);
-      
-    //     para = document.createElement('div');
-    //     para.className = 'my-class';
+//     para.innerHTML = `
+//         <p> ${value.input}</p>
+//             <input type="checkbox" id="data-${value.id}"  name="myCheckbox">
+//             `
+//       add.appendChild(para);
 
-    //     para.innerHTML = `
-    //         <p> ${value.input}</p>
-    //             <input type="checkbox" id="data-${value.id}"  name="myCheckbox">
-    //             `
-    //       add.appendChild(para); 
+//   })
 
-    //   })
-    
 // }
-
-
-
-
-
-
-
-
-
