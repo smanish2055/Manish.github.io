@@ -1,6 +1,6 @@
 .container {
-  width: 600px;
-  height: 350px;
+  width: 800px;
+  height: 500px;
   border: 1px solid black;
   /* background-color: rgb(101, 101, 244); */
   overflow: hidden;
@@ -15,8 +15,8 @@
   position: absolute;
 }
 .image-wrapper img {
-  width: 600px;
-  height: 350px;
+  width: 800px;
+  height: 500px;
   position: relative;
   /* position: absolute; */
 }
@@ -43,7 +43,7 @@
 .navigator {
   position: absolute;
   top: 93%;
-  left: 36%;
+  left: 41%;
 }
 
 .dot {
@@ -61,7 +61,6 @@
 .dot:hover {
   background-color: #717171;
 }
-
 
 .carousel-btn {
   background-color: #3498db; /* Button background color */
@@ -92,4 +91,3 @@
 .carousel-btn i {
   margin-right: 5px; /* Add space between the icon and the text */
 }
-

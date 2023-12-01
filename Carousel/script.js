@@ -34,7 +34,7 @@ let pictures = [
   },
 ];
 
-imageWrapper.style.width = pictures.length * 600 + "px";
+imageWrapper.style.width = pictures.length * 800 + "px";
 
 // creating circular button present below carousel container
 pictures.forEach((ele, i) => {
@@ -65,7 +65,7 @@ var dots = document.querySelectorAll(".dot");
 next_img.addEventListener("click", () => {
   imageIndex++;
   //  console.log(imageIndex);
-  initialValue = imageIndex * -600;
+  initialValue = imageIndex * -800;
   if (imageIndex < pictures.length - 1) {
     imageWrapper.style.left = initialValue + "px";
 
@@ -80,7 +80,7 @@ next_img.addEventListener("click", () => {
 
        
     imageIndex = 0;
-    initialValue = imageIndex * -600;
+    initialValue = imageIndex * -800;
     imageWrapper.style.left = initialValue + "px";
 
 
@@ -95,7 +95,7 @@ next_img.addEventListener("click", () => {
 pre_img.addEventListener("click", () => {
   imageIndex--;
 
-  initialValue = imageIndex * -600;
+  initialValue = imageIndex * -800;
   
   if (imageIndex >= 0) {
     imageWrapper.style.left = initialValue + "px";
@@ -109,7 +109,7 @@ pre_img.addEventListener("click", () => {
 
   } else {
     imageIndex = pictures.length - 1;
-    initialValue = imageIndex * -600;
+    initialValue = imageIndex * -800;
     imageWrapper.style.left = initialValue + "px";
   }
 
@@ -129,7 +129,7 @@ dots.forEach((dot, index) => {
 
 // update carousel
 function updateCarousel() {
-  initialValue = imageIndex * -600;
+  initialValue = imageIndex * -800;
   imageWrapper.style.left = initialValue + "px";
 
   dots.forEach((dot) => {
