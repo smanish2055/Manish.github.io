@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+.container{
+    position: relative;
+      display: inline-block;
+        left: 19%;
+      /* width: 100%; */
+}
+.healthBar{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  
+}
+
+.healthBar__player{
+    background-color: yellow;
+    width: 100%;
+    height: 30px;
+    
+
+}
+.healthBar__timer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(206, 185, 227);
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.healthBar__enemy{
+    /* background-color: yellow; */
+     width: 100%;
+       height: 30px;
+       position: relative;
+     
+
+}
+
+.healthBar__enemy__health{
+    background-color: yellow;
+     height: 30px;
+
+}
+
+#enemyHealth{
+     background-color:#28ac55;
+       height: 30px;
+       position: absolute ;
+       left: 0;
+       top: 0;
+       right:0;
+       bottom: 0;
+}
+
+
+.healthBar__player{
+    /* background-color: yellow; */
+     width: 100%;
+       height: 30px;
+       position: relative;
+       display: flex;
+       justify-content: flex-end;
+     
+
+}
+.healthBar__player__health{
+    background-color: yellow;
+     height: 30px;
+     width: 100%;
+
+}
+
+#playerHealth{
+     background-color: #28ac55;
+       height: 30px;
+       position: absolute ;
+       /* left: 0; */
+       top: 0;
+       right:0;
+       bottom: 0;
+       width: 100%;
+}
+
+
+
+/* display result */
+
+#displayResult{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     font-size: 30px;
+    font-weight: 700;
+    color: white;
+}
