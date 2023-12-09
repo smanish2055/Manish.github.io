@@ -18,7 +18,7 @@ body, h1, h2, h3, p, figure, ul, li {
 header {
   background-color: #333; /* Dark background color */
   color: #fff; /* Text color */
-  padding: 10px 0; /* Add some padding for better spacing */
+  padding: 26px 0; /* Add some padding for better spacing */
 }
 
 /* Center the content within the container */
@@ -32,12 +32,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: x-large;
+
 }
 
 /* Style the logo */
 .container__logo p {
   color: #fff; 
-  font-size: 24px; 
+  font-size: 30px; 
   font-weight: bold;
   cursor: pointer;
 }
@@ -61,6 +63,7 @@ nav li {
 /* Style the links */
 nav li:hover {
   text-decoration: underline;
+  color:#ddd;
 }
 
 
@@ -172,15 +175,16 @@ h3{
 
 
   #search-box {
-      padding: 4px;
-      width: 160px;
+      padding: 8px;
+      width: 210px;
       border: 1px solid #ccc;
       border-radius: 4px;
       margin-right: 10px;
+     
     }
 
     #search-button {
-      padding: 4px;
+      padding: 9px;
       background-color: #4caf50;
       color: white;
       border: none;
@@ -193,3 +197,38 @@ h3{
     cursor: pointer;
   }
     
+
+  @media screen and (max-width: 768px) {
+    .container__nav {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+     
+  
+}
+
+
+
+figure{
+      padding: 12px;
+}
+
+ #search-box {
+      padding: 8px;
+      width: 210px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      margin-top: 13px;
+    }
+
+  }

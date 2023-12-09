@@ -6,7 +6,6 @@
     <title>ToDO List</title>
 
     <link rel="stylesheet" href="./style.css" />
-   
   </head>
   <body>
     <header>
@@ -21,59 +20,42 @@
           <nav>
             <ul>
               <a href="/index.html"> <li>Home</li></a>
-             
+
               <a href="./complete.html"><li>Complete</li></a>
-              
+
               <a href="./remaning.html"><li>Remaning</li></a>
 
-                    <div class="search">
- <input type="text" id="search-box" name="search" placeholder="Search...">
-    <button  id="search-button">Search</button>
-    </div>
-              
+               <div class="search">
+                <input
+                  type="text"
+                  id="search-box"
+                  name="search"
+                  placeholder="Search..."
+                />
+                <button id="search-button">Search</button>
+              </div>
+
             </ul>
+                
           </nav>
         </div>
       </div>
     </header>
 
     <main>
-     
-        <!-- <div class="form">
-          <input id="input" type="text" />
-          <button id="btn">add</button>
-          <div id="add_contain">  
+      <form action="" class="todo-form">
+        <input type="text" class="todo-input" placeholder="Add a task" />
 
-        </div>
-        </div> -->
+        <button type="submit" class="add-button">Add</button>
+      </form>
 
-  
+      <h3>Task List</h3>
 
-
-        <form action="" class="todo-form">
-
-          <input type="text" class="todo-input" placeholder="Add a task">
-
-          <button type="submit" class="add-button">Add</button>
-
-          
-        </form>
-
-
-        <h3>Task List</h3>
-        
-        <div class="file-list">
-
-          <ul class="todo-items">
-            
-          </ul>
-          
-        </div>
-
-        
-     
+      <div class="file-list">
+        <ul class="todo-items"></ul>
+      </div>
     </main>
 
-     <script src="./script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
