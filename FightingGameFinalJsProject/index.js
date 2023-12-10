@@ -23,6 +23,9 @@ const keys = {
   },
 };
 
+
+
+
 const background = new Sprite({
   position: {
     x: 0,
@@ -41,131 +44,303 @@ const shop = new Sprite({
   framesMax: 6,
 });
 
+
+
+let samuraiMack = false;
+let HighForest = false;
+switch ("HighForest") {
+  case "HighForest":
+    HighForest = true;
+    break;
+  case "samuraiMack":
+    samuraiMack = true;
+    break;
+}
+
+let enemy1 = false;
+let enemy2 = false;
+switch ("enemy2") {
+  case "enemy1":
+    enemy1 = true;
+    break;
+  case "enemy2":
+    enemy2 = true;
+    break;
+}
+
 /* - creating player and enemy objects and passing arguments to constructor - */
-const player = new Fighters({
-  position: {
-    x: 0,
-    y: 0,
-  },
-  velocity: {
-    x: 0,
-    y: 10,
-  },
-  imageSrc: "./img/samuraiMack/Idle.png",
-  framesMax: 8,
-  scale: 2.5,
 
-  offset: {
-    x: 215,
-    y: 157,
-  },
+let player; 
+if (HighForest) {
+   player = new Fighters({
+    position: {
+      x: 0,
+      y: 0,
+    },
+    velocity: {
+      x: 0,
+      y: 10,
+    },
+    imageSrc: "./img/HighForest/Idle-Sheet.png",
+    framesMax: 4,
+    scale: 2.5,
 
-  sprites: {
-    idle: {
-      imageSrc: "./img/samuraiMack/Idle.png",
-      framesMax: 8,
-    },
-    run: {
-      imageSrc: "./img/samuraiMack/Run.png",
-      framesMax: 8,
-    },
-    jump: {
-      imageSrc: "./img/samuraiMack/jump.png",
-      framesMax: 2,
-    },
-    fall: {
-      imageSrc: "./img/samuraiMack/Fall.png",
-      framesMax: 2,
-    },
-    attack1: {
-      imageSrc: "./img/samuraiMack/Attack1.png",
-      framesMax: 6,
-    },
-    takeHit: {
-      imageSrc: "./img/samuraiMack/Take Hit - white silhouette.png",
-      framesMax: 4,
-    },
-    Death: {
-      imageSrc: "./img/samuraiMack/Death.png",
-      framesMax: 6,
-    },
-  },
+   offset: {
+       x: 50,
+       y: 10,
+     },
+    
 
-  attackBox: {
-    offset: {
-      x: 40,
-      y: 50,
+    sprites: {
+      idle: {
+        imageSrc: "./img/HighForest/Idle-Sheet.png",
+        framesMax: 4,
+      },
+      run: {
+        imageSrc: "./img/HighForest/Run-Sheet.png",
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: "./img/HighForest/Jump-Start-Sheet.png",
+        framesMax: 4,
+      },
+      fall: {
+        imageSrc: "./img/HighForest/Jump-End-Sheet.png",
+        framesMax: 3,
+      },
+      attack1: {
+        imageSrc: "./img/HighForest/Attack-01-Sheet.png",
+        framesMax: 8,
+      },
+      takeHit: {
+        imageSrc: "./img/HighForest/Jump-End-Sheet.png",
+        framesMax: 3,
+      },
+      Death: {
+        imageSrc: "./img/HighForest/Dead-Sheet.png",
+        framesMax: 8,
+      },
     },
-    width: 160,
-    height: 50,
-  },
-});
+
+    attackBox: {
+      offset: {
+        x: 40,
+        y: 50,
+      },
+      width: 160,
+      height: 50,
+    },
+  });
+}
+
+if (samuraiMack) {
+   player = new Fighters({
+     position: {
+       x: 0,
+       y: 0,
+     },
+     velocity: {
+       x: 0,
+       y: 10,
+     },
+     imageSrc: "./img/samuraiMack/Idle.png",
+     framesMax: 8,
+     scale: 2.5,
+
+     offset: {
+       x: 215,
+       y: 160,
+     },
+
+     sprites: {
+       idle: {
+         imageSrc: "./img/samuraiMack/Idle.png",
+         framesMax: 8,
+       },
+       run: {
+         imageSrc: "./img/samuraiMack/Run.png",
+         framesMax: 8,
+       },
+       jump: {
+         imageSrc: "./img/samuraiMack/jump.png",
+         framesMax: 2,
+       },
+       fall: {
+         imageSrc: "./img/samuraiMack/Fall.png",
+         framesMax: 2,
+       },
+       attack1: {
+         imageSrc: "./img/samuraiMack/Attack1.png",
+         framesMax: 6,
+       },
+       takeHit: {
+         imageSrc: "./img/samuraiMack/Take Hit - white silhouette.png",
+         framesMax: 4,
+       },
+       Death: {
+         imageSrc: "./img/samuraiMack/Death.png",
+         framesMax: 6,
+       },
+     },
+
+     attackBox: {
+       offset: {
+         x: 40,
+         y: 50,
+       },
+       width: 160,
+       height: 50,
+     },
+   });
+}
 
 /* ------------------------------ enemy object ------------------------------ */
-const enemy = new Fighters({
-  position: {
-    x: 400,
-    y: 100,
-  },
-  velocity: {
-    x: 0,
-    y: 10,
-  },
-  color: "blue",
-  offset: {
-    x: -50,
-    y: 0,
-  },
 
-  imageSrc: "./img/kenji/Idle.png",
-  framesMax: 4,
-  scale: 2.5,
 
-  offset: {
-    x: 215,
-    y: 171,
-  },
+let enemy;
 
-  sprites: {
-    idle: {
-      imageSrc: "./img/kenji/Idle.png",
-      framesMax: 4,
-    },
-    run: {
-      imageSrc: "./img/kenji/Run.png",
-      framesMax: 8,
-    },
-    jump: {
-      imageSrc: "./img/kenji/jump.png",
-      framesMax: 2,
-    },
-    fall: {
-      imageSrc: "./img/kenji/Fall.png",
-      framesMax: 2,
-    },
-    attack1: {
-      imageSrc: "./img/kenji/Attack1.png",
-      framesMax: 4,
-    },
-    takeHit: {
-      imageSrc: "./img/kenji/Take hit.png",
-      framesMax: 3,
-    },
-    Death: {
-      imageSrc: "./img/kenji/Death.png",
-      framesMax: 7,
-    },
-  },
 
-  attackBox: {
+if (enemy1) {
+  enemy = new Fighters({
+    position: {
+      x: 400,
+      y: 100,
+    },
+    velocity: {
+      x: 0,
+      y: 10,
+    },
+    color: "blue",
     offset: {
-      x: -140,
-      y: 50,
+      x: -50,
+      y: 0,
     },
-    width: 170,
-    height: 50,
-  },
-});
+
+    imageSrc: "./img/kenji/Idle.png",
+    framesMax: 4,
+    scale: 2.5,
+
+    offset: {
+      x: 215,
+      y: 171,
+    },
+
+    sprites: {
+      idle: {
+        imageSrc: "./img/kenji/Idle.png",
+        framesMax: 4,
+      },
+      run: {
+        imageSrc: "./img/kenji/Run.png",
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: "./img/kenji/jump.png",
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: "./img/kenji/Fall.png",
+        framesMax: 2,
+      },
+      attack1: {
+        imageSrc: "./img/kenji/Attack1.png",
+        framesMax: 4,
+      },
+      takeHit: {
+        imageSrc: "./img/kenji/Take hit.png",
+        framesMax: 3,
+      },
+      Death: {
+        imageSrc: "./img/kenji/Death.png",
+        framesMax: 7,
+      },
+    },
+
+    attackBox: {
+      offset: {
+        x: -140,
+        y: 50,
+      },
+      width: 170,
+      height: 50,
+    },
+  });
+}
+
+if (enemy2 ) {
+  
+   enemy = new Fighters({
+     position: {
+       x: 400,
+       y: 100,
+     },
+     velocity: {
+       x: 0,
+       y: 10,
+     },
+     color: "blue",
+
+     imageSrc: "./img/enemySecond/Idle-Sheet.png",
+     framesMax: 4,
+     scale: 2.8,
+     offset: {
+       x: 50,
+       y: 26,
+     },
+
+     sprites: {
+       idle: {
+         imageSrc: "./img/enemySecond/Idle-Sheet.png",
+         framesMax: 4,
+       },
+       idleRight: {
+         imageSrc: "./img/enemySecond/Idle-Sheet-Right.png",
+         framesMax: 4,
+       },
+       run: {
+         imageSrc: "./img/enemySecond/Run-Sheet.png",
+         framesMax: 8,
+       },
+       runRight: {
+         imageSrc: "./img/enemySecond/Run-Sheet-Right.png",
+         framesMax: 8,
+       },
+       jump: {
+         imageSrc: "./img/enemySecond/Jump-Start-Sheet.png",
+         framesMax: 4,
+       },
+       fall: {
+         imageSrc: "./img/enemySecond/Jump-End-Sheet.png",
+         framesMax: 3,
+       },
+       attack1: {
+         imageSrc: "./img/enemySecond/Attack-01-Sheet.png",
+         framesMax: 8,
+       },
+       takeHit: {
+         imageSrc: "./img/enemySecond/Jump-End-Sheet.png",
+         framesMax: 3,
+       },
+       Death: {
+         imageSrc: "./img/enemySecond/Dead-Sheet.png",
+         framesMax: 4,
+       },
+     },
+
+     attackBox: {
+       offset: {
+         x: -45,
+         y: 50,
+       },
+       width: 110,
+       height: 50,
+     },
+   });
+  
+
+}
+
+
 
 /* ------------------------ calling decrease Timer fn ----------------------- */
 var interval = setInterval(() => {
@@ -206,19 +381,23 @@ function animate() {
   enemy.velocity.x = 0;
   if (keys.ArrowRight.pressed && enemy.position.x <= 974) {
     enemy.velocity.x = 5;
-    enemy.switchSprite("run");
-  } else if (keys.ArrowLeft.pressed && enemy.position.x >= 0) {
-    enemy.velocity.x = -5;
+    enemy.switchSprite("runRight");
+  }
+  else if (keys.ArrowLeft.pressed && enemy.position.x >= 0) {
+    enemy.velocity.x = -7;
     enemy.switchSprite("run");
   } else {
     enemy.switchSprite("idle");
   }
-  if (enemy.velocity.y < 0) {
+
+  if (enemy.velocity.y < 0 && enemy.position.y<=0) {
     enemy.switchSprite("jump");
   } else if (enemy.velocity.y > 0) {
     enemy.switchSprite("fall");
   }
 
+
+  
   /* ------------------------ detect collision by hero ------------------------ */
 
   if (
@@ -279,9 +458,9 @@ animate();
 
 /* ------------------- mover characters with EventListener ------------------ */
 
-if (!player.dead) {
-  window.addEventListener("keydown", (event) => {
-    console.log(event);
+window.addEventListener("keydown", (event) => {
+  console.log(event);
+  if (!player.dead) {
     switch (event.key) {
       case "d":
         keys.d.pressed = true;
@@ -297,9 +476,14 @@ if (!player.dead) {
       case " ":
         player.attack();
         break;
-
+    }
+  }
+  console.log(event.key);
+  if (!enemy.dead) {
+    switch (event.key) {
       case "ArrowRight":
         keys.ArrowRight.pressed = true;
+        
         console.log(event.key);
         break;
       case "ArrowLeft":
@@ -314,14 +498,10 @@ if (!player.dead) {
         enemy.attack();
         break;
     }
-    console.log(event.key);
-  });
-}
-
+  }
+});
 
 if (!enemy.dead) {
-  
-
   window.addEventListener("keyup", (event) => {
     switch (event.key) {
       case "d":
@@ -336,7 +516,14 @@ if (!enemy.dead) {
 
       case "ArrowRight":
         keys.ArrowRight.pressed = false;
+  
+        if (enemy.image !== enemy.sprites.idleRight.image) {
+          enemy.image = enemy.sprites.idleRight.image;
+          enemy.framesCurrent = 0;
+          enemy.framesMax = enemy.sprites.idleRight.framesMax;
+        }
         break;
+      
       case "ArrowLeft":
         keys.ArrowLeft.pressed = false;
         break;

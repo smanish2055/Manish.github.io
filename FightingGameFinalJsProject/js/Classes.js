@@ -190,11 +190,20 @@ class Fighters extends Sprite {
           this.framesMax = this.sprites.idle.framesMax;
         }
         break;
+     
       case "run":
         if (this.image !== this.sprites.run.image) {
           this.image = this.sprites.run.image;
           this.framesCurrent = 0;
           this.framesMax = this.sprites.run.framesMax;
+        }
+        break;
+
+      case "runRight":
+        if (this.image !== this.sprites.runRight.image) {
+          this.image = this.sprites.runRight.image;
+          this.framesCurrent = 0;
+          this.framesMax = this.sprites.runRight.framesMax;
         }
         break;
       case "jump":
