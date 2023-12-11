@@ -1,0 +1,102 @@
+#container1 {
+        font-family: "Press Start 2P", cursive;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: rgba(0, 0, 0, 0.7) url("../img/background.jpg") center/cover
+          no-repeat;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        color: #ffcc00;
+        font-size: 2em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin: 0;
+      }
+
+      .character-container1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .character-group {
+        flex: 1;
+        padding: 0 20px;
+      }
+
+      .section-title {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .character {
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        background-color: #444;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        width: 150px;
+        margin: 0 15px 30px;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        margin: 16px auto;
+      }
+
+      .character:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+      }
+
+      .character img {
+        width: 100%;
+        border-radius: 8px;
+        transition: transform 0.2s;
+      }
+
+      .character:hover img {
+        transform: scale(1.2);
+      }
+
+      .character p {
+        margin: 0;
+        font-size: 1em;
+        margin-top: 15px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      #startButton {
+        margin-top: 5px;
+        padding: 15px 30px;
+        font-size: 1.5em;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      #startButton:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+      }
+
+      #loadingMessage{
+        display: none;
+      }

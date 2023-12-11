@@ -1,42 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Fight</title>
-    
-    <link rel="stylesheet" href="./index.css" />
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warrior Rumble</title>
+    <link rel="stylesheet" href="./src/css/landing.css" />
   </head>
   <body>
-    
-    <div class="container">
-      <!-- ------------------------------ healthBar ------------------------------ -->
-      <div class="healthBar">
-        <div class="healthBar__player">
+    <div id="container1">
+      <h1>Warrior Rumble</h1>
 
-           <div class="healthBar__player__health"></div>
-          <div   id="playerHealth" ></div>
+      <div class="character-container1">
+        <div class="character-group">
+          <div class="section-title">Select Your Hero:</div>
+          <div
+            class="character"
+            onmouseover="playHoverSound()"
+            onclick="selectHero('Shadow')"
+          >
+            <img src="./src/img/Hero1.png" alt="Hero 1" />
+            <p>Shadow</p>
+          </div>
+
+          <div
+            class="character"
+            onmouseover="playHoverSound()"
+            onclick="selectHero('Blaze')"
+          >
+            <img src="./src/img/Hero2.png" alt="Hero 2" />
+            <p>Blaze</p>
+          </div>
         </div>
 
+        <div class="character-group">
+          <div class="section-title">Select Your Enemy:</div>
+          <div
+            class="character"
+            onmouseover="playHoverSound()"
+            onclick="selectEnemy('Thunder')"
+          >
+            <img src="./src/img/Enemy1.png" alt="Enemy 1" />
+            <p>Thunder</p>
+          </div>
 
-        <div class="healthBar__timer"></div>
-
-        <div class="healthBar__enemy">
-          <div class="healthBar__enemy__health"></div>
-          <div   id="enemyHealth" ></div>
+          <div
+            class="character"
+            onmouseover="playHoverSound()"
+            onclick="selectEnemy('Luna')"
+          >
+            <img src="./src/img/Enemy2.png" alt="Enemy 2" />
+            <p>Luna</p>
+          </div>
         </div>
-
       </div>
 
-      <div id="displayResult"></div>
-      <canvas></canvas>
+      <div id="loadingMessage">Loading...</div>
+      <button id="startButton" onclick="startGame()">Start Game</button>
+
+      <!-- Loading message -->
     </div>
-   
-    <script src="./js/utils.js"></script>
-    <script src="./js/Classes.js"></script>
-      <!-- <script src="./js/PlayerObj.js"></script>
-       <script src="./js/animate.js"></script> -->
-    <script src="./index.js"></script>
-   
+    <!-- 
+    <source id="backgroundAudio" autoplay loop>
+      <source src="./background-audio.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </source> -->
+    <audio id="hoverSound">
+      <source src="./src/audio/select-character.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="backgroundAudio" loop>
+      <source src="./src/audio/background-audio.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <audio id="selectCharacter">
+      <source src="./src/audio/hoverSound.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+      <audio id="startGame">
+      <source src="./src/audio/startGame.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      let selectedHero = null;
+      let selectedEnemy = null;
+
+
+      function playHoverSound() {
+        console.log("Hover sound");
+        const hoverSound = document.getElementById("hoverSound");
+        hoverSound.play();
+      }
+
+      // Function to play the background audio
+      function playBackgroundAudio() {
+        const audio = document.getElementById("backgroundAudio");
+        audio.play();
+        // audio.pause();
+        document.removeEventListener("click", playBackgroundAudio); // Remove the listener after the first DOMContentLoaded event
+      }
+
+      document.addEventListener("click", playBackgroundAudio);
+
+      const play = document.getElementById("selectCharacter");
+      function selectHero(hero) {
+        play.play();
+        selectedHero = hero;
+        alert(`you have Selected: ${hero}`);
+        console.log(`Selected Hero: ${hero}`);
+      }
+
+      function selectEnemy(enemy) {
+        play.play();
+        selectedEnemy = enemy;
+        alert(`you have Selected: ${enemy}`);
+        console.log(`Selected Enemy: ${enemy}`);
+      }
+
+      function startGame() {
+        if (selectedHero && selectedEnemy) {
+          const loadingMessage = document.getElementById("loadingMessage");
+          loadingMessage.style.display = "block"; // Show loading message
+
+          console.log("Game starting...");
+          localStorage.setItem("selectedHero", selectedHero);
+          localStorage.setItem("selectedEnemy", selectedEnemy);
+
+            const startGame = document.getElementById("startGame");
+        startGame.play();
+      
+          // Delay the navigation by 3 seconds
+          setTimeout(function () {
+            window.location.href = "./main.html";
+          }, 4000);
+
+        } else {
+          alert("Please select a hero and an enemy before starting the game.");
+        }
+      }
+    </script>
   </body>
 </html>

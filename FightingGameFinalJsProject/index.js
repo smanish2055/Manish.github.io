@@ -21,17 +21,17 @@ const keys = {
   ArrowLeft: {
     pressed: false,
   },
+  ArrowUp: {
+    pressed: false,
+  },
 };
-
-
-
 
 const background = new Sprite({
   position: {
     x: 0,
     y: 0,
   },
-  imageSrc: "./img/background.png",
+  imageSrc: "./src/img/background.png",
 });
 
 const shop = new Sprite({
@@ -39,40 +39,41 @@ const shop = new Sprite({
     x: 600,
     y: 134,
   },
-  imageSrc: "./img/shop.png",
+  imageSrc: "./src/img/shop.png",
   scale: 2.75,
   framesMax: 6,
 });
 
+const selectedHero = localStorage.getItem("selectedHero");
+const selectedEnemy = localStorage.getItem("selectedEnemy");
 
-
-let samuraiMack = false;
-let HighForest = false;
-switch ("HighForest") {
-  case "HighForest":
-    HighForest = true;
+let Blaze = false;
+let Shadow = false;
+switch (selectedHero) {
+  case "Blaze":
+    Blaze = true;
     break;
-  case "samuraiMack":
-    samuraiMack = true;
+  case "Shadow":
+    Shadow = true;
     break;
 }
 
-let enemy1 = false;
-let enemy2 = false;
-switch ("enemy2") {
-  case "enemy1":
-    enemy1 = true;
+let Thunder = false;
+let Luna = false;
+switch (selectedEnemy) {
+  case "Thunder":
+    Thunder = true;
     break;
-  case "enemy2":
-    enemy2 = true;
+  case "Luna":
+    Luna = true;
     break;
 }
 
 /* - creating player and enemy objects and passing arguments to constructor - */
 
-let player; 
-if (HighForest) {
-   player = new Fighters({
+let player;
+if (Blaze) {
+  player = new Fighters({
     position: {
       x: 0,
       y: 0,
@@ -81,43 +82,46 @@ if (HighForest) {
       x: 0,
       y: 10,
     },
-    imageSrc: "./img/HighForest/Idle-Sheet.png",
+    imageSrc: "./src/img/HighForest/Idle-Sheet.png",
     framesMax: 4,
     scale: 2.5,
 
-   offset: {
-       x: 50,
-       y: 10,
-     },
-    
+    offset: {
+      x: 50,
+      y: 10,
+    },
 
     sprites: {
       idle: {
-        imageSrc: "./img/HighForest/Idle-Sheet.png",
+        imageSrc: "./src/img/HighForest/Idle-Sheet.png",
         framesMax: 4,
       },
       run: {
-        imageSrc: "./img/HighForest/Run-Sheet.png",
+        imageSrc: "./src/img/HighForest/Run-Sheet.png",
+        framesMax: 8,
+      },
+      runLeft: {
+        imageSrc: "./src/img/HighForest/Run-Sheet-Left.png",
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./img/HighForest/Jump-Start-Sheet.png",
+        imageSrc: "./src/img/HighForest/Jump-Start-Sheet.png",
         framesMax: 4,
       },
       fall: {
-        imageSrc: "./img/HighForest/Jump-End-Sheet.png",
+        imageSrc: "./src/img/HighForest/Jump-End-Sheet.png",
         framesMax: 3,
       },
       attack1: {
-        imageSrc: "./img/HighForest/Attack-01-Sheet.png",
+        imageSrc: "./src/img/HighForest/Attack-01-Sheet.png",
         framesMax: 8,
       },
       takeHit: {
-        imageSrc: "./img/HighForest/Jump-End-Sheet.png",
+        imageSrc: "./src/img/HighForest/Jump-End-Sheet.png",
         framesMax: 3,
       },
       Death: {
-        imageSrc: "./img/HighForest/Dead-Sheet.png",
+        imageSrc: "./src/img/HighForest/Dead-Sheet.png",
         framesMax: 8,
       },
     },
@@ -133,74 +137,76 @@ if (HighForest) {
   });
 }
 
-if (samuraiMack) {
-   player = new Fighters({
-     position: {
-       x: 0,
-       y: 0,
-     },
-     velocity: {
-       x: 0,
-       y: 10,
-     },
-     imageSrc: "./img/samuraiMack/Idle.png",
-     framesMax: 8,
-     scale: 2.5,
+if (Shadow) {
+  player = new Fighters({
+    position: {
+      x: 0,
+      y: 0,
+    },
+    velocity: {
+      x: 0,
+      y: 10,
+    },
+    imageSrc: "./src/img/samuraiMack/Idle.png",
+    framesMax: 8,
+    scale: 2.5,
 
-     offset: {
-       x: 215,
-       y: 160,
-     },
+    offset: {
+      x: 215,
+      y: 158,
+    },
 
-     sprites: {
-       idle: {
-         imageSrc: "./img/samuraiMack/Idle.png",
-         framesMax: 8,
-       },
-       run: {
-         imageSrc: "./img/samuraiMack/Run.png",
-         framesMax: 8,
-       },
-       jump: {
-         imageSrc: "./img/samuraiMack/jump.png",
-         framesMax: 2,
-       },
-       fall: {
-         imageSrc: "./img/samuraiMack/Fall.png",
-         framesMax: 2,
-       },
-       attack1: {
-         imageSrc: "./img/samuraiMack/Attack1.png",
-         framesMax: 6,
-       },
-       takeHit: {
-         imageSrc: "./img/samuraiMack/Take Hit - white silhouette.png",
-         framesMax: 4,
-       },
-       Death: {
-         imageSrc: "./img/samuraiMack/Death.png",
-         framesMax: 6,
-       },
-     },
+    sprites: {
+      idle: {
+        imageSrc: "./src/img/samuraiMack/Idle.png",
+        framesMax: 8,
+      },
+      run: {
+        imageSrc: "./src/img/samuraiMack/Run.png",
+        framesMax: 8,
+      },
+      runLeft: {
+        imageSrc: "./src/img/samuraiMack/SRun-Left.png",
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: "./src/img/samuraiMack/jump.png",
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: "./src/img/samuraiMack/Fall.png",
+        framesMax: 2,
+      },
+      attack1: {
+        imageSrc: "./src/img/samuraiMack/Attack1.png",
+        framesMax: 6,
+      },
+      takeHit: {
+        imageSrc: "./src/img/samuraiMack/Take Hit - white silhouette.png",
+        framesMax: 4,
+      },
+      Death: {
+        imageSrc: "./src/img/samuraiMack/Death.png",
+        framesMax: 6,
+      },
+    },
 
-     attackBox: {
-       offset: {
-         x: 40,
-         y: 50,
-       },
-       width: 160,
-       height: 50,
-     },
-   });
+    attackBox: {
+      offset: {
+        x: 40,
+        y: 50,
+      },
+      width: 160,
+      height: 50,
+    },
+  });
 }
 
 /* ------------------------------ enemy object ------------------------------ */
 
-
 let enemy;
 
-
-if (enemy1) {
+if (Thunder) {
   enemy = new Fighters({
     position: {
       x: 400,
@@ -216,7 +222,7 @@ if (enemy1) {
       y: 0,
     },
 
-    imageSrc: "./img/kenji/Idle.png",
+    imageSrc: "./src/img/kenji/Idle.png",
     framesMax: 4,
     scale: 2.5,
 
@@ -227,31 +233,35 @@ if (enemy1) {
 
     sprites: {
       idle: {
-        imageSrc: "./img/kenji/Idle.png",
+        imageSrc: "./src/img/kenji/Idle.png",
         framesMax: 4,
       },
       run: {
-        imageSrc: "./img/kenji/Run.png",
+        imageSrc: "./src/img/kenji/Run.png",
+        framesMax: 8,
+      },
+      runRight: {
+        imageSrc: "./src/img/kenji/KRun-Right.png",
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./img/kenji/jump.png",
+        imageSrc: "./src/img/kenji/jump.png",
         framesMax: 2,
       },
       fall: {
-        imageSrc: "./img/kenji/Fall.png",
+        imageSrc: "./src/img/kenji/Fall.png",
         framesMax: 2,
       },
       attack1: {
-        imageSrc: "./img/kenji/Attack1.png",
+        imageSrc: "./src/img/kenji/Attack1.png",
         framesMax: 4,
       },
       takeHit: {
-        imageSrc: "./img/kenji/Take hit.png",
+        imageSrc: "./src/img/kenji/Take hit.png",
         framesMax: 3,
       },
       Death: {
-        imageSrc: "./img/kenji/Death.png",
+        imageSrc: "./src/img/kenji/Death.png",
         framesMax: 7,
       },
     },
@@ -267,80 +277,79 @@ if (enemy1) {
   });
 }
 
-if (enemy2 ) {
-  
-   enemy = new Fighters({
-     position: {
-       x: 400,
-       y: 100,
-     },
-     velocity: {
-       x: 0,
-       y: 10,
-     },
-     color: "blue",
+if (Luna) {
+  enemy = new Fighters({
+    position: {
+      x: 400,
+      y: 100,
+    },
+    velocity: {
+      x: 0,
+      y: 10,
+    },
+    color: "blue",
 
-     imageSrc: "./img/enemySecond/Idle-Sheet.png",
-     framesMax: 4,
-     scale: 2.8,
-     offset: {
-       x: 50,
-       y: 26,
-     },
+    imageSrc: "./src/img/enemySecond/Idle-Sheet.png",
+    framesMax: 4,
+    scale: 2.8,
+    offset: {
+      x: 50,
+      y: 26,
+    },
 
-     sprites: {
-       idle: {
-         imageSrc: "./img/enemySecond/Idle-Sheet.png",
-         framesMax: 4,
-       },
-       idleRight: {
-         imageSrc: "./img/enemySecond/Idle-Sheet-Right.png",
-         framesMax: 4,
-       },
-       run: {
-         imageSrc: "./img/enemySecond/Run-Sheet.png",
-         framesMax: 8,
-       },
-       runRight: {
-         imageSrc: "./img/enemySecond/Run-Sheet-Right.png",
-         framesMax: 8,
-       },
-       jump: {
-         imageSrc: "./img/enemySecond/Jump-Start-Sheet.png",
-         framesMax: 4,
-       },
-       fall: {
-         imageSrc: "./img/enemySecond/Jump-End-Sheet.png",
-         framesMax: 3,
-       },
-       attack1: {
-         imageSrc: "./img/enemySecond/Attack-01-Sheet.png",
-         framesMax: 8,
-       },
-       takeHit: {
-         imageSrc: "./img/enemySecond/Jump-End-Sheet.png",
-         framesMax: 3,
-       },
-       Death: {
-         imageSrc: "./img/enemySecond/Dead-Sheet.png",
-         framesMax: 4,
-       },
-     },
+    sprites: {
+      idle: {
+        imageSrc: "./src/img/enemySecond/Idle-Sheet.png",
+        framesMax: 4,
+      },
+      //  idleRight: {
+      //    imageSrc: "./src/img/enemySecond/Idle-Sheet-Right.png",
+      //    framesMax: 4,
+      //  },
+      run: {
+        imageSrc: "./src/img/enemySecond/Run-Sheet.png",
+        framesMax: 8,
+      },
+      runRight: {
+        imageSrc: "./src/img/enemySecond/Run-Sheet-Right.png",
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: "./src/img/enemySecond/Jump-Start-Sheet.png",
+        framesMax: 4,
+      },
+      fall: {
+        imageSrc: "./src/img/enemySecond/Jump-End-Sheet.png",
+        framesMax: 3,
+      },
+      attack1: {
+        imageSrc: "./src/img/enemySecond/Attack-01-Sheet.png",
+        framesMax: 8,
+      },
+      takeHit: {
+        imageSrc: "./src/img/enemySecond/Jump-End-Sheet.png",
+        framesMax: 3,
+      },
+      Death: {
+        imageSrc: "./src/img/enemySecond/Dead-Sheet.png",
+        framesMax: 4,
+      },
+      comboAttack: {
+        imageSrc: "./src/img/enemySecond/Special_moves.png",
+        framesMax: 2,
+      },
+    },
 
-     attackBox: {
-       offset: {
-         x: -45,
-         y: 50,
-       },
-       width: 110,
-       height: 50,
-     },
-   });
-  
-
+    attackBox: {
+      offset: {
+        x: -45,
+        y: 50,
+      },
+      width: 110,
+      height: 50,
+    },
+  });
 }
-
-
 
 /* ------------------------ calling decrease Timer fn ----------------------- */
 var interval = setInterval(() => {
@@ -366,38 +375,50 @@ function animate() {
     player.switchSprite("run");
   } else if (keys.a.pressed && player.position.x >= 0) {
     player.velocity.x = -5;
-    player.switchSprite("run");
+    player.switchSprite("runLeft");
   } else {
     player.switchSprite("idle");
   }
 
-  if (player.velocity.y < 0) {
-    player.switchSprite("jump");
-  } else if (player.velocity.y > 0) {
+  // player jump back to position(jump)
+  if (keys.w.pressed && player.position.y >= 0) {
+    if (player.position.y - player.velocity.y >= 0) {
+      player.velocity.y = -14;
+      player.switchSprite("jump");
+    }
+  } else if (
+    player.velocity.y > 0 &&
+    player.position.y < canvas.height - player.height
+  ) {
     player.switchSprite("fall");
   }
 
   /* ------------------------- enemy movement here ------------------------- */
+
   enemy.velocity.x = 0;
   if (keys.ArrowRight.pressed && enemy.position.x <= 974) {
-    enemy.velocity.x = 5;
+    enemy.velocity.x = 7;
     enemy.switchSprite("runRight");
-  }
-  else if (keys.ArrowLeft.pressed && enemy.position.x >= 0) {
+  } else if (keys.ArrowLeft.pressed && enemy.position.x >= 0) {
     enemy.velocity.x = -7;
     enemy.switchSprite("run");
   } else {
     enemy.switchSprite("idle");
   }
 
-  if (enemy.velocity.y < 0 && enemy.position.y<=0) {
-    enemy.switchSprite("jump");
-  } else if (enemy.velocity.y > 0) {
+  //  enemy jumpbacks to position(jump)
+  if (keys.ArrowUp.pressed && enemy.position.y >= 0) {
+    if (enemy.position.y - enemy.velocity.y >= 0) {
+      enemy.velocity.y = -14;
+      enemy.switchSprite("jump");
+    }
+  } else if (
+    enemy.velocity.y > 0 &&
+    enemy.position.y < canvas.height - enemy.height
+  ) {
     enemy.switchSprite("fall");
   }
 
-
-  
   /* ------------------------ detect collision by hero ------------------------ */
 
   if (
@@ -457,7 +478,8 @@ function animate() {
 animate();
 
 /* ------------------- mover characters with EventListener ------------------ */
-
+let isVPressed = false;
+let isControlPressed = false;
 window.addEventListener("keydown", (event) => {
   console.log(event);
   if (!player.dead) {
@@ -471,10 +493,22 @@ window.addEventListener("keydown", (event) => {
         console.log(event.key);
         break;
       case "w":
-        player.velocity.y = -20;
+        keys.w.pressed = true;
+
         break;
+
+      case "v":
+        isVPressed = true;
+        break;
+
       case " ":
-        player.attack();
+        if (isVPressed) {
+          // Space + Alt combo
+          player.specialAttack();
+          console.log("this is v + space");
+        } else {
+          player.attack();
+        }
         break;
     }
   }
@@ -483,7 +517,7 @@ window.addEventListener("keydown", (event) => {
     switch (event.key) {
       case "ArrowRight":
         keys.ArrowRight.pressed = true;
-        
+
         console.log(event.key);
         break;
       case "ArrowLeft":
@@ -491,16 +525,28 @@ window.addEventListener("keydown", (event) => {
         console.log(event.key);
         break;
       case "ArrowUp":
-        enemy.velocity.y = -20;
+        keys.ArrowUp.pressed = true;
 
         break;
+      
+      case "Control":
+        isControlPressed = true;
+        break;
+      
       case "ArrowDown":
-        enemy.attack();
+        if (isControlPressed) {
+          // Space + Alt combo
+          enemy.specialAttack();
+          console.log("this is control + arrowdown");
+        } else {
+          enemy.attack();
+        }
         break;
     }
   }
 });
 
+/* ---------------------------------- keyup --------------------------------- */
 if (!enemy.dead) {
   window.addEventListener("keyup", (event) => {
     switch (event.key) {
@@ -516,19 +562,28 @@ if (!enemy.dead) {
 
       case "ArrowRight":
         keys.ArrowRight.pressed = false;
-  
-        if (enemy.image !== enemy.sprites.idleRight.image) {
-          enemy.image = enemy.sprites.idleRight.image;
-          enemy.framesCurrent = 0;
-          enemy.framesMax = enemy.sprites.idleRight.framesMax;
-        }
+        // count = true;
+
+        // if (count) {
+        //   if (enemy.image !== enemy.sprites.idleRight.image) {
+        //     enemy.image = enemy.sprites.idleRight.image;
+        //     enemy.framesCurrent = 0;
+        //     enemy.framesMax = enemy.sprites.idleRight.framesMax;
+        //   }
+        // }
         break;
-      
+
       case "ArrowLeft":
         keys.ArrowLeft.pressed = false;
         break;
       case "ArrowUp":
         keys.ArrowUp.pressed = false;
+        break;
+      case "v":
+        isVPressed = false;
+        break;
+      case "Control":
+        isControlPressed = false;
         break;
     }
 

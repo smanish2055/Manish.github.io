@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fight</title>
+
+    <link rel="stylesheet" href="./src/css/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- ------------------------------ healthBar ------------------------------ -->
+      <div class="healthBar">
+        <div class="healthBar__player">
+          <div class="healthBar__player__health"></div>
+          <div id="playerHealth"></div>
+        </div>
+
+        <div class="healthBar__timer"></div>
+
+        <div class="healthBar__enemy">
+          <div class="healthBar__enemy__health"></div>
+          <div id="enemyHealth"></div>
+        </div>
+      </div>
+
+      <div id="displayResult"></div>
+      <canvas></canvas>
+    </div>
+
+    <script src="./src/js/constant.js"></script>
+    <script src="./src/js/utils.js"></script>
+    <script src="./src/js/Classes.js"></script>
+    <!-- <script src="./js/PlayerObj.js"></script>
+       <script src="./js/animate.js"></script> -->
+    <script src="./index.js"></script>
+  </body>
+</html>
