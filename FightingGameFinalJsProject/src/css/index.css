@@ -114,7 +114,9 @@ body{
     justify-content: center;
      font-size: 30px;
     font-weight: 700;
-    color: white;
+    color: black;
+    /* background-color: aliceblue; */
+    /* background-image: url("../img/winner-backgroundImage.jpg"); */
 }
 
 

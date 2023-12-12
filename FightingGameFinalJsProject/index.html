@@ -49,6 +49,7 @@
             onclick="selectEnemy('Luna')"
           >
             <img src="./src/img/Enemy2.png" alt="Enemy 2" />
+
             <p>Luna</p>
           </div>
         </div>
@@ -79,7 +80,7 @@
       Your browser does not support the audio element.
     </audio>
 
-      <audio id="startGame">
+    <audio id="startGame">
       <source src="./src/audio/startGame.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>
@@ -87,7 +88,6 @@
     <script>
       let selectedHero = null;
       let selectedEnemy = null;
-
 
       function playHoverSound() {
         console.log("Hover sound");
@@ -120,6 +120,7 @@
         console.log(`Selected Enemy: ${enemy}`);
       }
 
+      
       function startGame() {
         if (selectedHero && selectedEnemy) {
           const loadingMessage = document.getElementById("loadingMessage");
@@ -129,14 +130,13 @@
           localStorage.setItem("selectedHero", selectedHero);
           localStorage.setItem("selectedEnemy", selectedEnemy);
 
-            const startGame = document.getElementById("startGame");
-        startGame.play();
-      
+          const startGame = document.getElementById("startGame");
+          startGame.play();
+
           // Delay the navigation by 3 seconds
           setTimeout(function () {
             window.location.href = "./main.html";
           }, 4000);
-
         } else {
           alert("Please select a hero and an enemy before starting the game.");
         }

@@ -11,6 +11,10 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
 }
 
 /* ---------------------------------- timer --------------------------------- */
+/* ------------------------ calling decrease Timer fn ----------------------- */
+var interval = setInterval(() => {
+  DecreaseTimer();
+}, 1000);
 
 var timer = 60;
 function DecreaseTimer() {
@@ -27,17 +31,31 @@ function DecreaseTimer() {
   }
 }
 
-/* ---------------------- determination of final winner --------------------- */
-function FinalWinner({ player, enemy }) {
+/* ---------------------- determination of final winner --------------------- */function FinalWinner({ player, enemy }) {
   clearInterval(interval);
+  // var displayResult = document.querySelector("#displayResult");
+  var resultText = document.querySelector("#resultText");
+  var playAgainButton = document.getElementById("playAgainButton");
+
   if (player.health > enemy.health) {
-    document.querySelector("#displayResult").innerHTML = "Player 1 win 🥇";
+    resultText.innerHTML = "Player 1 wins 🥇";
+  } else if (player.health < enemy.health) {
+    resultText.innerHTML = "Player 2 wins 🥇";
+  } else {
+    resultText.innerHTML = "Draw 👍";
   }
-  if (player.health < enemy.health) {
-    document.querySelector("#displayResult").innerHTML = "Player 2 win 🥇";
-  }
-  if (player.health === enemy.health) {
-    document.querySelector("#displayResult").innerHTML = "Draw 👍";
- 
-  }
+
+  // Show the "Play Again" button
+  playAgainButton.style.display = "block";
 }
+
+function playAgain() {
+  // Reload the window when the "Play Again" button is clicked
+  location.reload();
+}
+
+// Hide the "Play Again" button initially
+document.getElementById("playAgainButton").style.display = "none";
+
+
+
