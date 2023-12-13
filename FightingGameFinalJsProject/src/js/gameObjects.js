@@ -321,7 +321,7 @@ if (Luna) {
         framesMax: 8,
       },
       runRight: {
-        imageSrc: "./src/img/enemySecond/Run-Sheet-Right.png",
+        imageSrc: "./src/img/enemySecond/Run_Right.png",
         framesMax: 8,
       },
       jump: {
