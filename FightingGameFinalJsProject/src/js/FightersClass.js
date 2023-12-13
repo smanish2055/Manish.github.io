@@ -98,10 +98,10 @@ class Fighters extends Sprite {
      }
   }
 
-  defend() {
-    this.switchSprite("Defend");
-    // this.isAttacking = true;
-  }
+  // defend() {
+  //   this.switchSprite("Defend");
+  //   // this.isAttacking = true;
+  // }
 
   
   takeHit(damage) {
@@ -118,6 +118,7 @@ class Fighters extends Sprite {
 
   /* ---------------------------- switch of sprite ---------------------------- */
   switchSprite(sprite) {
+    
     if (this.image === this.sprites.Death.image) {
       if (this.framesCurrent === this.sprites.Death.framesMax - 1)
         this.dead = true;
@@ -141,6 +142,7 @@ class Fighters extends Sprite {
       this.framesCurrent < this.sprites.comboAttack.framesMax - 1
     )
       return;
+    
     
     //  if (
     //    this.image === this.sprites.Defend.image &&
@@ -229,11 +231,13 @@ class Fighters extends Sprite {
         break;
 
       case "Defend":
+         console.log("Switching to Defend sprite!");
         if (this.image !== this.sprites.Defend.image) {
           this.image = this.sprites.Defend.image;
           this.framesCurrent = 0;
           this.framesMax = this.sprites.Defend.framesMax;
         }
+      
         break;
     }
   }

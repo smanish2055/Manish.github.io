@@ -8,6 +8,9 @@ const keys = {
   w: {
     pressed: false,
   },
+  f: {
+    pressed: false,
+  },
   ArrowRight: {
     pressed: false,
   },
@@ -15,6 +18,9 @@ const keys = {
     pressed: false,
   },
   ArrowUp: {
+    pressed: false,
+  },
+  Insert: {
     pressed: false,
   },
 };
@@ -98,11 +104,11 @@ if (Blaze) {
         framesMax: 8,
       },
       jump: {
-        imageSrc: "../img/HighForest/Jump-Start-Sheet.png",
+        imageSrc: "./src/img/HighForest/Jump-Start-Sheet.png",
         framesMax: 4,
       },
       fall: {
-        imageSrc: "../img/HighForest/Jump-End-Sheet.png",
+        imageSrc: "./src/img/HighForest/Jump-End-Sheet.png",
         framesMax: 3,
       },
       attack1: {
@@ -118,6 +124,10 @@ if (Blaze) {
         framesMax: 8,
       },
       comboAttack: {
+        imageSrc: "./src/img/HighForest/combo.png",
+        framesMax: 8,
+      },
+      Defend: {
         imageSrc: "./src/img/HighForest/combo.png",
         framesMax: 8,
       },
@@ -187,6 +197,10 @@ if (Shadow) {
         framesMax: 6,
       },
       comboAttack: {
+        imageSrc: "./src/img/samuraiMack/combo.png",
+        framesMax: 6,
+      },
+      Defend: {
         imageSrc: "./src/img/samuraiMack/combo.png",
         framesMax: 6,
       },
@@ -345,6 +359,10 @@ if (Luna) {
         framesMax: 4,
       },
       comboAttack: {
+        imageSrc: "./src/img/enemySecond/Special_moves.png",
+        framesMax: 8,
+      },
+      Defend: {
         imageSrc: "./src/img/enemySecond/Special_moves.png",
         framesMax: 8,
       },

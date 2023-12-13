@@ -36,8 +36,12 @@ window.addEventListener("keydown", (event) => {
           player.attack();
         }
         break;
-
-     
+      
+      case "f":
+        // console.log("q");
+        keys.f.pressed = true;
+        // enemy.defend();
+        break;
     }
   }
   console.log(event.key);
@@ -72,9 +76,11 @@ window.addEventListener("keydown", (event) => {
           enemy.attack();
         }
         break;
-      case "Control":
+      
+      case "Insert":
         // console.log("q");
-        enemy.defend();
+        keys.Insert.pressed = true;
+        // enemy.defend();
         break;
     }
   }
@@ -98,6 +104,12 @@ if (!enemy.dead) {
         isVPressed = false;
         player.isPlayerControlPressed = false;
         break;
+      
+      case "f":
+        // console.log("q");
+        keys.f.pressed = false;
+        // enemy.defend();
+        break;
 
       case "ArrowRight":
         keys.ArrowRight.pressed = false;
@@ -115,6 +127,11 @@ if (!enemy.dead) {
         isControlPressed = false;
         enemy.isEnemyControlPressed = false;
 
+        break;
+      case "Insert":
+        // console.log("q");
+        keys.Insert.pressed = false;
+        // enemy.defend();
         break;
     }
 

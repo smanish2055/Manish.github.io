@@ -9,7 +9,7 @@ function animate() {
   player.update();
   enemy.update();
 
-  /* -------------------------- Player movement here -------------------------- */
+  /* -------------------------- Player horizontal movement here -------------------------- */
   player.velocity.x = 0;
   if (keys.d.pressed && player.position.x <= 974) {
     player.velocity.x = 5;
@@ -22,11 +22,11 @@ function animate() {
   }
 
   // player jump back to position(jump)
-  if (keys.w.pressed && player.position.y >= 0) {
-    if (player.position.y - player.velocity.y >= 0) {
-      player.velocity.y = -14;
+  if (keys.w.pressed && player.position.y >= 95) {
+    // if (player.position.y - player.velocity.y >= 0) {
+      player.velocity.y = -10;
       player.switchSprite("jump");
-    }
+    // }
   } else if (
     player.velocity.y > 0 &&
     player.position.y < canvas.height - player.height
@@ -48,16 +48,26 @@ function animate() {
   }
 
   //  enemy jumpback to position(jump)
-  if (keys.ArrowUp.pressed && enemy.position.y >= 0) {
-    if (enemy.position.y - enemy.velocity.y >= 0) {
-      enemy.velocity.y = -14;
+  if (keys.ArrowUp.pressed && enemy.position.y >= 95) {
+    // if (enemy.position.y - enemy.velocity.y >= 0) {
+      enemy.velocity.y = -10;
       enemy.switchSprite("jump");
-    }
+    // }
   } else if (
     enemy.velocity.y > 0 &&
     enemy.position.y < canvas.height - enemy.height
   ) {
     enemy.switchSprite("fall");
+  }
+
+  // defending attack
+
+  if (keys.Insert.pressed) {
+    enemy.switchSprite("Defend");
+  }
+
+  if (keys.f.pressed) {
+    player.switchSprite("Defend");
   }
 
   /* ------------------------ detect collision by hero ------------------------ */
@@ -69,13 +79,22 @@ function animate() {
     (player.framesCurrent === 2 ||
       (player.isPlayerControlPressed && player.framesCurrent === 3))
   ) {
-    // Collision detected by player
-    if (player.isPlayerControlPressed ) {
-      // Combo attack hits
-      enemy.takeHit(15); // Pass 15 as the damage for combo attack
-    } else  {
-      // Normal attack hits
-      enemy.takeHit(10); // Pass 10 as the default damage
+   
+    if (player.isPlayerControlPressed) {
+      //enemy health decrease while defending in combo attack
+      if (keys.Insert.pressed) {
+        enemy.takeHit(4);
+      } else {
+        enemy.takeHit(10);
+        // enemy health decrease without defending in combo attack
+      }
+    } else {
+      //  //player health decrease while defending in Normal attack
+      if (keys.Insert.pressed) {
+        enemy.takeHit(2);
+      } else {
+        enemy.takeHit(5); // plsyer health decrease while without defending in Normal attack
+      }
     }
 
     player.isAttacking = false;
@@ -105,10 +124,21 @@ function animate() {
     if (enemy.isEnemyControlPressed) {
       console.log(enemy.isEnemyControlPressed);
       // Combo attack hits
-      player.takeHit(15); // Pass 15 as the damage for combo attack
+      if (keys.f.pressed) { 
+        player.takeHit(4); 
+      }
+      else {
+        player.takeHit(10); // Pass 15 as the damage for combo attack
+      }
+     
     } else {
       // Normal attack hits
-      player.takeHit(10); // Pass 10 as the default damage
+      if (keys.f.pressed) {
+        player.takeHit(2);
+      }
+      else {
+        player.takeHit(5); // Pass 10 as the default damage
+      }
     }
 
     enemy.isAttacking = false;

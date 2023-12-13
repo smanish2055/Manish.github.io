@@ -37,7 +37,7 @@ class Sprite {
     );
   }
 
-  /* ----------------------- /here animation is perform  ----------------------- */
+  /* ----------------------- / animation is performing ----------------------- */
   animateFrame() {
     this.framePassed++;
     if (this.framePassed % this.frameHold === 0) {

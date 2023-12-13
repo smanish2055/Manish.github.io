@@ -31,7 +31,11 @@ function DecreaseTimer() {
   }
 }
 
-/* ---------------------- determination of final winner --------------------- */function FinalWinner({ player, enemy }) {
+/* ---------------------- determination of final winner --------------------- */
+function FinalWinner({
+  player,
+  enemy,
+}) {
   clearInterval(interval);
   // var displayResult = document.querySelector("#displayResult");
   var resultText = document.querySelector("#resultText");
@@ -56,6 +60,3 @@ function playAgain() {
 
 // Hide the "Play Again" button initially
 document.getElementById("playAgainButton").style.display = "none";
-
-
-
