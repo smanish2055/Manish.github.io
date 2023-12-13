@@ -246,7 +246,7 @@ if (Thunder) {
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./src/img/kenji/jump.png",
+        imageSrc: "./src/img/kenji/Jump.png",
         framesMax: 2,
       },
       fall: {
