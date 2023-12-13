@@ -167,7 +167,7 @@ if (Shadow) {
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./src/img/samuraiMack/jump.png",
+        imageSrc: "./src/img/samuraiMack/Jump.png",
         framesMax: 2,
       },
       fall: {
