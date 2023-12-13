@@ -1,4 +1,3 @@
-
 const keys = {
   a: {
     pressed: false,
@@ -99,11 +98,11 @@ if (Blaze) {
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./src/img/HighForest/Jump-Start-Sheet.png",
+        imageSrc: "../img/HighForest/Jump-Start-Sheet.png",
         framesMax: 4,
       },
       fall: {
-        imageSrc: "./src/img/HighForest/Jump-End-Sheet.png",
+        imageSrc: "../img/HighForest/Jump-End-Sheet.png",
         framesMax: 3,
       },
       attack1: {
