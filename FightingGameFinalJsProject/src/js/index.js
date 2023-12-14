@@ -6,7 +6,7 @@ enemy.isEnemyControlPressed = false;
 player.isPlayerControlPressed = false;
 
 window.addEventListener("keydown", (event) => {
-  console.log(event);
+  // console.log(event);
   if (!player.dead) {
     switch (event.key) {
       case "d":
@@ -22,11 +22,11 @@ window.addEventListener("keydown", (event) => {
 
         break;
 
-      case " ":
+      case "c":
         isVPressed = true;
         break;
 
-      case "s":
+      case "z":
         if (isVPressed) {
           // Space + Alt combo
           player.isPlayerControlPressed = true;
@@ -44,7 +44,7 @@ window.addEventListener("keydown", (event) => {
         break;
     }
   }
-  console.log(event.key);
+  // console.log(event.key);
   if (!enemy.dead) {
     switch (event.key) {
       case "ArrowRight":

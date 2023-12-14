@@ -65,7 +65,6 @@ function animate() {
   if (keys.Insert.pressed) {
     enemy.switchSprite("Defend");
   }
-
   if (keys.f.pressed) {
     player.switchSprite("Defend");
   }

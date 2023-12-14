@@ -9,6 +9,7 @@ class Fighters extends Sprite {
     offset = { x: 0, y: 0 },
     sprites,
     attackBox = { offset: {}, width: undefined, height: undefined },
+    playerId,
   }) {
     super({ position, imageSrc, scale, framesMax, offset });
 
@@ -16,6 +17,7 @@ class Fighters extends Sprite {
     this.velocity = velocity;
     this.height = 150;
     this.width = 50;
+    this.playerId=playerId;
 
     /* ------------------------------ attacking box ----------------------------- */
 
@@ -34,7 +36,7 @@ class Fighters extends Sprite {
     this.sprites = sprites;
     this.dead = false;
     this.isEnemyControlPressed;
-    this.specialAttackCounter=0;
+    this.specialAttackCounter = 0;
 
     /* -------------------- creating image animation for fighters here ------------------- */
     for (const sprite in this.sprites) {
@@ -83,19 +85,34 @@ class Fighters extends Sprite {
     }
   }
 
-  /* ---------- when i hit space or arrowdown it call attack from addEventListner ---------- */
+  /* ---------- hit space or arrowdown it call attack from addEventListner ---------- */
   attack() {
     this.switchSprite("attack1");
     this.isAttacking = true;
   }
 
-  
   SpecialAttack() {
-     if (this.specialAttackCounter < 4) {
-    this.switchSprite("comboAttack");
-       this.isAttacking = true;
-       this.specialAttackCounter++;
-     }
+    if (this.specialAttackCounter < 3) {
+      this.switchSprite("comboAttack");
+      this.isAttacking = true;
+      this.specialAttackCounter++;
+      this.updateComboCountDisplay();
+    }
+  }
+
+  updateComboCountDisplay() {
+    let id = `player${this.playerId}ComboCount`;
+    console.log(id);
+  const comboCountSpan = document.getElementById(id);
+  comboCountSpan.innerHTML = ""; // Clear existing icons
+
+    // Generate fire icons based on specialAttackCounter
+    for (let i = 0; i < 3 - this.specialAttackCounter; i++) {
+      const fireIcon = document.createElement("span");
+      console.log("i m gired fire icon");
+      fireIcon.innerHTML = "🔥"; // Use any appropriate fire emoji
+      comboCountSpan.appendChild(fireIcon);
+    }
   }
 
   // defend() {
@@ -103,7 +120,6 @@ class Fighters extends Sprite {
   //   // this.isAttacking = true;
   // }
 
-  
   takeHit(damage) {
     this.health -= damage;
     console.log(this.health);
@@ -118,7 +134,6 @@ class Fighters extends Sprite {
 
   /* ---------------------------- switch of sprite ---------------------------- */
   switchSprite(sprite) {
-    
     if (this.image === this.sprites.Death.image) {
       if (this.framesCurrent === this.sprites.Death.framesMax - 1)
         this.dead = true;
@@ -142,19 +157,12 @@ class Fighters extends Sprite {
       this.framesCurrent < this.sprites.comboAttack.framesMax - 1
     )
       return;
-    
-    
-    //  if (
-    //    this.image === this.sprites.Defend.image &&
-    //    this.framesCurrent < this.sprites.Defend.framesMax - 1
-    //  )
-    //    return;
-    //  if (
-    //    this.image === this.sprites.Defend?.image &&
-    //    this.framesCurrent < (this.sprites.Defend?.framesMax ?? 0) - 1
-    //  ) {
-    //    return; // Exit the method if already in the "Defend" state and animation frames are not at the maximum.
-    //  }
+
+    if (
+      this.image === this.sprites.Defend.image &&
+      this.framesCurrent < this.sprites.Defend.framesMax - 1
+    )
+      return;
 
     switch (sprite) {
       case "idle":
@@ -231,13 +239,13 @@ class Fighters extends Sprite {
         break;
 
       case "Defend":
-         console.log("Switching to Defend sprite!");
+        console.log("Switching to Defend sprite!");
         if (this.image !== this.sprites.Defend.image) {
           this.image = this.sprites.Defend.image;
           this.framesCurrent = 0;
           this.framesMax = this.sprites.Defend.framesMax;
         }
-      
+
         break;
     }
   }

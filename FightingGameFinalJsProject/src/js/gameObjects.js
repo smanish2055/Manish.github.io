@@ -128,8 +128,8 @@ if (Blaze) {
         framesMax: 8,
       },
       Defend: {
-        imageSrc: "./src/img/HighForest/combo.png",
-        framesMax: 8,
+        imageSrc: "./src/img/HighForest/Defend.png",
+        framesMax: 4,
       },
     },
 
@@ -140,7 +140,9 @@ if (Blaze) {
       },
       width: 160,
       height: 50,
+      playerId:1,
     },
+     playerId: 1,
   });
 }
 
@@ -201,8 +203,8 @@ if (Shadow) {
         framesMax: 6,
       },
       Defend: {
-        imageSrc: "./src/img/samuraiMack/combo.png",
-        framesMax: 6,
+        imageSrc: "./src/img/samuraiMack/Defend.png",
+        framesMax: 8,
       },
     },
 
@@ -214,6 +216,7 @@ if (Shadow) {
       width: 160,
       height: 50,
     },
+    playerId: 1,
   });
 }
 
@@ -297,6 +300,7 @@ if (Thunder) {
       width: 170,
       height: 50,
     },
+    playerId: 2,
   });
 }
 
@@ -363,8 +367,8 @@ if (Luna) {
         framesMax: 8,
       },
       Defend: {
-        imageSrc: "./src/img/enemySecond/Special_moves.png",
-        framesMax: 8,
+        imageSrc: "./src/img/enemySecond/Defend.png",
+        framesMax: 4,
       },
     },
 
@@ -376,5 +380,6 @@ if (Luna) {
       width: 110,
       height: 50,
     },
+    playerId: 2,
   });
 }

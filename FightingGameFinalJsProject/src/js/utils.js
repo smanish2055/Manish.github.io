@@ -32,18 +32,19 @@ function DecreaseTimer() {
 }
 
 /* ---------------------- determination of final winner --------------------- */
-function FinalWinner({
-  player,
-  enemy,
-}) {
+function FinalWinner({ player, enemy }) {
   clearInterval(interval);
   // var displayResult = document.querySelector("#displayResult");
   var resultText = document.querySelector("#resultText");
   var playAgainButton = document.getElementById("playAgainButton");
 
   if (player.health > enemy.health) {
+   
+    // console.log(player1win)
+    // localStorage.setItem("Player1", player1win);
     resultText.innerHTML = "Player 1 wins 🥇";
   } else if (player.health < enemy.health) {
+    // localStorage.setItem("Player2", "⭐");
     resultText.innerHTML = "Player 2 wins 🥇";
   } else {
     resultText.innerHTML = "Draw 👍";
