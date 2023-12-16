@@ -113,16 +113,3 @@ h1 {
   /* Add any additional styles as needed */
 }
 
-#auto{
-  height: 40px;
-  width: 40px;
-  color: white;
-  background-color: #4caf50;
-  border-radius: 100%;
-  cursor: pointer;
-  font-size: x-small;
-   /* transform: scale(1); */
-}
-#auto:hover{
-  background-color: #75d478;
-}
