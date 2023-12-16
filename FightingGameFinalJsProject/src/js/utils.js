@@ -1,4 +1,4 @@
-function rectangularCollision({ rectangle1, rectangle2 }) {
+function Collision({ rectangle1, rectangle2 }) {
   return (
     rectangle1.attackBox.position.x + rectangle1.attackBox.width >=
       rectangle2.position.x &&
@@ -39,15 +39,38 @@ function FinalWinner({ player, enemy }) {
   var playAgainButton = document.getElementById("playAgainButton");
 
   if (player.health > enemy.health) {
-   
     // console.log(player1win)
     // localStorage.setItem("Player1", player1win);
+   
     resultText.innerHTML = "Player 1 wins 🥇";
+
+    setTimeout(function () {
+      player.dead = true;
+      enemy.dead = true;
+    }, 2000);
+
+    document.querySelector("#displayResult").style.background =
+      "linear-gradient(to right, #001f3f, #000000)";
   } else if (player.health < enemy.health) {
     // localStorage.setItem("Player2", "⭐");
     resultText.innerHTML = "Player 2 wins 🥇";
+
+    setTimeout(function () {
+      player.dead = true;
+      enemy.dead = true;
+    }, 2000);
+    document.querySelector("#displayResult").style.background =
+      "linear-gradient(to right, #001f3f, #000000)";
   } else {
     resultText.innerHTML = "Draw 👍";
+          sound.Dead("game-draw");
+     
+    document.querySelector("#displayResult").style.background =
+      "linear-gradient(to right, #001f3f, #000000)";
+    setTimeout(function () {
+      player.dead = true;
+      enemy.dead = true;
+    }, 1000);
   }
 
   // Show the "Play Again" button
@@ -56,8 +79,16 @@ function FinalWinner({ player, enemy }) {
 
 function playAgain() {
   // Reload the window when the "Play Again" button is clicked
-  location.reload();
+  sound.Dead("game-draw");
+  setTimeout(() => {
+    location.reload();
+  },500)
+  
 }
 
 // Hide the "Play Again" button initially
 document.getElementById("playAgainButton").style.display = "none";
+
+
+
+   

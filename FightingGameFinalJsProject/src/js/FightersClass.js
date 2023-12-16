@@ -17,7 +17,7 @@ class Fighters extends Sprite {
     this.velocity = velocity;
     this.height = 150;
     this.width = 50;
-    this.playerId=playerId;
+    this.playerId = playerId;
 
     /* ------------------------------ attacking box ----------------------------- */
 
@@ -63,10 +63,16 @@ class Fighters extends Sprite {
 
   /* ----------------------- updating all controls here ----------------------- */
   update() {
+    // console.log(player);
     this.draw();
+
     if (!this.dead) {
       this.animateFrame();
+      // Adjust velocity to move towards the player
+
+      // Calculate the distance between the player and the enemy
     }
+
     // attack boxes
     this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
@@ -83,6 +89,56 @@ class Fighters extends Sprite {
     } else {
       this.velocity.y += gravity;
     }
+    
+  }
+
+  /* ----------------------------- computer logics ---------------------------- */
+  enemyAI(enemy, player) {
+    setTimeout(() => {
+      if (!player.dead && !enemy.dead) {
+        const distanceToPlayer = player.position.x - enemy.position.x;
+
+        // Adjust velocity to move towards the player
+        if (distanceToPlayer > 0) {
+          enemy.switchSprite("runRight");
+          // AiSprite();
+          enemy.velocity.x = 1.5; // Adjust the speed as needed
+        } else if (distanceToPlayer < 0) {
+          enemy.velocity.x = -1.5; // Adjust the speed as needed
+          enemy.switchSprite("run"); // Assuming you have a runLeft sprite
+        } else {
+          // If the enemy is already at the player's position, stop moving
+          enemy.velocity.x = 0;
+        }
+      }
+    }, 300);
+
+    const distanceToPlayer = Math.abs(enemy.position.x - player.position.x);
+    // Check if the player is within attack range
+    if (distanceToPlayer < 120) {
+      // Randomly decide whether to perform a regular attack or a special attack
+      const randomNum = Math.round(1 + Math.random() * 2);
+      console.log(randomNum);
+      // Use a timer to control the attack interval
+      console.log(!this.attackTimer);
+      if (!this.attackTimer) {
+        this.attackTimer = setInterval(() => {
+          if (randomNum === 1 || randomNum === 2) {
+            // Regular attack
+            enemy.attack();
+          } else if (randomNum === 3) {
+            // Special attack
+            enemy.SpecialAttack();
+          } else {
+            enemy.attack();
+          }
+        }, 100);
+      }
+    } else {
+      // Clear the attack timer when the player is out of range
+      clearInterval(this.attackTimer);
+      this.attackTimer = null;
+    }
   }
 
   /* ---------- hit space or arrowdown it call attack from addEventListner ---------- */
@@ -92,7 +148,12 @@ class Fighters extends Sprite {
   }
 
   SpecialAttack() {
-    if (this.specialAttackCounter < 3) {
+    if (this.specialAttackCounter < 4) {
+      if (this.playerId===2) {
+        sound.combo("lunacombo");
+      } else {
+        sound.combo("playercombo");
+      }
       this.switchSprite("comboAttack");
       this.isAttacking = true;
       this.specialAttackCounter++;
@@ -103,13 +164,13 @@ class Fighters extends Sprite {
   updateComboCountDisplay() {
     let id = `player${this.playerId}ComboCount`;
     console.log(id);
-  const comboCountSpan = document.getElementById(id);
-  comboCountSpan.innerHTML = ""; // Clear existing icons
+    const comboCountSpan = document.getElementById(id);
+    comboCountSpan.innerHTML = ""; // Clear existing icons
 
     // Generate fire icons based on specialAttackCounter
-    for (let i = 0; i < 3 - this.specialAttackCounter; i++) {
+    for (let i = 0; i < 4 - this.specialAttackCounter; i++) {
       const fireIcon = document.createElement("span");
-      console.log("i m gired fire icon");
+      // console.log("i m gired fire icon");
       fireIcon.innerHTML = "🔥"; // Use any appropriate fire emoji
       comboCountSpan.appendChild(fireIcon);
     }
@@ -127,6 +188,11 @@ class Fighters extends Sprite {
     if (this.health <= 0) {
       this.health = 0;
       this.switchSprite("Death");
+      if (this.playerId === 1) {
+        sound.Dead("player-dead");
+      } else if (this.playerId === 2) {
+        sound.Dead("enemy-dead");
+      }
     } else {
       this.switchSprite("takeHit");
     }
@@ -139,6 +205,7 @@ class Fighters extends Sprite {
         this.dead = true;
       return;
     }
+
     // overriding all other animations with the attack animation
     if (
       this.image === this.sprites.attack1.image &&
@@ -158,11 +225,23 @@ class Fighters extends Sprite {
     )
       return;
 
-    if (
-      this.image === this.sprites.Defend.image &&
-      this.framesCurrent < this.sprites.Defend.framesMax - 1
-    )
-      return;
+    // if (
+    //   this.image === this.sprites.Defend.image &&
+    //   this.framesCurrent < this.sprites.Defend.framesMax - 1
+    // )
+    //   return;
+
+    //  if (
+    //    enemy.image === enemy.sprites.runRight.image &&
+    //    enemy.framesCurrent < enemy.sprites.runRight.framesMax - 1
+    //  )
+    //    return;
+
+    // if (
+    //   this.image === this.sprites.run.image &&
+    //   this.framesCurrent < this.sprites.run.framesMax - 1
+    // )
+    //   return;
 
     switch (sprite) {
       case "idle":
@@ -250,7 +329,3 @@ class Fighters extends Sprite {
     }
   }
 }
-
-
-// Export the Fighters class
-// export default Fighters;

@@ -10,53 +10,71 @@ window.addEventListener("keydown", (event) => {
   if (!player.dead) {
     switch (event.key) {
       case "d":
+        sound.herorun("on");
         keys.d.pressed = true;
         console.log(event.key);
         break;
       case "a":
+        sound.herorun("on");
         keys.a.pressed = true;
+
         console.log(event.key);
         break;
       case "w":
+        if (selectedHero == "Blaze") {
+          sound.jump("blaze");
+        } else {
+          sound.jump("samurai");
+        }
         keys.w.pressed = true;
 
         break;
 
-      case "c":
+      case "f":
         isVPressed = true;
         break;
 
-      case "z":
+      case "s":
         if (isVPressed) {
-          // Space + Alt combo
           player.isPlayerControlPressed = true;
           player.SpecialAttack();
           console.log("this is v + space");
         } else {
+          if (selectedHero == "Blaze") {
+            sound.Blaze();
+          } else {
+            sound.smuraimack();
+          }
+
           player.attack();
         }
         break;
-      
-      case "f":
-        // console.log("q");
+
+      case " ":
+        sound.shieldDefend();
         keys.f.pressed = true;
-        // enemy.defend();
         break;
     }
   }
-  // console.log(event.key);
   if (!enemy.dead) {
     switch (event.key) {
       case "ArrowRight":
+        sound.enemyrun("on");
         keys.ArrowRight.pressed = true;
 
         console.log(event.key);
         break;
       case "ArrowLeft":
+        sound.enemyrun("on");
         keys.ArrowLeft.pressed = true;
         console.log(event.key);
         break;
       case "ArrowUp":
+        if (selectedEnemy == "Luna") {
+          sound.jump("luna");
+        } else {
+          sound.jump("thunder");
+        }
         keys.ArrowUp.pressed = true;
 
         break;
@@ -67,20 +85,22 @@ window.addEventListener("keydown", (event) => {
 
       case "ArrowDown":
         if (isControlPressed) {
-          // Space + Alt combo
           enemy.isEnemyControlPressed = true;
           enemy.SpecialAttack();
-
-          console.log("this is control + arrowdown");
         } else {
+          if (selectedEnemy == "Luna") {
+            sound.luna();
+          } else {
+            sound.kanji();
+          }
+
           enemy.attack();
         }
         break;
-      
+
       case "Insert":
-        // console.log("q");
+        sound.shieldDefend();
         keys.Insert.pressed = true;
-        // enemy.defend();
         break;
     }
   }
@@ -91,32 +111,34 @@ if (!enemy.dead) {
   window.addEventListener("keyup", (event) => {
     switch (event.key) {
       case "d":
+        sound.herorun();
         keys.d.pressed = false;
         break;
       case "a":
+        sound.herorun();
         keys.a.pressed = false;
         break;
       case "w":
         keys.w.pressed = false;
         break;
 
-      case " ":
+      case "f":
         isVPressed = false;
         player.isPlayerControlPressed = false;
         break;
-      
-      case "f":
-        // console.log("q");
+
+      case " ":
         keys.f.pressed = false;
-        // enemy.defend();
         break;
 
       case "ArrowRight":
+        sound.enemyrun();
         keys.ArrowRight.pressed = false;
 
         break;
 
       case "ArrowLeft":
+        sound.enemyrun();
         keys.ArrowLeft.pressed = false;
         break;
       case "ArrowUp":
@@ -129,9 +151,7 @@ if (!enemy.dead) {
 
         break;
       case "Insert":
-        // console.log("q");
         keys.Insert.pressed = false;
-        // enemy.defend();
         break;
     }
 

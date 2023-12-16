@@ -25,6 +25,8 @@ const keys = {
   },
 };
 
+
+
 const background = new Sprite({
   position: {
     x: 0,
@@ -81,7 +83,7 @@ if (Blaze) {
       x: 0,
       y: 10,
     },
-    imageSrc: "./src/img/HighForest/Idle-Sheet.png",
+    imageSrc: "./src/img/Blaze/Idle-Sheet.png",
     framesMax: 4,
     scale: 2.5,
 
@@ -92,43 +94,43 @@ if (Blaze) {
 
     sprites: {
       idle: {
-        imageSrc: "./src/img/HighForest/Idle-Sheet.png",
+        imageSrc: "./src/img/Blaze/Idle-Sheet.png",
         framesMax: 4,
       },
       run: {
-        imageSrc: "./src/img/HighForest/Run-Sheet.png",
+        imageSrc: "./src/img/Blaze/Run-Sheet.png",
         framesMax: 8,
       },
       runLeft: {
-        imageSrc: "./src/img/HighForest/Run-Sheet-Left.png",
+        imageSrc: "./src/img/Blaze/Run-Sheet-Left.png",
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./src/img/HighForest/Jump-Start-Sheet.png",
+        imageSrc: "./src/img/Blaze/Jump-Start-Sheet.png",
         framesMax: 4,
       },
       fall: {
-        imageSrc: "./src/img/HighForest/Jump-End-Sheet.png",
+        imageSrc: "./src/img/Blaze/Jump-End-Sheet.png",
         framesMax: 3,
       },
       attack1: {
-        imageSrc: "./src/img/HighForest/Attack-01-Sheet.png",
+        imageSrc: "./src/img/Blaze/Attack-01-Sheet.png",
         framesMax: 8,
       },
       takeHit: {
-        imageSrc: "./src/img/HighForest/Jump-End-Sheet.png",
+        imageSrc: "./src/img/Blaze/Jump-End-Sheet.png",
         framesMax: 3,
       },
       Death: {
-        imageSrc: "./src/img/HighForest/Dead-Sheet.png",
+        imageSrc: "./src/img/Blaze/Dead-Sheet.png",
         framesMax: 8,
       },
       comboAttack: {
-        imageSrc: "./src/img/HighForest/combo.png",
+        imageSrc: "./src/img/Blaze/combo.png",
         framesMax: 8,
       },
       Defend: {
-        imageSrc: "./src/img/HighForest/Defend.png",
+        imageSrc: "./src/img/Blaze/Defend.png",
         framesMax: 4,
       },
     },
@@ -140,9 +142,9 @@ if (Blaze) {
       },
       width: 160,
       height: 50,
-      playerId:1,
+      playerId: 1,
     },
-     playerId: 1,
+    playerId: 1,
   });
 }
 
@@ -317,7 +319,7 @@ if (Luna) {
     },
     color: "blue",
 
-    imageSrc: "./src/img/enemySecond/Idle-Sheet.png",
+    imageSrc: "./src/img/Luna/Idle-Sheet.png",
     framesMax: 4,
     scale: 2.8,
     offset: {
@@ -327,47 +329,47 @@ if (Luna) {
 
     sprites: {
       idle: {
-        imageSrc: "./src/img/enemySecond/Idle-Sheet.png",
+        imageSrc: "./src/img/Luna/Idle-Sheet.png",
         framesMax: 4,
       },
       //  idleRight: {
-      //    imageSrc: "./src/img/enemySecond/Idle-Sheet-Right.png",
+      //    imageSrc: "./src/img/Luna/Idle-Sheet-Right.png",
       //    framesMax: 4,
       //  },
       run: {
-        imageSrc: "./src/img/enemySecond/Run-Sheet.png",
+        imageSrc: "./src/img/Luna/Run-Sheet.png",
         framesMax: 8,
       },
       runRight: {
-        imageSrc: "./src/img/enemySecond/Run_Right.png",
+        imageSrc: "./src/img/Luna/Run_Right.png",
         framesMax: 8,
       },
       jump: {
-        imageSrc: "./src/img/enemySecond/Jump-Start-Sheet.png",
+        imageSrc: "./src/img/Luna/Jump-Start-Sheet.png",
         framesMax: 4,
       },
       fall: {
-        imageSrc: "./src/img/enemySecond/Jump-End-Sheet.png",
+        imageSrc: "./src/img/Luna/Jump-End-Sheet.png",
         framesMax: 3,
       },
       attack1: {
-        imageSrc: "./src/img/enemySecond/Attack-01-Sheet.png",
+        imageSrc: "./src/img/Luna/Attack-01-Sheet.png",
         framesMax: 8,
       },
       takeHit: {
-        imageSrc: "./src/img/enemySecond/Jump-End-Sheet.png",
+        imageSrc: "./src/img/Luna/Jump-End-Sheet.png",
         framesMax: 3,
       },
       Death: {
-        imageSrc: "./src/img/enemySecond/Dead-Sheet.png",
+        imageSrc: "./src/img/Luna/Dead-Sheet.png",
         framesMax: 4,
       },
       comboAttack: {
-        imageSrc: "./src/img/enemySecond/Special_moves.png",
+        imageSrc: "./src/img/Luna/Special_moves.png",
         framesMax: 8,
       },
       Defend: {
-        imageSrc: "./src/img/enemySecond/Defend.png",
+        imageSrc: "./src/img/Luna/Defend.png",
         framesMax: 4,
       },
     },

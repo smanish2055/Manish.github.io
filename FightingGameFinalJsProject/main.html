@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Fight</title>
-
+  <link rel="icon" href="./src/img/fevicon2.png" type="image/x-icon">
     <link rel="stylesheet" href="./src/css/index.css" />
   </head>
   <body>
@@ -22,6 +22,8 @@
           <div id="enemyHealth"></div>
         </div>
       </div>
+
+
       <div id="displayResult" class="gameover">
         <!-- Result content will be dynamically added here -->
         <div id="resultText"></div>
@@ -31,14 +33,18 @@
       <!-- ------------------------------ playerInfo ------------------------------ -->
 
       <div class="playerInfo player1">
-      <img id="player1Image" alt="Hero Image" />
-        <div class="comboCount" id="comboCount1">Combos: <span id="player1ComboCount">🔥🔥🔥</span></div>
+       <img id="player1Image" alt="Hero Image" />
+        <div class="comboCount" id="comboCount1">
+          Combos: <span id="player1ComboCount">🔥🔥🔥🔥</span>
+        </div>
         <!-- <div class="winCount" id="player1WinCount">  Wins:</div> -->
       </div>
 
       <div class="playerInfo player2">
-       <img id="player2Image" alt="Hero Image" />
-        <div class="comboCount" id="comboCount2" > <span id="player2ComboCount">🔥🔥🔥</span>    :Combos</div>
+        <img id="player2Image" alt="Hero Image" />
+        <div class="comboCount" id="comboCount2">
+          <span id="player2ComboCount">🔥🔥🔥🔥</span> :Combos
+        </div>
         <!-- <div class="winCount" id="player2WinCount">:Wins</div> -->
       </div>
 
@@ -52,6 +58,9 @@
     <script src="./src/js/gameObjects.js"></script>
     <script src="./src/js/animation.js"></script>
     <script src="./src/js/informationBar.js"></script>
+    <script src="./src/js/enemyAI.js"></script>
+    <script src="./src/js/AudioClass.js"></script>
+    
 
     <!-- <script src="./js/PlayerObj.js"></script>
        <script src="./js/animate.js"></script> -->

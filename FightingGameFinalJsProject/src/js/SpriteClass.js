@@ -24,7 +24,7 @@ class Sprite {
     ctx.drawImage(
       this.image,
       //   crop sprite  image
-      // here framesCurrent is setting postition of sprite image by increasing frames cuttent postion
+      // here framesCurrent is setting postition of sprite image by increasing frames current postion
       this.framesCurrent * (this.image.width / this.framesMax),
       0,
       this.image.width / this.framesMax,
@@ -56,4 +56,4 @@ class Sprite {
   }
 }
 
-// export default Sprite;
+

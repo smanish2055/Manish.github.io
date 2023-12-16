@@ -1,4 +1,11 @@
 /* --------------------------- animastionLoop here -------------------------- */
+let auto = localStorage.getItem("auto");
+
+  window.addEventListener("beforeunload", function () {
+    console.log("Clearing localStorage before leaving the page.");
+    localStorage.removeItem("auto");
+  });
+
 function animate() {
   window.requestAnimationFrame(animate);
   ctx.fillStyle = "black";
@@ -8,6 +15,10 @@ function animate() {
   shop.update();
   player.update();
   enemy.update();
+
+  if (auto) {
+    enemy.enemyAI(enemy, player);
+  }
 
   /* -------------------------- Player horizontal movement here -------------------------- */
   player.velocity.x = 0;
@@ -22,10 +33,10 @@ function animate() {
   }
 
   // player jump back to position(jump)
-  if (keys.w.pressed && player.position.y >= 95) {
+  if (keys.w.pressed && player.position.y >= 195) {
     // if (player.position.y - player.velocity.y >= 0) {
-      player.velocity.y = -10;
-      player.switchSprite("jump");
+    player.velocity.y = -10;
+    player.switchSprite("jump");
     // }
   } else if (
     player.velocity.y > 0 &&
@@ -38,20 +49,20 @@ function animate() {
 
   enemy.velocity.x = 0;
   if (keys.ArrowRight.pressed && enemy.position.x <= 974) {
-    enemy.velocity.x = 7;
+    enemy.velocity.x = 6;
     enemy.switchSprite("runRight");
   } else if (keys.ArrowLeft.pressed && enemy.position.x >= 0) {
-    enemy.velocity.x = -7;
+    enemy.velocity.x = -6;
     enemy.switchSprite("run");
   } else {
     enemy.switchSprite("idle");
   }
 
   //  enemy jumpback to position(jump)
-  if (keys.ArrowUp.pressed && enemy.position.y >= 95) {
+  if (keys.ArrowUp.pressed && enemy.position.y >= 195) {
     // if (enemy.position.y - enemy.velocity.y >= 0) {
-      enemy.velocity.y = -10;
-      enemy.switchSprite("jump");
+    enemy.velocity.y = -10;
+    enemy.switchSprite("jump");
     // }
   } else if (
     enemy.velocity.y > 0 &&
@@ -60,7 +71,7 @@ function animate() {
     enemy.switchSprite("fall");
   }
 
-  // defending attack
+  /* ---------------------------- defending attack ---------------------------- */
 
   if (keys.Insert.pressed) {
     enemy.switchSprite("Defend");
@@ -73,12 +84,11 @@ function animate() {
 
   // Player collision logic
   if (
-    rectangularCollision({ rectangle1: player, rectangle2: enemy }) &&
+    Collision({ rectangle1: player, rectangle2: enemy }) &&
     player.isAttacking &&
     (player.framesCurrent === 2 ||
       (player.isPlayerControlPressed && player.framesCurrent === 3))
   ) {
-   
     if (player.isPlayerControlPressed) {
       //enemy health decrease while defending in combo attack
       if (keys.Insert.pressed) {
@@ -114,7 +124,7 @@ function animate() {
 
   /* -------------------------- enemy attacking score ------------------------- */
   if (
-    rectangularCollision({ rectangle1: enemy, rectangle2: player }) &&
+    Collision({ rectangle1: enemy, rectangle2: player }) &&
     enemy.isAttacking &&
     (enemy.framesCurrent === 2 ||
       (enemy.isEnemyControlPressed && enemy.framesCurrent === 3))
@@ -123,19 +133,16 @@ function animate() {
     if (enemy.isEnemyControlPressed) {
       console.log(enemy.isEnemyControlPressed);
       // Combo attack hits
-      if (keys.f.pressed) { 
-        player.takeHit(4); 
-      }
-      else {
+      if (keys.f.pressed) {
+        player.takeHit(4);
+      } else {
         player.takeHit(10); // Pass 15 as the damage for combo attack
       }
-     
     } else {
       // Normal attack hits
       if (keys.f.pressed) {
         player.takeHit(2);
-      }
-      else {
+      } else {
         player.takeHit(5); // Pass 10 as the default damage
       }
     }
@@ -160,5 +167,8 @@ function animate() {
   if (player.health <= 0 || enemy.health <= 0) {
     FinalWinner({ player, enemy });
   }
+
+
+  
 }
 animate();
