@@ -25,21 +25,12 @@
         </div>
       </div>
 
-
-      <div id="displayResult" class="gameover">
-        <!-- Result content will be dynamically added here -->
-        <div id="resultText"></div>
-        <button id="playAgainButton" onclick="playAgain()">Play Again</button>
-      </div>
-
-      <!-- ------------------------------ playerInfo ------------------------------ -->
-
+ <!-- ------------------------------ playerInfo ------------------------------ -->
       <div class="playerInfo player1">
        <img id="player1Image" alt="Hero Image" />
         <div class="comboCount" id="comboCount1">
           Combos: <span id="player1ComboCount">🔥🔥🔥🔥</span>
         </div>
-        <!-- <div class="winCount" id="player1WinCount">  Wins:</div> -->
       </div>
 
       <div class="playerInfo player2">
@@ -47,10 +38,20 @@
         <div class="comboCount" id="comboCount2">
           <span id="player2ComboCount">🔥🔥🔥🔥</span> :Combos
         </div>
-        <!-- <div class="winCount" id="player2WinCount">:Wins</div> -->
       </div>
 
+
+
+      <div id="displayResult" class="gameover">
+        <!-- Result content will be dynamically added here -->
+        <div id="resultText"></div>
+        <button id="playAgainButton" onclick="playAgain()">Play Again</button>
+      </div>
+
+     
+
       <canvas></canvas>
+      
     </div>
 
     <script src="./src/js/constant.js"></script>
@@ -62,10 +63,6 @@
     <script src="./src/js/informationBar.js"></script>
     <script src="./src/js/enemyAI.js"></script>
     <script src="./src/js/AudioClass.js"></script>
-    
-
-    <!-- <script src="./js/PlayerObj.js"></script>
-       <script src="./js/animate.js"></script> -->
     <script src="./src/js/index.js"></script>
   </body>
 </html>

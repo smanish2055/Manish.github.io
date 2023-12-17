@@ -63,14 +63,10 @@ class Fighters extends Sprite {
 
   /* ----------------------- updating all controls here ----------------------- */
   update() {
-    // console.log(player);
     this.draw();
 
     if (!this.dead) {
       this.animateFrame();
-      // Adjust velocity to move towards the player
-
-      // Calculate the distance between the player and the enemy
     }
 
     // attack boxes
@@ -89,7 +85,6 @@ class Fighters extends Sprite {
     } else {
       this.velocity.y += gravity;
     }
-    
   }
 
   /* ----------------------------- computer logics ---------------------------- */
@@ -132,7 +127,7 @@ class Fighters extends Sprite {
           } else {
             enemy.attack();
           }
-        }, 100);
+        }, 450);
       }
     } else {
       // Clear the attack timer when the player is out of range
@@ -149,7 +144,7 @@ class Fighters extends Sprite {
 
   SpecialAttack() {
     if (this.specialAttackCounter < 4) {
-      if (this.playerId===2) {
+      if (this.playerId === 2) {
         sound.combo("lunacombo");
       } else {
         sound.combo("playercombo");

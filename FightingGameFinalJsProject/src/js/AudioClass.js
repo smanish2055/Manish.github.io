@@ -25,6 +25,28 @@ class audio {
     this.shield = new Audio("./src/audio/player-shield.mp3");
   }
 
+  backgroundsound() {
+    this.background.play();
+  }
+
+  jump(on) {
+    switch (on) {
+      case "luna":
+        this.lunajump.play();
+        break;
+      case "thunder":
+        this.kenjijump.play();
+        break;
+      case "samurai":
+        this.samuraijump.play();
+        break;
+      case "blaze":
+        console.log("blaze");
+        this.blazejump.play();
+        break;
+    }
+  }
+
   // sward attack
   smuraimack() {
     // Play the smuraimack sound
@@ -61,24 +83,6 @@ class audio {
     }
   }
 
-  jump(on) {
-    switch (on) {
-      case "luna":
-        this.lunajump.play();
-        break;
-      case "thunder":
-        this.kenjijump.play();
-        break;
-      case "samurai":
-        this.samuraijump.play();
-        break;
-      case "blaze":
-        console.log("blaze");
-        this.blazejump.play();
-        break;
-    }
-  }
-
   Dead(on) {
     switch (on) {
       case "player-dead":
@@ -105,10 +109,6 @@ class audio {
     }
   }
 
-  backgroundsound() {
-    this.background.play();
-  }
-
   shieldDefend() {
     this.shield.play();
   }
@@ -118,6 +118,5 @@ const sound = new audio();
 
 sound.backgroundsound();
 // setTimeout(() => {
-  
-// }, 1000);
 
+// }, 1000);

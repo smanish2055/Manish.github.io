@@ -7,20 +7,20 @@
     <link rel="icon" href="./src/img/fevicon1.png" type="image/x-icon" />
     <link rel="stylesheet" href="./src/css/landing.css" />
 
-      <style>
-      #auto{
-  height: 40px;
-  width: 40px;
-  color: white;
-  background-color: #4caf50;
-  border-radius: 100%;
-  cursor: pointer;
-  font-size: x-small;
-   /* transform: scale(1); */
-}
-#auto:hover{
-  background-color: #75d478;
-}
+    <style>
+      #auto {
+        height: 40px;
+        width: 40px;
+        color: white;
+        background-color: #4caf50;
+        border-radius: 100%;
+        cursor: pointer;
+        font-size: x-small;
+        /* transform: scale(1); */
+      }
+      #auto:hover {
+        background-color: #75d478;
+      }
     </style>
   </head>
   <body>
@@ -151,21 +151,22 @@
       function computer() {
         // Set a value in localStorage
         play.play();
-       
-        
+
         var button = document.getElementById("auto");
         button.classList.toggle("clicked");
         if (button.classList.contains("clicked")) {
           button.style.backgroundColor = "red";
-           localStorage.setItem("auto", true);
+          localStorage.setItem("auto", true);
         } else {
           button.style.backgroundColor = "green";
-           localStorage.removeItem("auto");
+          localStorage.removeItem("auto");
         }
       }
 
       function startGame() {
         if (selectedHero && selectedEnemy) {
+          document.getElementById("selectedHero").innerHTML = "";
+          document.getElementById("selectedEnemy").innerHTML = "";
           document.getElementById("notselected").innerHTML = "";
 
           const loadingMessage = document.getElementById("loadingMessage");

@@ -1,10 +1,10 @@
 /* --------------------------- animastionLoop here -------------------------- */
 let auto = localStorage.getItem("auto");
 
-  window.addEventListener("beforeunload", function () {
-    console.log("Clearing localStorage before leaving the page.");
-    localStorage.removeItem("auto");
-  });
+window.addEventListener("beforeunload", function () {
+  console.log("Clearing localStorage before leaving the page.");
+  localStorage.removeItem("auto");
+});
 
 function animate() {
   window.requestAnimationFrame(animate);
@@ -167,8 +167,5 @@ function animate() {
   if (player.health <= 0 || enemy.health <= 0) {
     FinalWinner({ player, enemy });
   }
-
-
-  
 }
 animate();
