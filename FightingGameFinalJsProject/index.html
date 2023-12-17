@@ -133,19 +133,33 @@
       function selectHero(hero) {
         play.play();
         selectedHero = hero;
-        document.getElementById(
-          "selectedHero"
-        ).innerHTML = `you have Selected: ${hero}`;
-        console.log(`Selected Hero: ${hero}`);
+        localStorage.setItem("selectedHero", selectedHero);
+        LocalselectedHero = localStorage.getItem("selectedHero", selectedHero);
+
+        if (LocalselectedHero) {
+          document.getElementById(
+            "selectedHero"
+          ).innerHTML = `you have Selected: ${hero}`;
+          console.log(`Selected Hero: ${hero}`);
+        }
       }
 
       function selectEnemy(enemy) {
         play.play();
         selectedEnemy = enemy;
-        document.getElementById(
-          "selectedEnemy"
-        ).innerHTML = `you have Selected : ${enemy}`;
-        console.log(`Selected Enemy: ${enemy}`);
+        localStorage.setItem("selectedEnemy", selectedEnemy);
+
+        LocalselectedEnemy = localStorage.getItem(
+          "selectedEnemy",
+          selectedEnemy
+        );
+
+        if (LocalselectedEnemy) {
+          document.getElementById(
+            "selectedEnemy"
+          ).innerHTML = `you have Selected : ${enemy}`;
+          console.log(`Selected Enemy: ${enemy}`);
+        }
       }
 
       function computer() {
@@ -158,10 +172,21 @@
           button.style.backgroundColor = "red";
           localStorage.setItem("auto", true);
         } else {
-          button.style.backgroundColor = "green";
           localStorage.removeItem("auto");
+          button.style.backgroundColor = "green";
         }
       }
+
+           window.onload = function () {
+  var button = document.getElementById("auto");
+  if (localStorage.getItem("auto")) {
+    button.style.backgroundColor = "red";
+  } else {
+    button.style.backgroundColor = "green";
+  }
+}
+
+
 
       function startGame() {
         if (selectedHero && selectedEnemy) {
@@ -173,8 +198,6 @@
           loadingMessage.style.display = "block";
 
           console.log("Game starting...");
-          localStorage.setItem("selectedHero", selectedHero);
-          localStorage.setItem("selectedEnemy", selectedEnemy);
 
           const startGame = document.getElementById("startGame");
           startGame.play();

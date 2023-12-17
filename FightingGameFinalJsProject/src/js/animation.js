@@ -4,6 +4,9 @@ let auto = localStorage.getItem("auto");
 window.addEventListener("beforeunload", function () {
   console.log("Clearing localStorage before leaving the page.");
   localStorage.removeItem("auto");
+  localStorage.removeItem("selectedHero");
+  localStorage.removeItem("selectedEnemy");
+  
 });
 
 function animate() {
