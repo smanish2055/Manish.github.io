@@ -34,14 +34,14 @@ function DecreaseTimer() {
 /* ---------------------- determination of final winner --------------------- */
 function FinalWinner({ player, enemy }) {
   clearInterval(interval);
-  // var displayResult = document.querySelector("#displayResult");
+
   var resultText = document.querySelector("#resultText");
   var playAgainButton = document.getElementById("playAgainButton");
 
   if (player.health > enemy.health) {
     // console.log(player1win)
     // localStorage.setItem("Player1", player1win);
-   
+
     resultText.innerHTML = "Player 1 wins 🥇";
 
     setTimeout(function () {
@@ -63,8 +63,8 @@ function FinalWinner({ player, enemy }) {
       "linear-gradient(to right, #001f3f, #000000)";
   } else {
     resultText.innerHTML = "Draw 👍";
-          sound.Dead("game-draw");
-     
+    sound.Dead("game-draw");
+
     document.querySelector("#displayResult").style.background =
       "linear-gradient(to right, #001f3f, #000000)";
     setTimeout(function () {
@@ -82,13 +82,8 @@ function playAgain() {
   sound.Dead("game-draw");
   setTimeout(() => {
     location.reload();
-  },500)
-  
+  }, 500);
 }
 
 // Hide the "Play Again" button initially
 document.getElementById("playAgainButton").style.display = "none";
-
-
-
-   

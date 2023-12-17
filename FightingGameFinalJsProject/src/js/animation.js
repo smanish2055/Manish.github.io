@@ -2,8 +2,8 @@
 let auto = localStorage.getItem("auto");
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("auto");
-  localStorage.removeItem("selectedHero");
-  localStorage.removeItem("selectedEnemy");
+  // localStorage.removeItem("selectedHero");
+  // localStorage.removeItem("selectedEnemy");
   
 });
 
