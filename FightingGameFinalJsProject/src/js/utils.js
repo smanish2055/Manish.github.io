@@ -87,3 +87,22 @@ function playAgain() {
 
 // Hide the "Play Again" button initially
 document.getElementById("playAgainButton").style.display = "none";
+
+
+
+  
+   
+   function computer() {
+     // Set a value in localStorage
+    sound.autoenemy(); 
+
+     var button = document.getElementById("auto");
+     button.classList.toggle("clicked");
+     if (button.classList.contains("clicked")) {
+       button.style.backgroundColor = "red";
+       localStorage.setItem("auto", true);
+     } else {
+       button.style.backgroundColor = "green";
+       localStorage.removeItem("auto");
+     }
+   }

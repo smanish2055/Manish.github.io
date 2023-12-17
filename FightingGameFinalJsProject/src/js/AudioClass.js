@@ -23,6 +23,7 @@ class audio {
     this.playercombo = new Audio("./src/audio/player-combo.mp3");
     this.background = new Audio("./src/audio/main-background.mp3");
     this.shield = new Audio("./src/audio/player-shield.mp3");
+    this.auto=new Audio("./src/audio/hoverSound.mp3") 
   }
 
   backgroundsound() {
@@ -111,6 +112,11 @@ class audio {
 
   shieldDefend() {
     this.shield.play();
+  }
+
+
+  autoenemy() {
+     this.auto.play();
   }
 }
 

@@ -68,7 +68,7 @@ body {
   justify-content: flex-end;
 }
 .healthBar__player__health {
-  background: linear-gradient(to right, #ff9800,#ffeb3b);
+  background: linear-gradient(to right, #ff9800, #ffeb3b);
   height: 20px;
   width: 100%;
 }
@@ -89,8 +89,6 @@ body {
   font-family: "YourDesiredFont", sans-serif;
   font-size: 16px; /* Adjust font size as needed */
   font-weight: bold;
- 
-
 }
 
 /* display result */
@@ -104,7 +102,7 @@ body {
   font-size: 30px;
   font-weight: 700;
   color: rgb(246, 236, 236);
-   
+
   width: 40%;
   height: 23%;
   border-radius: 20px;
@@ -118,7 +116,7 @@ body {
   margin: 0 auto;
   padding: 10px 20px;
   font-size: 20px;
- background: linear-gradient(to right, #3498db, #e74c3c);
+  background: linear-gradient(to right, #3498db, #e74c3c);
   color: white;
   border: none;
   cursor: pointer;
@@ -168,7 +166,7 @@ body {
   background: linear-gradient(to right, #3498db, #e74c3c);
 }
 #comboCount2 {
-  background: linear-gradient(to right, #e74c3c,#3498db);
+  background: linear-gradient(to right, #e74c3c, #3498db);
 }
 .comboCount {
   font-size: 16px;
@@ -177,4 +175,17 @@ body {
   font-size: smaller;
 
   border-radius: 4px;
+}
+
+#auto {
+  position: absolute;
+  right: -33px;
+  top: -50px;
+  height: 30px;
+  width: 30px;
+  color: white;
+  background-color: #4caf50;
+  border-radius: 10%;
+  cursor: pointer;
+  font-size: x-small;
 }
