@@ -31,6 +31,7 @@
       <div id="notselected"></div>
 
       <div class="character-container1">
+                <!-- ------------------------------------ diaplay selected hero ------------------------ -->
         <div class="character-group">
           <div class="section-title">Select Your Hero:</div>
           <div
@@ -52,7 +53,7 @@
           </div>
         </div>
 
-        <!-- ------------------------ diaplay selected hero ------------------------ -->
+
 
         <!-- ------------------------- enemy select group -------------------------- -->
         <div class="character-group">
@@ -82,10 +83,12 @@
         </div>
       </div>
 
+      <!-- ------------------------------- loading ------------------------------- -->
       <div id="loadingMessage">Loading...</div>
       <button id="startButton" onclick="startGame()">Start Game</button>
     </div>
 
+    <!-- --------------------- audios  are using directly ---------------------- -->
     <audio id="hoverSound">
       <source src="./src/audio/select-character.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
@@ -106,6 +109,7 @@
       Your browser does not support the audio element.
     </audio>
 
+    <!-- ---------------------------------------------------- script files ----------------------------- -->
     <script>
       let selectedHero = null;
       let selectedEnemy = null;
@@ -116,25 +120,22 @@
         hoverSound.play();
       }
 
-      function additionalAction() {
-        console.log("Additional action button clicked!");
-        // Add your additional action logic here
-      }
-
       function playBackgroundAudio() {
         const audio = document.getElementById("backgroundAudio");
         audio.play();
         document.removeEventListener("click", playBackgroundAudio);
       }
-
       document.addEventListener("click", playBackgroundAudio);
 
+      // <!-- -------------------------- character select ----------------------------------------- -->
+
       const play = document.getElementById("selectCharacter");
+
       function selectHero(hero) {
         play.play();
         selectedHero = hero;
-         localStorage.setItem("selectedHero", selectedHero);
-           LocalselectedHero = localStorage.getItem("selectedHero", selectedHero);
+        localStorage.setItem("selectedHero", selectedHero);
+        LocalselectedHero = localStorage.getItem("selectedHero", selectedHero);
 
         if (LocalselectedHero) {
           document.getElementById(
@@ -144,17 +145,13 @@
         }
       }
 
+
       function selectEnemy(enemy) {
         play.play();
         selectedEnemy = enemy;
-        localStorage.setItem(
-          "selectedEnemy",
-          selectedEnemy
-        );
+        localStorage.setItem("selectedEnemy", selectedEnemy);
 
-          LocalselectedEnemy = localStorage.getItem(
-          "selectedEnemy"
-        );
+        LocalselectedEnemy = localStorage.getItem("selectedEnemy");
 
         if (LocalselectedEnemy) {
           document.getElementById(
@@ -164,12 +161,13 @@
         }
       }
 
-    
+
+      // <!-- -------------------------- auto enemy button -------------------------- -->
       function computer() {
         // Set a value in localStorage
         play.play();
 
-         var button = document.getElementById("auto");
+        var button = document.getElementById("auto");
         button.classList.toggle("clicked");
         if (button.classList.contains("clicked")) {
           button.style.backgroundColor = "red";
@@ -179,8 +177,7 @@
           localStorage.removeItem("auto");
         }
       }
-
-
+// <!-- ----------------------------- start game ------------------------------ -->
       function startGame() {
         if (selectedHero && selectedEnemy) {
           document.getElementById("selectedHero").innerHTML = "";
@@ -202,10 +199,9 @@
           document.getElementById("notselected").innerHTML =
             "Please select a hero and an enemy before starting the game.";
         }
-
       }
 
-        // Reload the page every 30 seconds
+      //  <!-- ------------------ Reload the page every 30 seconds ------------------- -->
       setInterval(function () {
         location.reload();
       }, 30000);

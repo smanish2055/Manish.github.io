@@ -1,3 +1,4 @@
+/* ----------------------------- collision brain -------------------------------------- */
 function Collision({ rectangle1, rectangle2 }) {
   return (
     rectangle1.attackBox.position.x + rectangle1.attackBox.width >=
@@ -10,7 +11,6 @@ function Collision({ rectangle1, rectangle2 }) {
   );
 }
 
-/* ---------------------------------- timer --------------------------------- */
 /* ------------------------ calling decrease Timer fn ----------------------- */
 var interval = setInterval(() => {
   DecreaseTimer();
@@ -39,26 +39,18 @@ function FinalWinner({ player, enemy }) {
   var playAgainButton = document.getElementById("playAgainButton");
 
   if (player.health > enemy.health) {
-    // console.log(player1win)
-    // localStorage.setItem("Player1", player1win);
-
     resultText.innerHTML = "Player 1 wins 🥇";
-
-   frizeObject();
-
+    frizeObject();
     document.querySelector("#displayResult").style.background =
       "linear-gradient(to right, #001f3f, #000000)";
   } else if (player.health < enemy.health) {
-    // localStorage.setItem("Player2", "⭐");
     resultText.innerHTML = "Player 2 wins 🥇";
-
     frizeObject();
     document.querySelector("#displayResult").style.background =
       "linear-gradient(to right, #001f3f, #000000)";
   } else {
     resultText.innerHTML = "Draw 👍";
     sound.Dead("game-draw");
-
     document.querySelector("#displayResult").style.background =
       "linear-gradient(to right, #001f3f, #000000)";
     setTimeout(function () {
@@ -66,26 +58,21 @@ function FinalWinner({ player, enemy }) {
       enemy.dead = true;
     }, 1000);
   }
-
   // Show the "Play Again" button
   playAgainButton.style.display = "block";
 }
 
+/* ----------------------------  sound mute --------------------------- */
 function frizeObject() {
-    setTimeout(function () {
-      player.dead = true;
-      enemy.dead = true;
-      sound.smuraimack("off");
-      sound.luna("off");
-      sound.kanji("off");
-      sound.Blaze("off");
-      sound.enemyrun(""); 
-      // sound.Dead("player-dead");
-      //  sound.Dead("enemy-dead");
-
-      
-
-    }, 2000);
+  setTimeout(function () {
+    player.dead = true;
+    enemy.dead = true;
+    sound.smuraimack("off");
+    sound.luna("off");
+    sound.kanji("off");
+    sound.Blaze("off");
+    sound.enemyrun("");
+  }, 2000);
 }
 
 function playAgain() {
@@ -99,21 +86,18 @@ function playAgain() {
 // Hide the "Play Again" button initially
 document.getElementById("playAgainButton").style.display = "none";
 
+/* -------------------------- main page auto button ----------------------------------------------- */
+function computer() {
+  // Set a value in localStorage
+  sound.autoenemy();
 
-
-  
-  /* -------------------------- main page auto button ------------------------- */
-   function computer() {
-     // Set a value in localStorage
-    sound.autoenemy(); 
-
-     var button = document.getElementById("auto");
-     button.classList.toggle("clicked");
-     if (button.classList.contains("clicked")) {
-       button.style.backgroundColor = "red";
-       localStorage.setItem("auto", true);
-     } else {
-       button.style.backgroundColor = "green";
-       localStorage.removeItem("auto");
-     }
-   }
+  var button = document.getElementById("auto");
+  button.classList.toggle("clicked");
+  if (button.classList.contains("clicked")) {
+    button.style.backgroundColor = "red";
+    localStorage.setItem("auto", true);
+  } else {
+    button.style.backgroundColor = "green";
+    localStorage.removeItem("auto");
+  }
+}

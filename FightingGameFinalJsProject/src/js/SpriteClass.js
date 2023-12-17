@@ -37,7 +37,7 @@ class Sprite {
     );
   }
 
-  /* ----------------------- / animation is performing ----------------------- */
+  /* ----------------------- / animation is performing ---------------------------------------- */
   animateFrame() {
     this.framePassed++;
     if (this.framePassed % this.frameHold === 0) {
@@ -49,11 +49,9 @@ class Sprite {
     }
   }
 
-  /* --------------------------------- update --------------------------------- */
+  /* --------------------------------- update --------------------------------------------------- */
   update() {
     this.draw();
     this.animateFrame();
   }
 }
-
-

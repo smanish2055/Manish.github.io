@@ -125,23 +125,22 @@ class Fighters extends Sprite {
           if (randomNum === 1 || randomNum === 2) {
             // for sound effects
             console.log("count" + defendCount);
-            if (defendCount  !== 3) {
+            if (defendCount !== 3) {
               if (selectedEnemy == "Luna") {
                 sound.luna();
               } else {
                 sound.kanji();
               }
               enemy.attack();
-               keys.Insert.pressed = false;
+              keys.Insert.pressed = false;
             }
             // for defends
-            else if (defendCount===3) {
+            else if (defendCount === 3) {
               keys.Insert.pressed = true;
               enemy.switchSprite("Defend");
               // defendCount = 0;
             }
             // Regular attack
-            
           } else if (randomNum === 3) {
             // Special attack
             enemy.SpecialAttack();

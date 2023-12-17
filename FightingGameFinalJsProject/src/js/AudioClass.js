@@ -54,38 +54,35 @@ class audio {
     if (off === "off") {
       this.smuraimackAudio.pause();
     } else {
-        this.smuraimackAudio.play();
+      this.smuraimackAudio.play();
     }
-  
   }
 
   luna(off) {
     // Play the luna sound
-      if (off === "off") {
-        this.lunaAudio.pause();
-      } else {
-           this.lunaAudio.play();
-      }
+    if (off === "off") {
+      this.lunaAudio.pause();
+    } else {
+      this.lunaAudio.play();
+    }
 
     console.log("luna audio");
   }
 
   kanji(off) {
-     if (off === "off") {
-       this.kanjiAudio.pause();
-     } else {
-       this.kanjiAudio.play();
-     }
-
-    
+    if (off === "off") {
+      this.kanjiAudio.pause();
+    } else {
+      this.kanjiAudio.play();
+    }
   }
 
   Blaze(off) {
-     if (off === "off") {
-       this.BlazeAudio.pause();
-     } else {
-       this.BlazeAudio.play();
-     }
+    if (off === "off") {
+      this.BlazeAudio.pause();
+    } else {
+      this.BlazeAudio.play();
+    }
   }
 
   // running

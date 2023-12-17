@@ -1,15 +1,11 @@
 /* --------------------------- animastionLoop here -------------------------- */
-let auto 
-
+let auto;
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("auto");
-  // localStorage.removeItem("selectedHero");
-  // localStorage.removeItem("selectedEnemy");
-  
 });
 
 function animate() {
- auto=localStorage.getItem("auto");
+  auto = localStorage.getItem("auto");
   window.requestAnimationFrame(animate);
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -19,7 +15,6 @@ function animate() {
   player.update();
   enemy.update();
 
-  
   if (auto) {
     enemy.enemyAI(enemy, player);
   }
@@ -36,7 +31,7 @@ function animate() {
     player.switchSprite("idle");
   }
 
-  // player jump back to position(jump)
+  /* ------------------- player jump back to position(jump) ---------------------------------- */
   if (keys.w.pressed && player.position.y >= 195) {
     // if (player.position.y - player.velocity.y >= 0) {
     player.velocity.y = -10;
@@ -49,7 +44,7 @@ function animate() {
     player.switchSprite("fall");
   }
 
-  /* ------------------------- enemy movement here ------------------------- */
+  /* ------------------------- enemy horizontal movement here ------------------------- */
 
   enemy.velocity.x = 0;
   if (keys.ArrowRight.pressed && enemy.position.x <= 974) {
@@ -62,7 +57,7 @@ function animate() {
     enemy.switchSprite("idle");
   }
 
-  //  enemy jumpback to position(jump)
+  /* -------------------- enemy jumpback to position(jump) ----------------------------------------- */
   if (keys.ArrowUp.pressed && enemy.position.y >= 195) {
     // if (enemy.position.y - enemy.velocity.y >= 0) {
     enemy.velocity.y = -10;
@@ -84,21 +79,18 @@ function animate() {
     player.switchSprite("Defend");
   }
 
-  /* ------------------------ detect collision by hero ------------------------ */
-
   // Player collision logic
+  /* ------------------------ detect collision by hero ------------------------ */
   if (
     Collision({ rectangle1: player, rectangle2: enemy }) &&
     player.isAttacking &&
     (player.framesCurrent === 2 ||
       (player.isPlayerControlPressed && player.framesCurrent === 3))
   ) {
-    
     if (player.isPlayerControlPressed) {
       //enemy health decrease while defending in combo attack
       if (keys.Insert.pressed) {
         enemy.takeHit(4);
-    
       } else {
         enemy.takeHit(8);
         // enemy health decrease without defending in combo attack
@@ -107,15 +99,15 @@ function animate() {
       //  //enemy health decrease while defending in Normal attack
       if (keys.Insert.pressed) {
         enemy.takeHit(2);
-            console.log("fhjnkdfhniuawehjknafnksjfbjfsnjbah");
+        console.log("fhjnkdfhniuawehjknafnksjfbjfsnjbah");
       } else {
-        enemy.takeHit(4); // plsyer health decrease while without defending in Normal attack
+        enemy.takeHit(4); // player health decrease while without defending in Normal attack
       }
     }
 
     player.isAttacking = false;
 
-    // Update enemy health UI
+    /* ------------------------- Update enemy health UI -------------------------------------------*/
     const enemyHealthElement = document.querySelector("#enemyHealth");
     enemyHealthElement.style.width = enemy.health + "%";
 
@@ -124,7 +116,7 @@ function animate() {
     }
   }
 
-  // If player misses enemy
+  /* ------------------------- If player misses enemy ------------------------- */
   if (player.isAttacking && player.framesCurrent === 2) {
     player.isAttacking = false;
   }
@@ -136,7 +128,7 @@ function animate() {
     (enemy.framesCurrent === 2 ||
       (enemy.isEnemyControlPressed && enemy.framesCurrent === 3))
   ) {
-    // Collision detected by enemy
+    /* ----------------------- Collision detected by enemy --------------------------------------------------- */
     if (enemy.isEnemyControlPressed) {
       console.log(enemy.isEnemyControlPressed);
       // Combo attack hits
@@ -156,7 +148,7 @@ function animate() {
 
     enemy.isAttacking = false;
 
-    // Update player health UI
+    /* ------------------------- Update player health UI ------------------------ */
     const playerHealthElement = document.querySelector("#playerHealth");
     playerHealthElement.style.width = player.health + "%";
 
@@ -165,12 +157,12 @@ function animate() {
     }
   }
 
-  // If enemy misses player
+  /* ------------------------- If enemy misses player ------------------------- */
   if (enemy.isAttacking && enemy.framesCurrent === 2) {
     enemy.isAttacking = false;
   }
 
-  /* ------------------ player and enemy defeat before timing ----------------- */
+  /* ------------------ player and enemy defeat before timing --------------------------- */
   if (player.health <= 0 || enemy.health <= 0) {
     FinalWinner({ player, enemy });
   }

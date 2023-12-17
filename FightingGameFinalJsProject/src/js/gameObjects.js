@@ -25,8 +25,7 @@ const keys = {
   },
 };
 
-
-
+// ----------------------------------------------------------------
 const background = new Sprite({
   position: {
     x: 0,
@@ -69,7 +68,7 @@ switch (selectedEnemy) {
     Luna = true;
     break;
 }
-
+// ------------------------------------------------------------------------------------------------
 /* - creating player and enemy objects and passing arguments to constructor - */
 
 let player;
@@ -332,10 +331,7 @@ if (Luna) {
         imageSrc: "./src/img/Luna/Idle-Sheet.png",
         framesMax: 4,
       },
-      //  idleRight: {
-      //    imageSrc: "./src/img/Luna/Idle-Sheet-Right.png",
-      //    framesMax: 4,
-      //  },
+   
       run: {
         imageSrc: "./src/img/Luna/Run-Sheet.png",
         framesMax: 8,
