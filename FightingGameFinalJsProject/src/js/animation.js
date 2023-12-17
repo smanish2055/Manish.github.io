@@ -1,5 +1,6 @@
 /* --------------------------- animastionLoop here -------------------------- */
 let auto 
+
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("auto");
   // localStorage.removeItem("selectedHero");
@@ -17,6 +18,7 @@ function animate() {
   shop.update();
   player.update();
   enemy.update();
+
   
   if (auto) {
     enemy.enemyAI(enemy, player);
@@ -91,20 +93,23 @@ function animate() {
     (player.framesCurrent === 2 ||
       (player.isPlayerControlPressed && player.framesCurrent === 3))
   ) {
+    
     if (player.isPlayerControlPressed) {
       //enemy health decrease while defending in combo attack
       if (keys.Insert.pressed) {
         enemy.takeHit(4);
+    
       } else {
-        enemy.takeHit(10);
+        enemy.takeHit(8);
         // enemy health decrease without defending in combo attack
       }
     } else {
-      //  //player health decrease while defending in Normal attack
+      //  //enemy health decrease while defending in Normal attack
       if (keys.Insert.pressed) {
         enemy.takeHit(2);
+            console.log("fhjnkdfhniuawehjknafnksjfbjfsnjbah");
       } else {
-        enemy.takeHit(5); // plsyer health decrease while without defending in Normal attack
+        enemy.takeHit(4); // plsyer health decrease while without defending in Normal attack
       }
     }
 
@@ -138,14 +143,14 @@ function animate() {
       if (keys.f.pressed) {
         player.takeHit(4);
       } else {
-        player.takeHit(10); // Pass 15 as the damage for combo attack
+        player.takeHit(8); // Pass 15 as the damage for combo attack
       }
     } else {
       // Normal attack hits
       if (keys.f.pressed) {
         player.takeHit(2);
       } else {
-        player.takeHit(5); // Pass 10 as the default damage
+        player.takeHit(4); // Pass 10 as the default damage
       }
     }
 

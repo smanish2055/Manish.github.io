@@ -44,10 +44,7 @@ function FinalWinner({ player, enemy }) {
 
     resultText.innerHTML = "Player 1 wins 🥇";
 
-    setTimeout(function () {
-      player.dead = true;
-      enemy.dead = true;
-    }, 2000);
+   frizeObject();
 
     document.querySelector("#displayResult").style.background =
       "linear-gradient(to right, #001f3f, #000000)";
@@ -55,10 +52,7 @@ function FinalWinner({ player, enemy }) {
     // localStorage.setItem("Player2", "⭐");
     resultText.innerHTML = "Player 2 wins 🥇";
 
-    setTimeout(function () {
-      player.dead = true;
-      enemy.dead = true;
-    }, 2000);
+    frizeObject();
     document.querySelector("#displayResult").style.background =
       "linear-gradient(to right, #001f3f, #000000)";
   } else {
@@ -77,6 +71,23 @@ function FinalWinner({ player, enemy }) {
   playAgainButton.style.display = "block";
 }
 
+function frizeObject() {
+    setTimeout(function () {
+      player.dead = true;
+      enemy.dead = true;
+      sound.smuraimack("off");
+      sound.luna("off");
+      sound.kanji("off");
+      sound.Blaze("off");
+      sound.enemyrun(""); 
+      // sound.Dead("player-dead");
+      //  sound.Dead("enemy-dead");
+
+      
+
+    }, 2000);
+}
+
 function playAgain() {
   // Reload the window when the "Play Again" button is clicked
   sound.Dead("game-draw");
@@ -91,7 +102,7 @@ document.getElementById("playAgainButton").style.display = "none";
 
 
   
-   
+  /* -------------------------- main page auto button ------------------------- */
    function computer() {
      // Set a value in localStorage
     sound.autoenemy(); 

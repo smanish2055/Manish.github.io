@@ -23,7 +23,7 @@ class audio {
     this.playercombo = new Audio("./src/audio/player-combo.mp3");
     this.background = new Audio("./src/audio/main-background.mp3");
     this.shield = new Audio("./src/audio/player-shield.mp3");
-    this.auto=new Audio("./src/audio/hoverSound.mp3") 
+    this.auto = new Audio("./src/audio/hoverSound.mp3");
   }
 
   backgroundsound() {
@@ -49,23 +49,43 @@ class audio {
   }
 
   // sward attack
-  smuraimack() {
+  smuraimack(off) {
     // Play the smuraimack sound
-    this.smuraimackAudio.play();
+    if (off === "off") {
+      this.smuraimackAudio.pause();
+    } else {
+        this.smuraimackAudio.play();
+    }
+  
   }
 
-  luna() {
+  luna(off) {
     // Play the luna sound
-    this.lunaAudio.play();
+      if (off === "off") {
+        this.lunaAudio.pause();
+      } else {
+           this.lunaAudio.play();
+      }
+
     console.log("luna audio");
   }
 
-  kanji() {
-    this.kanjiAudio.play();
+  kanji(off) {
+     if (off === "off") {
+       this.kanjiAudio.pause();
+     } else {
+       this.kanjiAudio.play();
+     }
+
+    
   }
 
-  Blaze() {
-    this.BlazeAudio.play();
+  Blaze(off) {
+     if (off === "off") {
+       this.BlazeAudio.pause();
+     } else {
+       this.BlazeAudio.play();
+     }
   }
 
   // running
@@ -114,9 +134,8 @@ class audio {
     this.shield.play();
   }
 
-
   autoenemy() {
-     this.auto.play();
+    this.auto.play();
   }
 }
 

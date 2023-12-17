@@ -1,10 +1,11 @@
 /* ------------------- mover characters with EventListener ------------------ */
-
+let defendCount = 0;
 let isVPressed = false;
 let isControlPressed = false;
 enemy.isEnemyControlPressed = false;
 player.isPlayerControlPressed = false;
-
+let isSpacePressed = false; //if  space is press then s and combo should not work
+let isZeroPressed = false; //if  zero is press then s and combo should not work
 window.addEventListener("keydown", (event) => {
   // console.log(event);
   if (!player.dead) {
@@ -35,23 +36,32 @@ window.addEventListener("keydown", (event) => {
         break;
 
       case "s":
-        if (isVPressed) {
+        if (isVPressed && !isSpacePressed) {
           player.isPlayerControlPressed = true;
+          defendCount = defendCount + 1;
           player.SpecialAttack();
           console.log("this is v + space");
         } else {
-          if (selectedHero == "Blaze") {
-            sound.Blaze();
-          } else {
-            sound.smuraimack();
+          if (!isSpacePressed) {
+            if (selectedHero == "Blaze") {
+              sound.Blaze();
+            } else {
+              sound.smuraimack();
+            }
+            if (defendCount < 3) {
+              defendCount = defendCount + 1;
+            } else {
+              // Reset defendCount to 0 after reaching 3
+              defendCount = 0;
+            }
+            player.attack();
           }
-
-          player.attack();
         }
         break;
 
       case " ":
         sound.shieldDefend();
+        isSpacePressed = true;
         keys.f.pressed = true;
         break;
     }
@@ -84,22 +94,25 @@ window.addEventListener("keydown", (event) => {
         break;
 
       case "ArrowDown":
-        if (isControlPressed) {
+        if (isControlPressed && !isZeroPressed) {
           enemy.isEnemyControlPressed = true;
           enemy.SpecialAttack();
         } else {
-          if (selectedEnemy == "Luna") {
-            sound.luna();
-          } else {
-            sound.kanji();
-          }
+          if (!isZeroPressed) {
+            if (selectedEnemy == "Luna") {
+              sound.luna();
+            } else {
+              sound.kanji();
+            }
 
-          enemy.attack();
+            enemy.attack();
+          }
         }
         break;
 
       case "Insert":
         sound.shieldDefend();
+        isZeroPressed = true;
         keys.Insert.pressed = true;
         break;
     }
@@ -129,6 +142,7 @@ if (!enemy.dead) {
 
       case " ":
         keys.f.pressed = false;
+        isSpacePressed = false;
         break;
 
       case "ArrowRight":
@@ -151,6 +165,7 @@ if (!enemy.dead) {
 
         break;
       case "Insert":
+        isZeroPressed = false;
         keys.Insert.pressed = false;
         break;
     }

@@ -164,7 +164,7 @@ if (Shadow) {
 
     offset: {
       x: 215,
-      y: 158,
+      y: 150,
     },
 
     sprites: {
@@ -248,7 +248,7 @@ if (Thunder) {
 
     offset: {
       x: 215,
-      y: 171,
+      y: 163,
     },
 
     sprites: {
