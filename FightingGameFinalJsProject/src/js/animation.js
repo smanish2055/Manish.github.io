@@ -1,5 +1,5 @@
 /* --------------------------- animastionLoop here -------------------------- */
-
+let auto = localStorage.getItem("auto");
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("auto");
   localStorage.removeItem("selectedHero");
@@ -16,8 +16,6 @@ function animate() {
   shop.update();
   player.update();
   enemy.update();
-  
-  let auto = localStorage.getItem("auto");
   if (auto) {
     enemy.enemyAI(enemy, player);
   }

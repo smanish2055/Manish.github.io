@@ -164,11 +164,12 @@
         }
       }
 
+    
       function computer() {
         // Set a value in localStorage
         play.play();
 
-        var button = document.getElementById("auto");
+         var button = document.getElementById("auto");
         button.classList.toggle("clicked");
         if (button.classList.contains("clicked")) {
           button.style.backgroundColor = "red";
@@ -179,9 +180,6 @@
         }
       }
 
-      if( !localStorage.getItem("auto")){
-         button.style.backgroundColor = "green";
-      }
 
       function startGame() {
         if (selectedHero && selectedEnemy) {
@@ -204,7 +202,13 @@
           document.getElementById("notselected").innerHTML =
             "Please select a hero and an enemy before starting the game.";
         }
+
       }
+
+        // Reload the page every 30 seconds
+      setInterval(function () {
+        location.reload();
+      }, 30000);
     </script>
   </body>
 </html>
