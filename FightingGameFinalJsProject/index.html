@@ -133,8 +133,8 @@
       function selectHero(hero) {
         play.play();
         selectedHero = hero;
-        localStorage.setItem("selectedHero", selectedHero);
-        LocalselectedHero = localStorage.getItem("selectedHero", selectedHero);
+         localStorage.setItem("selectedHero", selectedHero);
+           LocalselectedHero = localStorage.getItem("selectedHero", selectedHero);
 
         if (LocalselectedHero) {
           document.getElementById(
@@ -147,11 +147,13 @@
       function selectEnemy(enemy) {
         play.play();
         selectedEnemy = enemy;
-        localStorage.setItem("selectedEnemy", selectedEnemy);
-
-        LocalselectedEnemy = localStorage.getItem(
+        localStorage.setItem(
           "selectedEnemy",
           selectedEnemy
+        );
+
+          LocalselectedEnemy = localStorage.getItem(
+          "selectedEnemy"
         );
 
         if (LocalselectedEnemy) {
@@ -172,11 +174,14 @@
           button.style.backgroundColor = "red";
           localStorage.setItem("auto", true);
         } else {
-          localStorage.removeItem("auto");
           button.style.backgroundColor = "green";
+          localStorage.removeItem("auto");
         }
       }
-      
+
+      if( !localStorage.getItem("auto")){
+         button.style.backgroundColor = "green";
+      }
 
       function startGame() {
         if (selectedHero && selectedEnemy) {
