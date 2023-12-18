@@ -10,4 +10,3 @@ if (selectedEnemy === "Luna") {
   document.getElementById("player2Image").src = enemy1;
 }
 
-// console.log();

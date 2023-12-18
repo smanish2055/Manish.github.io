@@ -6,6 +6,9 @@ enemy.isEnemyControlPressed = false;
 player.isPlayerControlPressed = false;
 let isSpacePressed = false; //if  space is press then s and combo should not work
 let isZeroPressed = false; //if  zero is press then s and combo should not work
+let playerAttack = false;
+ let enemyAttack = false;
+
 window.addEventListener("keydown", (event) => {
   // console.log(event);
   if (!player.dead) {
@@ -40,7 +43,7 @@ window.addEventListener("keydown", (event) => {
           player.isPlayerControlPressed = true;
           defendCount = defendCount + 1;
           player.SpecialAttack();
-          console.log("this is v + space");
+          console.log("this is f + space");
         } else {
           if (!isSpacePressed) {
             if (selectedHero == "Blaze") {
@@ -54,7 +57,10 @@ window.addEventListener("keydown", (event) => {
               // Reset defendCount to 0 after reaching 3
               defendCount = 0;
             }
-            player.attack();
+
+            // it helps to call normal attack 
+            playerAttack = true;
+           
           }
         }
         break;
@@ -66,6 +72,11 @@ window.addEventListener("keydown", (event) => {
         break;
     }
   }
+
+  if (playerAttack) {
+    player.attack();
+  }
+
   if (!enemy.dead) {
     switch (event.key) {
       case "ArrowRight":
@@ -97,6 +108,7 @@ window.addEventListener("keydown", (event) => {
         if (isControlPressed && !isZeroPressed) {
           enemy.isEnemyControlPressed = true;
           enemy.SpecialAttack();
+          console.log("arrow down"+ "shift pressed");
         } else {
           if (!isZeroPressed) {
             if (selectedEnemy == "Luna") {
@@ -105,7 +117,8 @@ window.addEventListener("keydown", (event) => {
               sound.kanji();
             }
 
-            enemy.attack();
+           enemyAttack = true;
+           
           }
         }
         break;
@@ -117,60 +130,73 @@ window.addEventListener("keydown", (event) => {
         break;
     }
   }
+
+  if (enemyAttack) {
+    enemy.attack();
+  }
 });
 
-/* ---------------------------------- keyup ------------------------------------------------------------------------------------------- */
-/* ---------------------------------- keyup ------------------------------------------------------------------------------------------- */
-if (!enemy.dead) {
-  window.addEventListener("keyup", (event) => {
-    switch (event.key) {
-      case "d":
-        sound.herorun();
-        keys.d.pressed = false;
-        break;
-      case "a":
-        sound.herorun();
-        keys.a.pressed = false;
-        break;
-      case "w":
-        keys.w.pressed = false;
-        break;
 
-      case "f":
-        isVPressed = false;
-        player.isPlayerControlPressed = false;
-        break;
 
-      case " ":
-        keys.f.pressed = false;
-        isSpacePressed = false;
-        break;
 
-      case "ArrowRight":
-        sound.enemyrun();
-        keys.ArrowRight.pressed = false;
+  if (!enemy.dead) {
+    /* ---------------------------------- keyup ------------------------------------------------------------------------------------------- */
+    /* ---------------------------------- keyup ------------------------------------------------------------------------------------------- */
+    window.addEventListener("keyup", (event) => {
+      switch (event.key) {
+        case "d":
+          sound.herorun();
+          keys.d.pressed = false;
+          break;
+        case "a":
+          sound.herorun();
+          keys.a.pressed = false;
+          break;
+        case "w":
+          keys.w.pressed = false;
+          break;
+        case "s":
+          playerAttack = false;
+          break;
 
-        break;
+        case "f":
+          isVPressed = false;
+          player.isPlayerControlPressed = false;
+          break;
 
-      case "ArrowLeft":
-        sound.enemyrun();
-        keys.ArrowLeft.pressed = false;
-        break;
-      case "ArrowUp":
-        keys.ArrowUp.pressed = false;
-        break;
+        case " ":
+          keys.f.pressed = false;
+          isSpacePressed = false;
+          break;
 
-      case "Shift":
-        isControlPressed = false;
-        enemy.isEnemyControlPressed = false;
+        case "ArrowRight":
+          sound.enemyrun();
+          keys.ArrowRight.pressed = false;
 
-        break;
-      case "Insert":
-        isZeroPressed = false;
-        keys.Insert.pressed = false;
-        break;
-    }
+          break;
 
-    console.log(event.key);
-  });
-}
+        case "ArrowLeft":
+          sound.enemyrun();
+          keys.ArrowLeft.pressed = false;
+          break;
+        case "ArrowUp":
+          keys.ArrowUp.pressed = false;
+          break;
+        case "ArrowDown":
+          enemyAttack = false;
+          break;
+
+        case "Shift":
+          isControlPressed = false;
+          enemy.isEnemyControlPressed = false;
+
+          break;
+        case "Insert":
+          isZeroPressed = false;
+          keys.Insert.pressed = false;
+          break;
+      }
+
+      console.log(event.key);
+    });
+  }

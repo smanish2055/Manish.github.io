@@ -2,7 +2,10 @@
 let auto;
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("auto");
+  this.alert("are you sure you want to exit game");
 });
+
+
 
 function animate() {
   auto = localStorage.getItem("auto");
@@ -29,6 +32,7 @@ function animate() {
     player.switchSprite("runLeft");
   } else {
     player.switchSprite("idle");
+      player.velocity.x = 0;
   }
 
   /* ------------------- player jump back to position(jump) ---------------------------------- */

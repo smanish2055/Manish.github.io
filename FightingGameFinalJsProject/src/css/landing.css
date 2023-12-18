@@ -113,3 +113,60 @@ h1 {
   /* Add any additional styles as needed */
 }
 
+.btn-control {
+  position: absolute;
+  top: 0;
+  background-color: #cfe4d0;
+  color: rgb(24, 21, 21);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  font-size: xx-small;
+  border-radius: 50%;
+  margin-top: 20px;
+
+}
+#controls {
+  margin-top: 20px;
+  text-align: center;
+  display: none; /* Set initial display to block */
+}
+
+#controls.hide {
+  display: block; /* Hide the controls when the 'hide' class is present */
+}
+
+.character-controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.hero-controls,
+.enemy-controls {
+  flex: 1;
+  padding: 20px;
+  margin: 20px;
+  background-color: silver;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(157, 142, 142, 0.1);
+  text-align: left; /* Align text to the left */
+}
+
+.controls-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.controls-description {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+button:hover {
+  background-color: #141714;
+  color: white;
+}

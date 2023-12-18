@@ -5,8 +5,13 @@ canvas.width = 1024;
 canvas.height = 576;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 const gravity = 0.7;
+// let playerComboAttack = false;
+
+// let enemyComboAttack = false; 
+
 
 const Hero1 = "./src/img/Hero1.png";
 const Hero2 = "./src/img/Hero2.png";
 const enemy1 = "./src/img/Enemy1.png";
 const enemy2 = "./src/img/Enemy2.png";
+

@@ -12,7 +12,6 @@ class Fighters extends Sprite {
     playerId,
   }) {
     super({ position, imageSrc, scale, framesMax, offset });
-
     this.position = position;
     this.velocity = velocity;
     this.height = 150;
@@ -25,7 +24,7 @@ class Fighters extends Sprite {
     this.dead = false;
     this.isEnemyControlPressed;
     this.specialAttackCounter = 0;
-    //  this.attack = true;
+   
 
     /* ------------------------------ attacking box ----------------------------- */
 
@@ -94,20 +93,24 @@ class Fighters extends Sprite {
     setInterval(() => {
       if (!player.dead && !enemy.dead) {
         const distanceToPlayer = player.position.x - enemy.position.x;
-
+        console.log(distanceToPlayer)
         // Adjust velocity to move towards the player
         if (distanceToPlayer > 0) {
           enemy.switchSprite("runRight");
+          // aiSpriteControl = 0;
           sound.enemyrun("on");
-          enemy.velocity.x = 1.5;
+          enemy.velocity.x = 2;
+
         } else if (distanceToPlayer < 0) {
           sound.enemyrun("on");
-          enemy.velocity.x = -1.5;
+          enemy.velocity.x = -2;
           enemy.switchSprite("run");
+          //  aiSpriteControl = 0;
+
         } else {
           // If the enemy is already at the player's position, stop moving
-          enemy.velocity.x = 0;
           enemy.switchSprite("idle");
+          enemy.velocity.x = 0;
         }
       }
     }, 300);
@@ -174,6 +177,7 @@ class Fighters extends Sprite {
     }
   }
 
+
   updateComboCountDisplay() {
     let id = `player${this.playerId}ComboCount`;
     console.log(id);
@@ -188,11 +192,6 @@ class Fighters extends Sprite {
       comboCountSpan.appendChild(fireIcon);
     }
   }
-
-  // defend() {
-  //   this.switchSprite("Defend");
-  //   // this.isAttacking = true;
-  // }
 
   takeHit(damage) {
     this.health -= damage;
@@ -347,6 +346,11 @@ class Fighters extends Sprite {
     }
   }
 }
+
+
+// setInterval(() => {
+   
+// },150)
 
 //   const distanceToPlayer = player.position.x - enemy.position.x;
 // if (distanceToPlayer > 0) {
