@@ -23,6 +23,8 @@
       }
     </style>
   </head>
+
+  
   <body>
     <div id="container1">
       <h1>Sword Rumble</h1>
@@ -30,37 +32,36 @@
       <div id="selectedEnemy"></div>
       <div id="notselected"></div>
       <div id="controls">
-  <h2>Controls</h2>
-  
-  <div class="character-controls">
-    <div class="hero-controls">
-      <div class="controls-title">Hero Controls:</div>
-      <div class="controls-description">
-        <p>Jump: W</p>
-        <p>Run Right: A</p>
-        <p>Run Left: D</p>
-        <p>Attack: S</p>
-        <p>Combo Attack: F + S</p>
-        <p>Defence: Space</p>
-      </div>
-    </div>
-    <div class="enemy-controls">
-      <div class="controls-title">Enemy Controls:</div>
-      <div class="controls-description">
-        <p>Jump Up: Arrow Up</p>
-        <p>Run Right: Arrow Right</p>
-        <p>Run Left: Arrow Left</p>
-        <p>Attack: Arrow Down</p>
-        <p>Combo Attack: Shift + Arrow Down</p>
-        <p>Defence: 0</p>
-      </div>
-    </div>
-  </div>
-</div>
+        <h2>Controls</h2>
 
+        <div class="character-controls">
+          <div class="hero-controls">
+            <div class="controls-title">Hero Controls:</div>
+            <div class="controls-description">
+              <p>Jump: W</p>
+              <p>Run Right: A</p>
+              <p>Run Left: D</p>
+              <p>Attack: S</p>
+              <p>Combo Attack: F + S</p>
+              <p>Defence: Space</p>
+            </div>
+          </div>
+          <div class="enemy-controls">
+            <div class="controls-title">Enemy Controls:</div>
+            <div class="controls-description">
+              <p>Jump Up: Arrow Up</p>
+              <p>Run Right: Arrow Right</p>
+              <p>Run Left: Arrow Left</p>
+              <p>Attack: Arrow Down</p>
+              <p>Combo Attack: Shift + Arrow Down</p>
+              <p>Defence: 0</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="character-container1">
-                <!-- ------------------------------------ diaplay selected hero ------------------------ -->
+        <!-- ------------------------------------ diaplay selected hero ------------------------ -->
         <div class="character-group">
           <div class="section-title">Select Your Hero:</div>
           <div
@@ -81,8 +82,6 @@
             <p>Blaze</p>
           </div>
         </div>
-
-
 
         <!-- ------------------------- enemy select group -------------------------- -->
         <div class="character-group">
@@ -117,15 +116,9 @@
       <button id="startButton" onclick="startGame()">Start Game</button>
     </div>
 
-    
- 
-
-  <button class="btn-control" onclick="toggleControls()"><a href="#controls"></a>
-  Controls</button> 
-   
-
-
-
+    <button class="btn-control" onclick="toggleControls()">
+      <a href="#controls"></a> Controls
+    </button>
 
     <!-- --------------------- audios  are using directly ---------------------- -->
     <audio id="hoverSound">
@@ -184,7 +177,6 @@
         }
       }
 
-
       function selectEnemy(enemy) {
         play.play();
         selectedEnemy = enemy;
@@ -199,7 +191,6 @@
           console.log(`Selected Enemy: ${enemy}`);
         }
       }
-
 
       // <!-- -------------------------- auto enemy button -------------------------- -->
       function computer() {
@@ -216,7 +207,7 @@
           localStorage.removeItem("auto");
         }
       }
-// <!-- ----------------------------- start game ------------------------------ -->
+      // <!-- ----------------------------- start game ------------------------------ -->
       function startGame() {
         if (selectedHero && selectedEnemy) {
           document.getElementById("selectedHero").innerHTML = "";
@@ -240,21 +231,15 @@
         }
       }
 
-
-
-function toggleControls() {
-  const controls = document.getElementById("controls");
-  controls.classList.toggle("hide");
-}
-
+      function toggleControls() {
+        const controls = document.getElementById("controls");
+        controls.classList.toggle("hide");
+      }
 
       //  <!-- ------------------ Reload the page every 30 seconds ------------------- -->
       setInterval(function () {
         location.reload();
       }, 30000);
-
-
-
     </script>
   </body>
 </html>

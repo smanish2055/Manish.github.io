@@ -2,7 +2,7 @@
 let auto;
 window.addEventListener("beforeunload", function () {
   localStorage.removeItem("auto");
-  this.alert("are you sure you want to exit game");
+  // this.alert("are you sure you want to exit game");
 });
 
 
@@ -10,9 +10,9 @@ window.addEventListener("beforeunload", function () {
 function animate() {
   auto = localStorage.getItem("auto");
   window.requestAnimationFrame(animate);
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  // calling update by FPS
+  // ctx.fillStyle = "black";
+  // ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
   background.update();
   shop.update();
   player.update();
@@ -41,10 +41,7 @@ function animate() {
     player.velocity.y = -10;
     player.switchSprite("jump");
     // }
-  } else if (
-    player.velocity.y > 0 &&
-    player.position.y < canvas.height - player.height
-  ) {
+  } else if ( player.velocity.y > 0 && player.position.y < canvas.height - player.height) {
     player.switchSprite("fall");
   }
 
@@ -63,10 +60,8 @@ function animate() {
 
   /* -------------------- enemy jumpback to position(jump) ----------------------------------------- */
   if (keys.ArrowUp.pressed && enemy.position.y >= 195) {
-    // if (enemy.position.y - enemy.velocity.y >= 0) {
     enemy.velocity.y = -10;
     enemy.switchSprite("jump");
-    // }
   } else if (
     enemy.velocity.y > 0 &&
     enemy.position.y < canvas.height - enemy.height
@@ -103,7 +98,6 @@ function animate() {
       //  //enemy health decrease while defending in Normal attack
       if (keys.Insert.pressed) {
         enemy.takeHit(2);
-        console.log("fhjnkdfhniuawehjknafnksjfbjfsnjbah");
       } else {
         enemy.takeHit(4); // player health decrease while without defending in Normal attack
       }

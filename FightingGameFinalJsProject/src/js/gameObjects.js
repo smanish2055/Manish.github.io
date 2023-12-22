@@ -73,7 +73,7 @@ switch (selectedEnemy) {
 
 let player;
 if (Blaze) {
-  player = new Fighters({
+  player = new FightersAction({
     position: {
       x: 0,
       y: 0,
@@ -148,7 +148,7 @@ if (Blaze) {
 }
 
 if (Shadow) {
-  player = new Fighters({
+  player = new FightersAction({
     position: {
       x: 0,
       y: 0,
@@ -226,7 +226,7 @@ if (Shadow) {
 let enemy;
 
 if (Thunder) {
-  enemy = new Fighters({
+  enemy = new FightersAction({
     position: {
       x: 400,
       y: 100,
@@ -307,7 +307,7 @@ if (Thunder) {
 
 /* -------------------------- enemy another object -------------------------- */
 if (Luna) {
-  enemy = new Fighters({
+  enemy = new FightersAction({
     position: {
       x: 400,
       y: 100,
@@ -372,7 +372,7 @@ if (Luna) {
 
     attackBox: {
       offset: {
-        x: -45,
+        x: -48,
         y: 50,
       },
       width: 110,

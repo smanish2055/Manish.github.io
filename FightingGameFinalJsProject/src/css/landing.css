@@ -40,7 +40,6 @@ h1 {
 
 .section-title {
   font-size: 1.2em;
-  /* color: rgb(173, 171, 177); */
   margin-bottom: 15px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -109,10 +108,12 @@ h1 {
   color: #57e768;
   font-size: large;
   font-family: "Helvetica Neue";
-  font-weight: bold; /* Add bold if desired */
-  /* Add any additional styles as needed */
+  font-weight: bold; 
 }
 
+
+
+/* ------------------------------------------------------------------------------------------- */
 .btn-control {
   position: absolute;
   top: 0;
@@ -130,11 +131,11 @@ h1 {
 #controls {
   margin-top: 20px;
   text-align: center;
-  display: none; /* Set initial display to block */
+  display: none; 
 }
 
 #controls.hide {
-  display: block; /* Hide the controls when the 'hide' class is present */
+  display: block; 
 }
 
 .character-controls {
@@ -151,7 +152,7 @@ h1 {
   background-color: silver;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(157, 142, 142, 0.1);
-  text-align: left; /* Align text to the left */
+  text-align: left; 
 }
 
 .controls-title {

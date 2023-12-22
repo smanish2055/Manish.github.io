@@ -153,8 +153,8 @@ body {
 }
 
 .playerInfo img {
-  width: 30px; /* Adjust the width as needed */
-  height: 30px; /* Adjust the height as needed */
+  width: 30px; 
+  height: 30px; 
   border-radius: 50%;
   background-color: rgb(141, 170, 195);
   margin-top: 0;

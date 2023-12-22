@@ -9,7 +9,6 @@ class audio {
     this.kanjiAudio.preload = "auto";
     this.BlazeAudio = new Audio("./src/audio/Blaze.mp3");
     this.BlazeAudio.preload = "auto";
-
     this.herorunning = new Audio("./src/audio/herorunning.mp3");
     this.enemyrunning = new Audio("./src/audio/enemyrunning.mp3");
     this.lunajump = new Audio("./src/audio/luna-jump.mp3");
@@ -47,6 +46,11 @@ class audio {
         break;
     }
   }
+
+  // setInterval(() => {
+  //   console.log("isdjfnsjn")
+    
+  // }, 1000);
 
   // sward attack
   smuraimack(off) {
