@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon"  href="/assets/lpLogo-XXFEszv8.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <title>TODOS LIST</title>
+    <script type="module" crossorigin src="/assets/index-FxvDzJro.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-niPmgp1t.css">
+  </head>
+  <body>
+
+    <div class="nav">
+      <div class="nav-logo">
+       <img src="/assets/lpLogo-XXFEszv8.jpg" alt="Logo">
+      </div>
+      <div class="nav-content">
+        <ul>
+          <li id="home">Home</li>
+          <li id="completed">Completed</li>
+          <li id="remaining">Remaining</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="app">
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Search" />
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+
+      <div class="add-box">
+        <input id="add-item" type="text" placeholder="add items" />
+        <button id="add-button">Add Task</button>
+      </div>
+
+      <div class="list">
+        <h3>Task List</h3>
+        <ul class="task-list"></ul>
+      </div>
+    </div>
+
+  </body>
+</html>
