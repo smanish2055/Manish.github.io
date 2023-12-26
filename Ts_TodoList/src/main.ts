@@ -1,5 +1,5 @@
-
 import './style.css'
+
 const textSearch: HTMLInputElement = document.querySelector(
   "#search"
 ) as HTMLInputElement;
@@ -19,7 +19,6 @@ const remainingDisplay = document.querySelector("#remaining")!;
 
 /* ------------------------ type of data todos has ----------------------- */
 type Task = { Items: string; status: boolean };
-
 let todos: Task[] = [];
 
 /* -------------------------------- add task -------------------------------- */
@@ -52,13 +51,11 @@ function displayTask(todos: Task[]) {
   taskList.innerHTML = "";
   todos.forEach((data, index) => {
     const checked = data.status ? "checked" : "";
-
     const li = document.createElement("li");
     li.setAttribute("class", "item");
     li.innerHTML = `<div class="data-items ${data.status ? "completed" : ""}">${
       data.Items
     }</div>  <div class="checkbox"><input type="checkbox" ${checked} data-index="${index}"> </div>`;
-
     taskList.appendChild(li);
 
     // Add a click event listener to each checkbox
@@ -97,12 +94,10 @@ home.addEventListener("click", () => {
 
 completedDisplay.addEventListener("click", () => {
   let completedDisplay: Task[] = todos.filter((data) => data.status === true);
-
   displayTask(completedDisplay);
 });
 
 remainingDisplay.addEventListener("click", () => {
   let remainingDisplay: Task[] = todos.filter((data) => data.status === false);
-
   displayTask(remainingDisplay);
 });
