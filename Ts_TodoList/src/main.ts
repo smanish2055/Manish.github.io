@@ -53,20 +53,33 @@ function displayTask(todos: Task[]) {
     const checked = data.status ? "checked" : "";
     const li = document.createElement("li");
     li.setAttribute("class", "item");
-    li.innerHTML = `<div class="data-items ${data.status ? "completed" : ""}">${
-      data.Items
-    }</div>  <div class="checkbox"><input type="checkbox" ${checked} data-index="${index}"> </div>`;
+    li.innerHTML = `<div class="data-items ${data.status ? "completed" : ""}">${data.Items}</div> 
+     <div class="checkbox"><input type="checkbox" ${checked} data-index="${index}" > <button id="deletebtn" ><i class="fa fa-trash-o" style="font-size:20px;color:red"></i></button> </div>`;
     taskList.appendChild(li);
 
     // Add a click event listener to each checkbox
     const checkbox = li.querySelector(".checkbox input");
+    const deletebtn =li.querySelector("#deletebtn i");
     if (checkbox) {
       checkbox.addEventListener("click", () => {
         toggleStatus(index);
       });
     }
+    if (deletebtn) {
+      deletebtn.addEventListener("click", () => {
+        console.log(todos)
+       todos.splice(index, 1);
+       displayTask(todos);
+      });
+    }
+
+
+
   });
 }
+
+
+
 
 /* ----------------- Function to toggle the status of a task ---------------- */
 function toggleStatus(index: number) {

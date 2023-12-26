@@ -29,3 +29,9 @@
   text-decoration-color: red;
 }
 
+#deletebtn i{
+  width: 7px;
+  height: 8px;
+  padding-right:7px ;
+  cursor: pointer;
+}
