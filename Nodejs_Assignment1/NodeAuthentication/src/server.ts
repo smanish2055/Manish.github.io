@@ -1,11 +1,11 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import config from "./config/config";
 const app = express();
 
 const port =config.serverPort;
 
 const authRouter = require('./routes/authRouter');
-const todoRoutes = require('./routes/todosRouter');
+
 
 
 app.use(express.json());
