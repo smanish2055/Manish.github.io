@@ -1,4 +1,4 @@
-// error.ts
+
 import { Request, Response, NextFunction } from 'express';
 
 const errorHandler = (error: any, req: Request, res: Response, next: NextFunction) => {
