@@ -10,8 +10,8 @@ const todos: Todo[] = [
 export const todoService = {
     getTodos: (): Todo[] => todos,
 
-    addTodo: (title: string): Todo => {
-        const newTodo: Todo = { id: Date.now(), title };
+    addTodo: (id:number,title: string): Todo => {
+        const newTodo: Todo = { id, title };
         todos.push(newTodo);
         return newTodo;
     },
