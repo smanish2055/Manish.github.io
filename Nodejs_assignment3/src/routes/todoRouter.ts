@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import { todoController } from "../controllers/todoControllers";
-import { seqController } from "../controllers/sequlizeController";
 import Joi from "joi";
 import logger from "../loggers/logger"; // Import the logger
 
@@ -68,22 +67,4 @@ router.delete("/todos/:id", async (req: Request, res: Response) => {
   }
 });
 
-router.post("/todosinsert", async (req: Request, res: Response) => {
-  try {
-    const { error } = todoValidationSchema.validate(req.body);
-
-    if (error) {
-      logger.error("Validation Error:", error);
-      return res.status(400).json({
-        message: "😒",
-        error: error.details[0].message,
-      });
-    }
-
-    // Call the insertTodo function from the controller
-    await seqController.insertTodo(req, res);
-  } catch (error) {
-    logger.error("Error adding todo:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
+export default router;

@@ -25,6 +25,7 @@ const deleteTodo = async (req: Request, res: Response) => {
   TodoModel.deleteTodo(todoId);
   res.json({ message: "Todo deleted successfully" });
 };
+
 const getByPagination = (req: Request, res: Response): void => {
   const todos = TodoModel.getByPagination();
   res.json(todos);

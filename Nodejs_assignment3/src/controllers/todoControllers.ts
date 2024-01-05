@@ -9,14 +9,14 @@ const getTodos = (req: Request, res: Response): void => {
 const addTodo = async (req: Request, res: Response) => {
   const todoAdd= req.body;
   const newTodo = TodoModel.addTodo(todoAdd);
-  res.json(newTodo);
+  res.json({message:"successfully added"});
 };
 
 const updateTodo = async (req: Request, res: Response) => {
   const { id } = req.body;
   const update = req.body;
   const newUpdateTodo = TodoModel.updateTodo(id, update);
-  res.json(newUpdateTodo);
+  res.json({message:"successfully updated"});
 };
 
 const deleteTodo = async (req: Request, res: Response) => {
@@ -25,10 +25,7 @@ const deleteTodo = async (req: Request, res: Response) => {
   TodoModel.deleteTodo(todoId);
   res.json({ message: "Todo deleted successfully" });
 };
-const getByPagination = (req: Request, res: Response): void => {
-  const todos = TodoModel.getByPagination();
-  res.json(todos);
-};
+
 
 
 export const todoController = {
@@ -36,5 +33,5 @@ export const todoController = {
   addTodo,
   deleteTodo,
   updateTodo,
-  getByPagination,
+ 
 };

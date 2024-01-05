@@ -1,5 +1,5 @@
 import { Todo } from "../models/todoModel"; 
-import { TodoSql } from "../models/todosModel";
+// import { TodoSql } from "../models/todosModel";
 import BaseModel from "../models/baseModel";
 
 export default class TodoModel extends BaseModel {
@@ -40,29 +40,29 @@ export default class TodoModel extends BaseModel {
 }
 
 
-export class TodoService {
-  // static async syncDatabase() {
-  //   try {
-  //     await TodoSql.sync({ force: true });
-  //     console.log("Table and model synced successfully");
-  //   } catch (error: any) {
-  //     console.error("Error syncing model:", error.message);
-  //     throw error;
-  //   }
-  // }
+// export class TodoService {
+//   // static async syncDatabase() {
+//   //   try {
+//   //     await TodoSql.sync({ force: true });
+//   //     console.log("Table and model synced successfully");
+//   //   } catch (error: any) {
+//   //     console.error("Error syncing model:", error.message);
+//   //     throw error;
+//   //   }
+//   // }
 
-  static async insertTodo(data: {
-    title: string;
-    description: string;
-    completed: boolean;
-  }) {
-    try {
-      const createdTodo = await TodoSql.create(data);
-      console.log("Data inserted successfully:", createdTodo.toJSON());
-      return createdTodo.toJSON();
-    } catch (error: any) {
-      console.error("Error inserting data:", error.message);
-      throw error;
-    }
-  }
-}
+//   static async insertTodo(data: {
+//     title: string;
+//     description: string;
+//     completed: boolean;
+//   }) {
+//     try {
+//       const createdTodo = await TodoSql.create(data);
+//       console.log("Data inserted successfully:", createdTodo.toJSON());
+//       return createdTodo.toJSON();
+//     } catch (error: any) {
+//       console.error("Error inserting data:", error.message);
+//       throw error;
+//     }
+//   }
+// }
