@@ -1,0 +1,45 @@
+{
+  "name": "todosapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync-database": "ts-node src/sync-database.ts",
+    "knex": "knex --knexfile=src/knexFile.ts",
+    "make:migration": "npm run knex migrate:make",
+    "migrate": "npm run knex migrate:latest --verbose",
+    "rollback": "npm run knex migrate:rollback --verbose",
+    "seed": "npm run knex seed:run --verbose",
+    "make:seeder": "npm run knex seed:make"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "camelize": "^1.0.1",
+    "express": "^4.18.2",
+    "joi": "^17.11.0",
+    "knex": "^3.1.0",
+    "mysql2": "^3.6.5",
+    "nodemon": "^3.0.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.2",
+    "sqlite3": "^5.1.7-rc.0",
+    "to-snake-case": "^1.0.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/camelize": "^1.0.0",
+    "@types/express": "^4.17.21",
+    "@types/sequelize": "^4.28.19",
+    "@types/to-snake-case": "^1.0.2",
+    "dotenv": "^16.3.1",
+    "sequelize-cli": "^6.6.2",
+    "ts-node": "^10.9.2"
+  }
+}

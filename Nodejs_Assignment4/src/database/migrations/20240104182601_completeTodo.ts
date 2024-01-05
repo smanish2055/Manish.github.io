@@ -1,7 +1,7 @@
-import { Knex } from 'knex';
+import { Knex } from "knex";
 // import { PEOPLE } from '../../constants/database';
 
-const TABLE_NAME = 'todos';
+const TABLE_NAME = "todosCompleted";
 
 /**
  * Create table TABLE_NAME.
@@ -13,6 +13,7 @@ export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable(TABLE_NAME, (table) => {
     table.bigIncrements("id").primary().notNullable();
     table.string("title").notNullable();
+      table.boolean("completed").notNullable();
   });
 }
 
