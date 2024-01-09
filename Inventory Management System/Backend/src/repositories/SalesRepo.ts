@@ -25,6 +25,7 @@ export const AddSales = async (user_id: number, salesproduct: Sales) => {
       quantity_sold: quantity_sold,
       price_per_item: price_per_item,
       total_sales_price: quantity_sold * price_per_item,
+      sales_profit: price_per_item*quantity_sold - product.per_product_price*quantity_sold,
       sale_date: sale_date,
     };
 

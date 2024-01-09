@@ -9,6 +9,7 @@ interface SalesAttributes {
   quantity_sold: number;
   price_per_item: number;
   total_sales_price: number;
+  sales_profit: number;
   sale_date: Date;
 }
 
@@ -25,6 +26,7 @@ class Sales
   public quantity_sold!: number;
   public price_per_item!: number;
   public total_sales_price!: number;
+  sales_profit!: number;
   public sale_date!: Date;
 }
 
@@ -52,6 +54,10 @@ Sales.init(
       allowNull: false,
     },
     total_sales_price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    sales_profit: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },

@@ -24,7 +24,7 @@ app.use(errorHandler);
 /* --------------------------- Running the server --------------------------- */
 // Sync the models with the database
 sequelize
-  .sync({ force:false })
+  .sync({ force: false })
   .then(() => {
     console.log("Table and model synced successfully");
   })

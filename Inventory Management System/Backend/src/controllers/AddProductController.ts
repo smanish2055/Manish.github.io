@@ -3,7 +3,7 @@ import * as AddProductService from "../services/AddProductsService";
 import Product from "../models/Product";
 import HttpStatus from "http-status-codes";
 
-export const AddProductsController = (
+export const AddProductsController = async(
   req: Request,
   res: Response,
   next: NextFunction
@@ -16,7 +16,7 @@ export const AddProductsController = (
       return res.status(401).json({ error: "Unauthorized" });
     }
     const user_id = res.locals.user.id;
-    const response =  AddProductService.AddProductService(user_id, product);
+    const response = await AddProductService.AddProductService(user_id, product);
     res.status(HttpStatus.ACCEPTED).json({
       message: "product added successfully",
       response:  response,

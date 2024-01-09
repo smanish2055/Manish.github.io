@@ -9,7 +9,6 @@ export const login = async (
 ) => {
   try {
     const user: any = req.body;
-    console.log(user);
     const response = await authService.login(user);
     res.status(HttpStatus.ACCEPTED).json({
       message: "User Logged in sccessfully",

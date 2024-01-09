@@ -12,7 +12,7 @@ export const DashboardController = async (
        const user_id = res.locals.user.id;
     const dashboardData = await dashboardService.dashboardService(user_id);
     res.status(HttpStatus.ACCEPTED).json({
-      message: "product Fetch Successfully",
+      message: "Data Fetched Successfully",
       result: dashboardData,
     });
   } catch (error) {

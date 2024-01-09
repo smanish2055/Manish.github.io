@@ -3,7 +3,7 @@ import * as salesService from "../services/SalesService";
 import HttpStatus from "http-status-codes";
 import Sales from "../models/Sales";
 
-export const salesController = (
+export const salesController = async(
   req: Request,
   res: Response,
   next: NextFunction
@@ -16,7 +16,7 @@ export const salesController = (
       return res.status(401).json({ error: "Unauthorized" });
     }
     const user_id = res.locals.user.id;
-    const response = salesService.AddSales(user_id, salesproduct);
+    const response = await salesService.AddSales(user_id, salesproduct);
     res.status(HttpStatus.ACCEPTED).json({
       message: "sales added successfully",
       response: response,
