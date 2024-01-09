@@ -1,12 +1,10 @@
 /* --------------------------------- Imports -------------------------------- */
 import express, { Express } from "express";
-// import "reflect-metadata";
 import config from "./configs/index";
 import routes from "./routes/Index";
-// import logHandler from "./middlewares/LogHandler";
 import errorHandler from "./middlewares/ErrorHandler";
 import pathNotFound from "./middlewares/PathNotFound";
-import sequelize from "./configs/AuthConfig";
+import sequelize from "./configs/DbConfig";
 /* -------------------------- Server initialization ------------------------- */
 const app: Express = express();
 const PORT = config.serverPort;
@@ -26,7 +24,7 @@ app.use(errorHandler);
 /* --------------------------- Running the server --------------------------- */
 // Sync the models with the database
 sequelize
-  .sync({ force: false })
+  .sync({ force:false })
   .then(() => {
     console.log("Table and model synced successfully");
   })

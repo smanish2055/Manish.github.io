@@ -1,7 +1,8 @@
 // product.model.ts
 import { Model, DataTypes, Optional } from "sequelize";
-import sequelize from "../configs/AuthConfig";
-import { User } from "./User";
+import sequelize from "../configs/DbConfig";
+// import { User } from "./User";
+// import Sales from "./Sales";
 
 interface ProductAttributes {
   product_id: number;
@@ -9,7 +10,8 @@ interface ProductAttributes {
   product_name: string;
   product_desc: string;
   product_quantity: number;
-  product_price: number;
+  per_product_price: number;
+  total_Cost: number;
 }
 
 interface ProductCreationAttributes
@@ -24,17 +26,9 @@ class Product
   public product_name!: string;
   public product_desc!: string;
   public product_quantity!: number;
-  public product_price!: number;
-
-  // Define association with User model
-  public static associate(models: any): void {
-    Product.belongsTo(User, {
-      foreignKey: "user_id", // This should match the field in the Product model
-      targetKey: "id", // This is the field in the User model
-    });
-  }
+  public per_product_price!: number;
+  public total_Cost!: number;
 }
-
 
 Product.init(
   {
@@ -46,7 +40,6 @@ Product.init(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-     
     },
     product_name: {
       type: DataTypes.STRING,
@@ -61,7 +54,11 @@ Product.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    product_price: {
+    per_product_price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    total_Cost: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
@@ -71,5 +68,6 @@ Product.init(
     tableName: "products",
   }
 );
-
+// User.hasMany(Product, { foreignKey: "user_id" });
+// User.hasMany(Sales, { foreignKey: "user_id" });
 export default Product;

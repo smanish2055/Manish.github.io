@@ -1,8 +1,9 @@
 // user.model.ts
 import { Model, DataTypes, Optional } from "sequelize";
 import { randomUUID } from "crypto";
-import sequelize from "../configs/AuthConfig";
-import  Product  from "./Product"; 
+import sequelize from "../configs/DbConfig";
+import Product from "./Product";
+import Sales from "./Sales";
 
 interface UserAttributes {
   id: number;
@@ -70,5 +71,4 @@ User.init(
   }
 );
 
-export { User, Product };
-
+export { User, Product, Sales };

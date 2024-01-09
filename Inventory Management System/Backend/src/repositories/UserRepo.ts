@@ -1,15 +1,12 @@
 import { Op } from 'sequelize';
 import {User } from '../models/User';
- // getAllProductList,
-  // getProductById,
-  // updateProductById,
-  // deleteProductById,
+
 export const getAllUsers = async () => {
   return await User.findAll();
 };
 
 export const addUser = async (user: any) => {
-  return await User.create(user);
+  return await User.create();
 };
 
 export const getUserByEmail = async (email: string) => {

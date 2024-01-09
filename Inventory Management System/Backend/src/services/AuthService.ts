@@ -1,5 +1,5 @@
 import { Op } from "sequelize";
-import { User } from "../models/User";
+import {User}  from "../models/User";
 import * as userRepo from "../repositories/UserRepo";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
