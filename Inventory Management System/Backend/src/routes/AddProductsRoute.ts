@@ -4,5 +4,4 @@ const router = Router();
 
 router.post("/", AddProductsController);
 // router.route("/:id").get(getUserById);
-
 export default router;

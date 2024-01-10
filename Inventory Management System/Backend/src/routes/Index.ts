@@ -21,8 +21,8 @@ router.get("/", (req, res) => {
 // routes
 router.use(auth);
 router.use("/dashboard", jwtAuth, Dashboard);
-router.use("/addproduct", jwtAuth, AddProductRoute);
-router.use("/productlist", jwtAuth, ProductList);
+router.use("/add-product", jwtAuth, AddProductRoute);
+router.use("/product-list", jwtAuth, ProductList);
 router.use("/sales", jwtAuth, Sales);
 
 export default router;

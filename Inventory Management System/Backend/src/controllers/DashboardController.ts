@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import * as dashboardService from "../services/DashboardService";
 import HttpStatus from "http-status-codes";
-// import Product from "../models/Product";
+
 
 export const DashboardController = async (
   req: Request,

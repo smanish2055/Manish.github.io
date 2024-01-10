@@ -1,6 +1,3 @@
-import { Op } from "sequelize";
-import {User}  from "../models/User";
-import * as userRepo from "../repositories/UserRepo";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 import config from "../configs/index";
@@ -8,11 +5,13 @@ import {
   JWT_ACCESS_TOKEN_EXPIRY,
   JWT_REFRESH_TOKEN_EXPIRY,
 } from "../constants/index";
-import NotFoundError from "../errors/NotFound";
 import ForbiddenError from "../errors/Forbidden";
+import NotFoundError from "../errors/NotFound";
+import { User } from "../models/User";
+import * as userRepo from "../repositories/AuthRepo";
 
 export const register = async (user: any) => {
-  const { id, username, email, password } = user;
+  const { username, email, password } = user;
   try {
     const userExists = await userRepo.getUserByEmail(email);
     if (userExists) {
@@ -25,7 +24,7 @@ export const register = async (user: any) => {
       email: email,
       password: hashedPassword,
     });
-    // return newUser;
+    return newUser;
   } catch (error) {
     throw error;
   }
@@ -40,7 +39,6 @@ export const login = async (user: any) => {
     }
 
     const isPasswordValid = await argon2.verify(foundUser.password, password);
-
     if (!isPasswordValid) {
       throw new ForbiddenError("Invalid password");
     }
@@ -50,7 +48,6 @@ export const login = async (user: any) => {
 
     foundUser.refreshToken = refreshToken;
     await foundUser.save();
-
     return { accessToken, refreshToken };
   } catch (error) {
     throw error;

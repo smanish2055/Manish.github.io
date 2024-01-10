@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DashBoard</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Poppins&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- material icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../css/dashboard.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined"> menu </span>
+        </div>
+
+        <div class="logo"><img src="../../assets/img/lpLogo.jpg" alt="" /></div>
+
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">inventory</span> LF Inventory
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()"
+            >close</span
+          >
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item1">
+            <span class="material-icons-outlined">dashboard</span> Dashboard
+          </li>
+          <li class="sidebar-list-item2">
+            <span class="material-icons-outlined">inventory_2</span> Add
+            Products
+          </li>
+
+          <li class="sidebar-list-item3">
+            <span class="material-icons-outlined">fact_check</span> Inventory
+          </li>
+
+          <li class="sidebar-list-item4">
+            <span class="material-icons-outlined"> currency_exchange </span>
+            Sales
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main-container" id="mainContent"></main>
+    </div>
+
+   
+
+    <!-- <script src="../../Script/dashboard.ts" defer></script> -->
+    <script src="./script.ts"></script>
+  </body>
+</html>
