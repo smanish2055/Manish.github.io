@@ -24,7 +24,11 @@ export const register = async (
   res: Response,
   next: NextFunction
 ) => {
+
   try {
+
+    console.log(req.body);
+    
     const user: any = req.body;
     await authService.register(user);
     res.status(HttpStatus.ACCEPTED).json({

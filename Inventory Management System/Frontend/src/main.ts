@@ -1,9 +1,11 @@
+localStorage.removeItem("test");
+const storedValue = localStorage.getItem("test");
 
-  // let html;document.querySelector<HTMLDivElement>("#app")!.innerHTML
-
+// Check if the value exists
+if (storedValue !== null) {
   window.location.href = "/src/Components/MainPage/main.html";
+} else {
+  window.location.href = "/src/Components/Register/register.html";
+}
 
-
-
-// document.querySelector<HTMLDivElement>("#app")!.innerHTML = html;
-
+// if()

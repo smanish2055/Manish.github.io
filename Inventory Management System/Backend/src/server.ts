@@ -5,9 +5,14 @@ import routes from "./routes/Index";
 import errorHandler from "./middlewares/ErrorHandler";
 import pathNotFound from "./middlewares/PathNotFound";
 import sequelize from "./configs/DbConfig";
+import cors from "cors";
 /* -------------------------- Server initialization ------------------------- */
 const app: Express = express();
 const PORT = config.serverPort;
+
+app.use(cors({origin:true,credentials:true,methods:"*"
+}));
+
 
 /* ------------------------------- Middlewares ------------------------------ */
 // Middleware to parse request body

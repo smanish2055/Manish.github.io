@@ -1,7 +1,6 @@
 <div class="main-title">
   <p class="font-weight-bold">DASHBOARD</p>
 </div>
-
 <div class="main-cards">
   <div class="card">
     <div class="card-inner" id="card-inner-id">
@@ -32,13 +31,19 @@
 
 <div class="charts">
   <div class="charts-card">
-    <p class="chart-title">Top 5 Products</p>
-    <div id="bar-chart"><canvas id="myChart" style="width:100%;max-width:600px"></canvas></div>
+    <p class="chart-title">Top 5 Earning Products</p>
+    <div><canvas id="barChart" style="width:100%;max-width:600px"></canvas></div>
   </div>
+
+   <div class="charts-card">
+    <p class="chart-title">Top 5 Higest Sold Products</p>
+    <div ><canvas id="pieChart" style="width:100%;max-width:600px"></canvas></div>
+  </div>
+ 
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
 <script type="module" src="../../Script/dashboard.ts"></script>
 
 

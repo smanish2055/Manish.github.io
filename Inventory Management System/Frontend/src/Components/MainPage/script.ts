@@ -8,6 +8,7 @@ function closeSidebar() {
   sidebar.classList.remove("sidebar-responsive");
 }
 
+
 function loadPageContent(dir: string, page: string) {
    
   const mainContent = document.getElementById("mainContent");
@@ -26,6 +27,7 @@ function loadPageContent(dir: string, page: string) {
       }
     });
 }
+
 
 // Initial load of the default page (e.g., dashboard)
 loadPageContent("Dashboard", "dashboard");
@@ -48,6 +50,12 @@ document
     loadPageContent("AddProducts", "addProduct");
   });
 
+  document
+    .querySelector<HTMLDivElement>(".sidebar-list-item3")!
+    .addEventListener("click", function () {
+    
+      loadPageContent("Sales", "sales");
+    });
 
 
 

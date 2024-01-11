@@ -1,4 +1,4 @@
-import { Op } from 'sequelize';
+// import { Op } from 'sequelize';
 import {User } from '../models/User';
 
 export const getAllUsers = async () => {

@@ -1,3 +1,24 @@
+.username {
+  /* display: block; */
+  padding: 8px 16px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #007bff; 
+}
+
+/* Style for the first dropdown item (assuming "MANISH" is the first item) */
+.username {
+  color: #007bff; /* Change the color to your preferred one */
+}
+
+.logout {
+  color: #dc3545;
+  border: 1px solid gainsboro;
+  cursor: pointer;
+   padding: 4px 8px;
+  font-weight: 400;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -118,13 +139,34 @@ body {
 
 /* ------------------------------ media queries ----------------------------- */
 /* mediunm <=992px */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1400px) {
   .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 3fr;
     grid-template-areas:
       "header"
       "main";
+  }
+  .charts-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #barChart {
+    margin: 0 auto;
+  }
+
+  #pieChart {
+    margin: 0 auto;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
   #sidebar {
     display: none;
@@ -144,6 +186,10 @@ body {
     margin-top: 20px;
     margin-left: 10px;
     font-size: xx-large;
+  }
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
   }
 }
 
