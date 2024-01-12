@@ -24,7 +24,7 @@
   <body>
     <div class="grid-container">
       <header class="header">
-        <div class="menu-icon" onclick="openSidebar()">
+        <div class="menu-icon" id="opensidebar">
           <span class="material-icons-outlined"> menu </span>
         </div>
 
@@ -33,7 +33,7 @@
         <div class="header-right">
           <span class="material-icons-outlined">notifications</span>
           <span class="username">MANISH</span>
-          <button class="logout">Logout</button>
+          <button class="logout" id="logout">Logout</button>
         </div>
       </header>
       <aside id="sidebar">
@@ -41,7 +41,7 @@
           <div class="sidebar-brand">
             <span class="material-icons-outlined">inventory</span> LF Inventory
           </div>
-          <span class="material-icons-outlined" onclick="closeSidebar()"
+          <span class="material-icons-outlined" id="closesidebar"
             >close</span
           >
         </div>
@@ -68,6 +68,7 @@
     </div>
 
     <!-- <script src="../../Script/dashboard.ts" defer></script> -->
-    <script src="./script.ts"></script>
+    <script type="module" src="./script.ts"></script>
+    
   </body>
 </html>

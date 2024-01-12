@@ -1,8 +1,8 @@
-localStorage.removeItem("test");
-const storedValue = localStorage.getItem("test");
+
+const jwt = localStorage.getItem("jwt");
 
 // Check if the value exists
-if (storedValue !== null) {
+if (jwt !== null) {
   window.location.href = "/src/Components/MainPage/main.html";
 } else {
   window.location.href = "/src/Components/Register/register.html";

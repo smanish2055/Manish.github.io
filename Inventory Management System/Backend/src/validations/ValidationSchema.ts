@@ -29,23 +29,6 @@ export const incomeBodySchema = Joi.object({
     amount : Joi.number().required(),
 })
 
-export const incomeQuerySchema = Joi.object({
-    id: Joi.string(),
-    source : Joi.string(),
-    date : Joi.date(),
-})
 
-export const expenseBodySchema = Joi.object({
-    amount : Joi.number().required(),
-    date : Joi.date().required(),
-    description : Joi.string().default(""),
-    category : Joi.string().required(),
-})
 
-export const expenseQuerySchema = Joi.object({
-    id : Joi.string(),
-    date : Joi.date(),
-    category : Joi.string(),
-    amount : Joi.number(),
-    description: Joi.string(),
-})
+

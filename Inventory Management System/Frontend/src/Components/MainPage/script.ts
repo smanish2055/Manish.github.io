@@ -1,18 +1,42 @@
-// Function to load content for different pages
+import createGetRequest from "../../Repositries/GetRequest";
+const opensidebar = document.getElementById("opensidebar") as HTMLElement;
+const closesidebar = document.getElementById("closesidebar") as HTMLElement;
+const logout = document.getElementById("logout") as HTMLElement;
 const sidebar = document.getElementById("sidebar") as HTMLElement;
-function openSidebar() {
+const username= document.querySelector(".username") as HTMLElement;
+opensidebar.addEventListener("click", () => {
   sidebar.classList.add("sidebar-responsive");
-}
+});
 
-function closeSidebar() {
+closesidebar.addEventListener("click", () => {
   sidebar.classList.remove("sidebar-responsive");
-}
+});
 
+logout.addEventListener("click", () => {
+    const userConfirmed = confirm("Are you sure you want to log out?");
+    if (userConfirmed) {
+      localStorage.removeItem("jwt");
+      window.location.href = "../Login/login.html";
+    }
+});
+
+const data = await createGetRequest("/dashboard/");
+console.log(data);
+
+const loadData = async (data: any) => {
+  try {
+    if (data) {
+      username.innerHTML=data.username;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+loadData(data);
 
 function loadPageContent(dir: string, page: string) {
-   
   const mainContent = document.getElementById("mainContent");
-  fetch(`../${dir}/${page}.html`) 
+  fetch(`../${dir}/${page}.html`)
     .then((response) => response.text())
     .then((html) => {
       if (mainContent) {
@@ -28,13 +52,13 @@ function loadPageContent(dir: string, page: string) {
     });
 }
 
+// function logout() {
+//   localStorage.removeItem("jwt");
+//   window.location.href = "../Login/login.html";
+// }
 
 // Initial load of the default page (e.g., dashboard)
 loadPageContent("Dashboard", "dashboard");
-
-
-
-
 
 // Example: Change content when clicking on "Add Products" in the sidebar
 document
@@ -50,40 +74,38 @@ document
     loadPageContent("AddProducts", "addProduct");
   });
 
-  document
-    .querySelector<HTMLDivElement>(".sidebar-list-item3")!
-    .addEventListener("click", function () {
-    
-      loadPageContent("Sales", "sales");
-    });
+document
+  .querySelector<HTMLDivElement>(".sidebar-list-item3")!
+  .addEventListener("click", function () {
+    loadPageContent("Sales", "sales");
+  });
 
+function nodeScriptReplace(node: any) {
+  if (nodeScriptIs(node) === true) {
+    node.parentNode.replaceChild(nodeScriptClone(node), node);
+  } else {
+    var i = -1,
+      children = node.childNodes;
+    while (++i < children.length) {
+      nodeScriptReplace(children[i]);
+    }
+  }
 
-
-
-function nodeScriptReplace(node:any) {
-        if ( nodeScriptIs(node) === true ) {
-                node.parentNode.replaceChild( nodeScriptClone(node) , node );
-        }
-        else {
-                var i = -1, children = node.childNodes;
-                while ( ++i < children.length ) {
-                      nodeScriptReplace( children[i] );
-                }
-        }
-
-        return node;
+  return node;
 }
-function nodeScriptClone(node:any){
-        var script  = document.createElement("script");
-        script.text = node.innerHTML;
+function nodeScriptClone(node: any) {
+  var script = document.createElement("script");
+  script.text = node.innerHTML;
 
-        var i = -1, attrs = node.attributes, attr;
-        while ( ++i < attrs.length ) {                                    
-              script.setAttribute( (attr = attrs[i]).name, attr.value );
-        }
-        return script;
+  var i = -1,
+    attrs = node.attributes,
+    attr;
+  while (++i < attrs.length) {
+    script.setAttribute((attr = attrs[i]).name, attr.value);
+  }
+  return script;
 }
 
-function nodeScriptIs(node:any) {
-        return node.tagName === 'SCRIPT';
+function nodeScriptIs(node: any) {
+  return node.tagName === "SCRIPT";
 }

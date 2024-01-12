@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 <div class="main-title">
   <p class="font-weight-bold">DASHBOARD</p>
 </div>
@@ -7,7 +9,7 @@
       <p class="text-primary">NUMBER OF PRODUCTS</p>
       <span class="material-icons-outlined text-blue">inventory_2</span>
     </div>
-    <span class="text-primary font-weight-bold">349</span>
+    <span class="text-primary font-weight-bold" id="product-number"></span>
   </div>
 
   <div class="card">
@@ -17,7 +19,7 @@
         format_list_numbered
       </span>
     </div>
-    <span class="text-primary font-weight-bold">249</span>
+    <span class="text-primary font-weight-bold" id="quantity-sold"></span>
   </div>
 
   <div class="card">
@@ -25,27 +27,27 @@
       <p class="text-primary">TOTAL PROFIT</p>
       <span class="material-icons-outlined text-green"> attach_money </span>
     </div>
-    <span class="text-primary font-weight-bold">$ 1249</span>
+    <span class="text-primary font-weight-bold" id="total-proft">$ </span>
   </div>
 </div>
 
 <div class="charts">
   <div class="charts-card">
     <p class="chart-title">Top 5 Earning Products</p>
-    <div><canvas id="barChart" style="width:100%;max-width:600px"></canvas></div>
+    <div>
+      <div class="chart-container1" role="alert"></div>
+      <canvas id="barChart" style="width: 100%; max-width: 600px"></canvas>
+    </div>
   </div>
 
-   <div class="charts-card">
-    <p class="chart-title">Top 5 Higest Sold Products</p>
-    <div ><canvas id="pieChart" style="width:100%;max-width:600px"></canvas></div>
+  <div class="charts-card">
+    <p class="chart-title">Top 5 Selling Items</p>
+    <div>
+      <div class="chart-container2" role="alert"></div>
+      <canvas id="pieChart" style="width: 60%; max-width: 600px"></canvas>
+    </div>
   </div>
- 
 </div>
-
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
 <script type="module" src="../../Script/dashboard.ts"></script>
-
-
-
-

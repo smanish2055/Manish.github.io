@@ -13,19 +13,18 @@
   />
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button" id="searchButton">
-      <i class="bi bi-search text-white" onclick="addProducts()">Add Product</i>
-      <!-- Bootstrap Icons search icon -->
+      <i class="bi bi-search text-white" id="addproducts">Add Product</i>
     </button>
   </div>
 </div>
 
 <div class="addproduct-container">
+  <div id="message-container" class="mt-3"></div>
   <h2 class="text-center mb-4">Add Products</h2>
 
   <!-- Add Product Form -->
-  <form>
+  <form was-validated>
     <div class="row">
-      <!-- Left Column - Product Name, Quantity, Per Product Price -->
       <div class="col-md-6">
         <!-- Product Name -->
         <div class="form-group">
@@ -85,8 +84,10 @@
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Add Product</button>
+    <button type="submit" class="btn btn-primary" id="product-submit">
+      Add Product
+    </button>
   </form>
 </div>
 
-<script src="../../Script/addproduct.ts"></script>
+<script type="module" src="../../Script/addproduct.ts"></script>
