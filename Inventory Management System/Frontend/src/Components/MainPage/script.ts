@@ -1,9 +1,14 @@
 import createGetRequest from "../../Repositries/GetRequest";
+import load from "../../Script/addproduct";
+const displayList = await createGetRequest("/product-list/");
+
 const opensidebar = document.getElementById("opensidebar") as HTMLElement;
 const closesidebar = document.getElementById("closesidebar") as HTMLElement;
 const logout = document.getElementById("logout") as HTMLElement;
 const sidebar = document.getElementById("sidebar") as HTMLElement;
-const username= document.querySelector(".username") as HTMLElement;
+const username = document.querySelector(".username") as HTMLElement;
+// const sideAddProduct = document.getElementById("sideAddProduct") as HTMLElement;
+
 opensidebar.addEventListener("click", () => {
   sidebar.classList.add("sidebar-responsive");
 });
@@ -13,11 +18,11 @@ closesidebar.addEventListener("click", () => {
 });
 
 logout.addEventListener("click", () => {
-    const userConfirmed = confirm("Are you sure you want to log out?");
-    if (userConfirmed) {
-      localStorage.removeItem("jwt");
-      window.location.href = "../Login/login.html";
-    }
+  const userConfirmed = confirm("Are you sure you want to log out?");
+  if (userConfirmed) {
+    localStorage.removeItem("jwt");
+    window.location.href = "../Login/login.html";
+  }
 });
 
 const data = await createGetRequest("/dashboard/");
@@ -26,7 +31,7 @@ console.log(data);
 const loadData = async (data: any) => {
   try {
     if (data) {
-      username.innerHTML=data.username;
+      username.innerHTML = data.username;
     }
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -71,7 +76,9 @@ document
 document
   .querySelector<HTMLDivElement>(".sidebar-list-item2")!
   .addEventListener("click", function () {
+     load(displayList);
     loadPageContent("AddProducts", "addProduct");
+   
   });
 
 document
@@ -79,6 +86,9 @@ document
   .addEventListener("click", function () {
     loadPageContent("Sales", "sales");
   });
+  
+
+export default loadPageContent;
 
 function nodeScriptReplace(node: any) {
   if (nodeScriptIs(node) === true) {

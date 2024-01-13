@@ -1,4 +1,12 @@
-<link
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link>
+    <link
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 />
@@ -108,58 +116,8 @@
   <!-- Product List Table -->
 </div>
 
-<div class="editproduct-container" style="display: none">
-  <form id="editProduct">
-    <div class="form-group">
-      <label for="editProductName">Edit Product Name:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="editProductName"
-        placeholder="Enter Product Name"
-      />
-    </div>
-    <div class="form-group">
-      <label for="editQuantity">Edit Quantity:</label>
-      <input
-        type="number"
-        class="form-control"
-        id="editQuantity"
-        placeholder="Enter Quantity"
-      />
-    </div>
-    <div class="form-group">
-      <label for="editPerProductPrice">Edit Per Product Price:</label>
-      <input
-        type="number"
-        class="form-control"
-        id="editPerProductPrice"
-        placeholder="Enter Per Product Price"
-      />
-    </div>
-    <div class="form-group">
-      <label for="editProductDescription">Edit Product Description:</label>
-      <textarea
-        class="form-control"
-        id="editProductDescription"
-        rows="3"
-        placeholder="Enter Product Description"
-      ></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" id="editSubmit">Update Product</button>
-  </form>
-</div>
-
-<!-- <script>
-  const editProductSection = document.querySelector(".editproduct-container");
-  const productList = document.getElementById("productList");
-  
-  const editProduct = (p) => {
-    editProductSection.style.display = "block";
-    productList.style.display = "none";
-    localStorage.setItem("productid", p);
-  };
-</script> -->
-
 <script type="module" src="../../Script/addproduct.ts"></script>
 <script type="module" src="../../Script/getproductlist.ts"></script>
+
+</link>
+</html>
