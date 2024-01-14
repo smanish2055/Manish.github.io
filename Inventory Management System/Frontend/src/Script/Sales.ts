@@ -25,14 +25,13 @@ const quantitySold = document.getElementById(
 const pricePerItem = document.getElementById(
   "pricePerItem"
 ) as HTMLInputElement;
-const saleDate = document.getElementById("saleDate") as HTMLInputElement;
 
+const saleDate = document.getElementById("saleDate") as HTMLInputElement;
 const submitSales = document.getElementById("submitSales") as HTMLButtonElement;
 const formFeedback = document.getElementById("fromFeedback");
 
 submitSales.addEventListener("click", async (event) => {
   event.preventDefault();
-
   const productNameInput = productName.value.trim();
   const quantitySoldInput = parseInt(quantitySold.value.trim());
   const pricePerItemInput = parseInt(pricePerItem.value.trim());
@@ -90,9 +89,6 @@ const validateForm = (
     displayErrorMessage("Sale date is required.");
     return false;
   }
-
-  // You can add more specific checks for the saleDate format, if needed.
-
   return true;
 };
 

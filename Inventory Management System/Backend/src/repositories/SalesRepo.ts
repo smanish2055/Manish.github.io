@@ -6,16 +6,22 @@ export const AddSales = async (user_id: number, salesproduct: Sales) => {
     salesproduct;
 
   try {
+    // Find the product by name
     const product = await Product.findOne({
       where: { product_name: product_name },
     });
 
     if (product) {
-      // Update product quantity based on the sale
-      product.product_quantity -= quantity_sold;
-      await product.save();
+      // Check if the available quantity is sufficient
+      if (product.product_quantity >= quantity_sold && quantity_sold > 0) {
+        // Update product quantity based on the sale
+        product.product_quantity -= quantity_sold;
+        await product.save();
+      } else {
+        throw new Error("Insufficient quantity available for sale.");
+      }
     } else {
-      throw new Error("Product not found");
+      throw new Error(`Product with name '${product_name}' not found.`);
     }
 
     const newSalesProduct = {
@@ -29,12 +35,11 @@ export const AddSales = async (user_id: number, salesproduct: Sales) => {
         product.per_product_price * quantity_sold,
       sale_date: sale_date,
     };
-
     // Create a new Sale with the combined attributes
     const newSale = await Sales.create(newSalesProduct);
     return newSale;
-  } catch (error) {
-    throw new Error(`there is no ${product_name} product registered for sale`);
+  } catch (error:any) {
+    throw new Error(`Failed to add sales: ${error.message}`);
   }
 };
 

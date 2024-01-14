@@ -194,7 +194,8 @@ table?.addEventListener("click", (event) => {
     const productId = parseInt(
       editButton.getAttribute("data-product-id") || "null"
     );
-
+    editProductSection.style.display = "block";
+    productList.style.display = "none";
     editProduct(productId);
   } else if (deleteButton) {
     const productId = parseInt(
@@ -205,47 +206,50 @@ table?.addEventListener("click", (event) => {
   }
 });
 
-const editProduct = (productId: number) => {
-  // Create an object with the fields to update
-  const updatedData = {
-    name: editProductName.value.trim(),
-    quantity: parseInt(editQuantity.value),
-    perProductPrice: parseInt(perProductPrice.value),
-    description: productDescription.value.trim(),
-  };
-  console.log(productId);
+const editProduct = async (productId: number) => {
+  const existingProductData = await createGetRequest(
+    `/product-list/${productId}`
+  );
+console.log(existingProductData)
+  // Populate the form with existing data
+  editProductName.value = existingProductData.product_name;
+  productDescription.value = existingProductData.product_desc;
+  editQuantity.value = existingProductData.product_quantity.toString();
+  perProductPrice.value = existingProductData.per_product_price.toString();
 
-  editProductSection.style.display = "block";
-  productList.style.display = "none";
-
-  editSubmit.addEventListener("click", function (event) {
+  editSubmit.addEventListener("click", async function (event) {
     event.preventDefault();
-    callEditProduct(updatedData, productId);
-  });
-};
 
-const callEditProduct = async (updatedData: any, productId: any) => {
-  try {
-    const response = await updateRequest(
-      `/product-list/${productId}`,
-      updatedData
-    );
+    // Retrieve values from the form
+    const updatedData = {
+      product_name: editProductName.value.trim(),
+      product_desc: productDescription.value.trim(),
+      product_quantity: parseInt(editQuantity.value),
+      per_product_price: parseInt(perProductPrice.value),
+    };
 
-    if (response.status === HttpStatusCode.Accepted) {
-      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+    try {
+      const response = await updateRequest(
+        `/product-list/${productId}`,
+        updatedData
+      );
+
+      if (response.status === HttpStatusCode.Accepted) {
+        messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+        setTimeout(() => {
+          messageContainer1!.innerHTML = "";
+          // location.reload();
+        }, 1000);
+      }
+    } catch (error) {
+      console.log(error);
+      messageContainer3!.innerHTML =
+        '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
       setTimeout(() => {
-        messageContainer1!.innerHTML = "";
-        location.reload();
+        messageContainer3!.innerHTML = "";
       }, 1000);
     }
-  } catch (error) {
-    console.log(error);
-    messageContainer3!.innerHTML =
-      '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
-    setTimeout(() => {
-      messageContainer3!.innerHTML = "";
-    }, 1000);
-  }
+  });
 };
 
 // delete product

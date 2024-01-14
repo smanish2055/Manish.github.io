@@ -25,9 +25,10 @@ export const getProductById = async (
   res: Response,
   next: NextFunction
 ) => {
-  const user_id = res.locals.user.id;
+  // const user_id = res.locals.user.id;
+  const id = +req.params.id;
   try {
-    const product: any = await userService.getProductById(user_id);
+    const product: any = await userService.getProductById(id);
     res.status(HttpStatus.ACCEPTED).json({
       message: "User Fetch Success",
       result: product,

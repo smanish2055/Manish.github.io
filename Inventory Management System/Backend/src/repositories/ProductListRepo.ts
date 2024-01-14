@@ -21,25 +21,29 @@ export const getAllProductList = async (user_id: number) => {
 };
 
 export const getProductById = async (id: number) => {
-  const product = await Product.findByPk(id);
+  const product = await Product.findOne({
+    where: { product_id: id },
+  });
+
   if (!product) {
     throw new NotFoundError(`Product with id ${id} not found`);
   }
+
   return product;
 };
 
 export const updateProductById = async (id: number, body: Product) => {
   const { product_name, product_desc, product_quantity, per_product_price } =
     body;
-  await getProductById(id);
+  // await getProductById(id);
 
   const updatedProduct = await Product.update(
     {
       product_name: product_name,
       product_desc: product_desc,
-      product_quantity: product_quantity,
-      per_product_price: per_product_price,
-      // total_Cost: product_quantity+per_product_price
+      product_quantity: +product_quantity,
+      per_product_price: +per_product_price,
+      total_Cost: product_quantity * per_product_price,
     },
     {
       where: { product_id: id }, //key value pairs
