@@ -19,12 +19,21 @@ const submitProduct = document.getElementById("product-submit") as HTMLElement;
 const messageContainer1 = document.getElementById("message-container1");
 const messageContainer2 = document.getElementById("message-container2");
 const table = document.querySelector("table");
+const closeAddProductForm = document.getElementById("closeAddProductForm");
 
 addProduct.addEventListener("click", () => {
   if (container) {
     container.style.display = "block";
     table!.style.display = "none";
   }
+});
+
+closeAddProductForm!.addEventListener("click", function () {
+  // container!.style.display = "none";
+  // table!.style.display = "block";
+  setTimeout(() => {
+    location.reload();
+  }, 100);
 });
 
 submitProduct.addEventListener("click", (event) => {
@@ -79,13 +88,12 @@ const addProductToDb = async (
       quantity.value = "";
       description.value = "";
 
-      container!.style.display = "none";
-      table!.style.display = "block";
+      // container!.style.display = "none";
+      // table!.style.display = "block";
 
       // loadPageContent("AddProducts", "addProduct");
 
-      messageContainer1!.innerHTML =
-        '<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">Product added successfully!</div>';
+      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
 
       setTimeout(() => {
         messageContainer1!.innerHTML = "";
@@ -151,10 +159,30 @@ const loadData = async (data: any) => {
     console.error("Error fetching data:", error);
   }
 };
-// loadData(data);
-export default loadData;
+loadData(data);
+// export default loadData;
 
 // editing  product
+
+const productList = document.getElementById("productList") as HTMLElement;
+const editSubmit = document.getElementById("editSubmit") as HTMLElement;
+// Retrieve values from the form
+const editProductName = document.getElementById(
+  "editProductName"
+) as HTMLInputElement;
+const editQuantity = document.getElementById(
+  "editQuantity"
+) as HTMLInputElement;
+const perProductPrice = document.getElementById(
+  "editPerProductPrice"
+) as HTMLInputElement;
+const productDescription = document.getElementById(
+  "editProductDescription"
+) as HTMLInputElement;
+const editProductSection = document.querySelector(
+  ".editproduct-container"
+) as HTMLElement;
+const messageContainer3 = document.getElementById("messageContainer3");
 
 import updateRequest from "../Repositries/UpdateRequest";
 table?.addEventListener("click", (event) => {
@@ -177,32 +205,13 @@ table?.addEventListener("click", (event) => {
   }
 });
 
-const productList = document.getElementById("productList") as HTMLElement;
-const editSubmit = document.getElementById("editSubmit") as HTMLElement;
-// Retrieve values from the form
-const editProductName = document.getElementById(
-  "editProductName"
-) as HTMLInputElement;
-const editQuantity = document.getElementById(
-  "editQuantity"
-) as HTMLInputElement;
-const perProductPrice = document.getElementById(
-  "editPerProductPrice"
-) as HTMLInputElement;
-const productDescription = document.getElementById(
-  "editProductDescription"
-) as HTMLInputElement;
-const editProductSection = document.querySelector(
-  ".editproduct-container"
-) as HTMLElement;
-
 const editProduct = (productId: number) => {
   // Create an object with the fields to update
   const updatedData = {
-    name: editProductName.value,
-    quantity: editQuantity.value,
-    perProductPrice: perProductPrice.value,
-    description: productDescription.value,
+    name: editProductName.value.trim(),
+    quantity: parseInt(editQuantity.value),
+    perProductPrice: parseInt(perProductPrice.value),
+    description: productDescription.value.trim(),
   };
   console.log(productId);
 
@@ -223,10 +232,19 @@ const callEditProduct = async (updatedData: any, productId: any) => {
     );
 
     if (response.status === HttpStatusCode.Accepted) {
-      console.log(response);
+      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+      setTimeout(() => {
+        messageContainer1!.innerHTML = "";
+        location.reload();
+      }, 1000);
     }
   } catch (error) {
     console.log(error);
+    messageContainer3!.innerHTML =
+      '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
+    setTimeout(() => {
+      messageContainer3!.innerHTML = "";
+    }, 1000);
   }
 };
 
@@ -237,10 +255,19 @@ const deleteProduct = async (id: number) => {
   try {
     const response = await createDeleteRequest(`/product-list/${id}`);
     if (response.status === HttpStatusCode.Accepted) {
-      console.log(response);
-      renderProductList(data);
+      // renderProductList(data);
+
+      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+      setTimeout(() => {
+        messageContainer1!.innerHTML = "";
+        location.reload();
+      }, 1000);
     }
   } catch (error) {
-    console.log(error);
+    messageContainer3!.innerHTML =
+      '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
+    setTimeout(() => {
+      messageContainer3!.innerHTML = "";
+    }, 1000);
   }
 };

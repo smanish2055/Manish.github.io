@@ -1,6 +1,6 @@
 import createGetRequest from "../../Repositries/GetRequest";
-import load from "../../Script/addproduct";
-const displayList = await createGetRequest("/product-list/");
+// import load from "../../Script/addproduct";
+// const displayList = await createGetRequest("/product-list/");
 
 const opensidebar = document.getElementById("opensidebar") as HTMLElement;
 const closesidebar = document.getElementById("closesidebar") as HTMLElement;
@@ -39,7 +39,7 @@ const loadData = async (data: any) => {
 };
 loadData(data);
 
-function loadPageContent(dir: string, page: string) {
+async function loadPageContent(dir: string, page: string) {
   const mainContent = document.getElementById("mainContent");
   fetch(`../${dir}/${page}.html`)
     .then((response) => response.text())
@@ -75,10 +75,9 @@ document
 
 document
   .querySelector<HTMLDivElement>(".sidebar-list-item2")!
-  .addEventListener("click", function () {
-     load(displayList);
-    loadPageContent("AddProducts", "addProduct");
-   
+  .addEventListener("click", async function () {
+     loadPageContent("AddProducts", "addProduct");
+    // await load(displayList);
   });
 
 document
@@ -86,9 +85,8 @@ document
   .addEventListener("click", function () {
     loadPageContent("Sales", "sales");
   });
-  
 
-export default loadPageContent;
+// export default loadPageContent;
 
 function nodeScriptReplace(node: any) {
   if (nodeScriptIs(node) === true) {

@@ -2,13 +2,22 @@ import Product from "../models/Product";
 import NotFoundError from "../errors/NotFound";
 
 export const getAllProductList = async (user_id: number) => {
-  const allProducts = await Product.findAll({
-    where: { user_id: user_id },
-  });
-  if (!allProducts) {
-    throw new NotFoundError(`Product not found`);
+  try {
+    const allProducts = await Product.findAll({
+      where: { user_id: user_id },
+      order: [["createdAt", "DESC"]], // Order by product_id in ascending order
+    });
+
+    if (!allProducts || allProducts.length === 0) {
+      throw new NotFoundError(`Product not found`);
+    }
+
+    return allProducts;
+  } catch (error) {
+    // Handle other errors here
+    console.error("Error fetching product list:", error);
+    throw error; // Rethrow the error for handling at a higher level if needed
   }
-  return allProducts;
 };
 
 export const getProductById = async (id: number) => {
@@ -19,19 +28,18 @@ export const getProductById = async (id: number) => {
   return product;
 };
 
-
-
 export const updateProductById = async (id: number, body: Product) => {
-  const { product_name, product_desc, product_quantity, per_product_price,total_Cost } =
+  const { product_name, product_desc, product_quantity, per_product_price } =
     body;
   await getProductById(id);
+
   const updatedProduct = await Product.update(
     {
       product_name: product_name,
       product_desc: product_desc,
       product_quantity: product_quantity,
       per_product_price: per_product_price,
-      total_Cost: total_Cost,
+      // total_Cost: product_quantity+per_product_price
     },
     {
       where: { product_id: id }, //key value pairs

@@ -8,6 +8,6 @@ const router = Router();
 
 router.post('/', salesController);
 router.get("/getsales", getSalesController);
-router.delete("/deletesale/:id", deleteSalesController);
+router.delete("/delete-sale/:id", deleteSalesController);
 
 export default router;

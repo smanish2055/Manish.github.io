@@ -29,12 +29,7 @@ export const salesController = async(
 
 export const getSalesController = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // const salesproduct: Sales = req.body;
-
-    // if (!res.locals.user) {
-    //   // Handle the case when the user is not authenticated
-    //   return res.status(401).json({ error: "Unauthorized" });
-    // }
+  
     const user_id = res.locals.user.id;
     const response = await salesService.getSalesService(user_id);
     res.status(HttpStatus.ACCEPTED).json({

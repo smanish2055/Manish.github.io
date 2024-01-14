@@ -34,8 +34,7 @@ export const AddSales = async (user_id: number, salesproduct: Sales) => {
     const newSale = await Sales.create(newSalesProduct);
     return newSale;
   } catch (error) {
-    console.error("Error adding sales:", error);
-    throw error;
+    throw new Error(`there is no ${product_name} product registered for sale`);
   }
 };
 
