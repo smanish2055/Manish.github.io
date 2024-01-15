@@ -82,16 +82,11 @@ const addProductToDb = async (
     messageContainer2!.innerHTML = "";
     const response = await createPostRequest("/add-product", addedProduct);
 
-    if (response.status === HttpStatusCode.Accepted) {
+    if (response) {
       productName.value = "";
       quantityPrice.value = "";
       quantity.value = "";
       description.value = "";
-
-      // container!.style.display = "none";
-      // table!.style.display = "block";
-
-      // loadPageContent("AddProducts", "addProduct");
 
       messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
 
@@ -122,8 +117,21 @@ const addProductToDb = async (
 
 // Reading data from the server
 import createGetRequest from "../Repositries/GetRequest";
-const renderProductList = (productList: any) => {
+const renderProductList = async () => {
+  try {
+    const productList = await createGetRequest("/product-list/");
+    displayProductList(productList);
+  } catch (error: any) {
+    console.error("Error fetching sales data:", error.message);
+  }
+};
+renderProductList();
+
+const displayProductList = (productList: any[]) => {
   const productListElement = document.getElementById("productList");
+
+  productListElement!.innerHTML = "";
+
   productList.forEach((product: any) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -148,18 +156,18 @@ const renderProductList = (productList: any) => {
   });
 };
 
-const data = await createGetRequest("/product-list/");
-const loadData = async (data: any) => {
-  try {
-    if (data) {
-      console.log(data);
-      renderProductList(data);
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
-loadData(data);
+// const data = await createGetRequest("/product-list/");
+// const loadData = async (data: any) => {
+//   try {
+//     if (data) {
+//       console.log(data);
+//       renderProductList(data);
+//     }
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// };
+// loadData(data);
 // export default loadData;
 
 // editing  product
@@ -210,7 +218,6 @@ const editProduct = async (productId: number) => {
   const existingProductData = await createGetRequest(
     `/product-list/${productId}`
   );
-console.log(existingProductData)
   // Populate the form with existing data
   editProductName.value = existingProductData.product_name;
   productDescription.value = existingProductData.product_desc;
@@ -234,13 +241,11 @@ console.log(existingProductData)
         updatedData
       );
 
-      if (response.status === HttpStatusCode.Accepted) {
-        messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
-        setTimeout(() => {
-          messageContainer1!.innerHTML = "";
-          // location.reload();
-        }, 1000);
-      }
+      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+      setTimeout(() => {
+        messageContainer1!.innerHTML = "";
+        // location.reload();
+      }, 1000);
     } catch (error) {
       console.log(error);
       messageContainer3!.innerHTML =
@@ -258,15 +263,13 @@ import createDeleteRequest from "../Repositries/DeleteRequest";
 const deleteProduct = async (id: number) => {
   try {
     const response = await createDeleteRequest(`/product-list/${id}`);
-    if (response.status === HttpStatusCode.Accepted) {
-      // renderProductList(data);
-
-      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
-      setTimeout(() => {
-        messageContainer1!.innerHTML = "";
-        location.reload();
-      }, 1000);
-    }
+    renderProductList();
+    // messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+    // setTimeout(() => {
+    //   messageContainer1!.innerHTML = "";
+    //   // location.reload();
+    // }, 1000);
+    // }
   } catch (error) {
     messageContainer3!.innerHTML =
       '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';

@@ -1,4 +1,5 @@
 import createPostRequest from "../Repositries/PostRequest";
+import createGetRequest from "../Repositries/GetRequest";
 import { HttpStatusCode } from "axios";
 
 const addSalesButton = document.getElementById(
@@ -127,5 +128,76 @@ const addSales = async (
   } catch (err: any) {
     displayErrorMessage(err.response.data.message);
     throw err;
+  }
+};
+
+// Assuming createGetRequest is defined as before
+
+const renderSalesData = async () => {
+  try {
+    const response = await createGetRequest("/sales/");
+    console.log("Response:", response);
+    // Call a function to dynamically display sales data
+    displaySalesData(response);
+  } catch (error: any) {
+    console.error("Error fetching sales data:", error.message);
+  }
+};
+renderSalesData();
+
+const displaySalesData = (salesData: any[]) => {
+  const salesTableBody = document.getElementById("salesTableBody");
+  // Clear existing content
+  salesTableBody!.innerHTML = "";
+
+  // Loop through the sales data and create table rows
+  salesData.forEach((sale) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${sale.sales_id}</td>
+      <td>${sale.product_name}</td>
+      <td>${sale.quantity_sold}</td>
+      <td>${sale.price_per_item}</td>
+      <td>${sale.total_sales_price}</td>
+      <td>${sale.sales_profit}</td>
+      <td>${sale.sale_date}</td>
+      <td>
+        <button class="btn btn-danger btn-sm delete-button" data-sales-id="${sale.sales_id}">Delete</button>
+      </td>
+    `;
+    salesTableBody!.appendChild(row);
+  });
+};
+
+const table = document.querySelector("table");
+table?.addEventListener("click", (event) => {
+  const target = event.target as HTMLElement;
+  const deleteButton = target.closest(".delete-button");
+  const salesId = deleteButton!.getAttribute("data-sales-id");
+
+  if (salesId !== null) {
+    const salesIdNumber = parseInt(salesId);
+    console.log(salesIdNumber);
+    handleDeleteSales(salesIdNumber);
+  }
+});
+
+import createDeleteRequest from "../Repositries/DeleteRequest";
+
+const handleDeleteSales = async (id: number) => {
+  try {
+    await createDeleteRequest(`/sales/${id}`);
+    // console.log(response.data.message);
+    // messageContainer1!.innerHTML = `Sale with ID ${id} ${response.data.message}.`;
+    console.log(`Sale with ID ${id} deleted successfully.`);
+    // Fetch and display updated sales data after deletion
+    renderSalesData();
+  } catch (error: any) {
+    console.log(error);
+    // messageContainer2!.innerHTML =
+    // `Sale with ID ${id} ${error.data.message}.`;
+    // setTimeout(() => {
+    //   messageContainer3!.innerHTML = "";
+    // }, 1000);
   }
 };

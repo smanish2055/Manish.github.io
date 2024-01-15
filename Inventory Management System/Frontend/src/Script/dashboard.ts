@@ -77,8 +77,6 @@ const barChartFn = (topProducts: any) => {
 };
 
 const pieChartFn = (topQuantitySold: any) => {
-  // pie charts
-
   var xValues = [
     topQuantitySold[0].product_name,
     topQuantitySold[1].product_name,
@@ -95,17 +93,14 @@ const pieChartFn = (topQuantitySold: any) => {
   ];
   var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
 
-  var max = Math.max(...yValues);
-  var percentageValues = yValues.map((value) => (value / max) * 100);
-
   new Chart("pieChart", {
-    type: "pie",
+    type: "doughnut",
     data: {
       labels: xValues,
       datasets: [
         {
           backgroundColor: barColors,
-          data: percentageValues,
+          data: yValues,
         },
       ],
     },
@@ -114,6 +109,15 @@ const pieChartFn = (topQuantitySold: any) => {
         title: {
           display: true,
           text: "Number of Product 2024",
+        },
+        tooltip: {
+          callbacks: {
+            label: (context) => {
+              const label = context.label || "";
+              const value = context.parsed || 0;
+              return `${label}: ${value}`;
+            },
+          },
         },
       },
     },

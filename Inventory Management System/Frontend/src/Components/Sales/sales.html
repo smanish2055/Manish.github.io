@@ -4,6 +4,9 @@
 />
 
 <div class="container mt-4">
+  <div id="messageContainer1"></div>
+  <div id="messageContainer2"></div>
+
   <div class="row justify-content-center">
     <div class="col-md-6">
       <!-- Search Bar and Add Sales Button -->
@@ -35,7 +38,23 @@
     </div>
   </div>
 
-
+  <!-- Add an id to your table body -->
+  <table id="salesTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Quantity Sold</th>
+        <th>Price Per Item</th>
+        <th>Total Sold Price</th>
+        <th>Total Profit</th>
+        <th>Sold Date</th>
+      </tr>
+    </thead>
+    <tbody id="salesTableBody">
+      <!-- Data will be dynamically inserted here -->
+    </tbody>
+  </table>
 
   <!-- Sales Form -->
   <div class="mt-4 mx-auto col-md-6" id="salesForm">

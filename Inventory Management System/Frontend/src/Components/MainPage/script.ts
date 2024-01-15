@@ -1,5 +1,5 @@
 import createGetRequest from "../../Repositries/GetRequest";
-// import load from "../../Script/addproduct";
+// import { fetchSalesData } from "../../Script/addproduct";
 // const displayList = await createGetRequest("/product-list/");
 
 const opensidebar = document.getElementById("opensidebar") as HTMLElement;
@@ -75,8 +75,8 @@ document
 
 document
   .querySelector<HTMLDivElement>(".sidebar-list-item2")!
-  .addEventListener("click", async function () {
-     loadPageContent("AddProducts", "addProduct");
+  .addEventListener("click", function () {
+    loadPageContent("AddProducts", "addProduct");
     // await load(displayList);
   });
 

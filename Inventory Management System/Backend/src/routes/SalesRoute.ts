@@ -6,8 +6,8 @@ import {
 } from "../controllers/SalesController";
 const router = Router();
 
-router.post('/', salesController);
-router.get("/getsales", getSalesController);
-router.delete("/delete-sale/:id", deleteSalesController);
+router.post("/", salesController);
+router.get("/", getSalesController);
+router.delete("/:id", deleteSalesController);
 
 export default router;

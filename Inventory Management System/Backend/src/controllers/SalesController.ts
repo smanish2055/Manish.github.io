@@ -3,7 +3,7 @@ import * as salesService from "../services/SalesService";
 import HttpStatus from "http-status-codes";
 import Sales from "../models/Sales";
 
-export const salesController = async(
+export const salesController = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -26,30 +26,36 @@ export const salesController = async(
   }
 };
 
-
-export const getSalesController = async (req: Request, res: Response, next: NextFunction) => {
+export const getSalesController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-  
     const user_id = res.locals.user.id;
     const response = await salesService.getSalesService(user_id);
     res.status(HttpStatus.ACCEPTED).json({
       message: "get sales successfully",
-      response: response,
+      result: response,
     });
   } catch (error) {
     next(error);
   }
 };
 
-export const deleteSalesController = async (req: Request, res: Response, next: NextFunction) => { 
-   try {
-     const id = +req.params.id;
-     const response = await salesService.deleteSalesService(id);
-     res.status(HttpStatus.ACCEPTED).json({
-       message: "deleted sale successfully",
-       response: response,
-     });
-   } catch (error) {
-     next(error);
-   }
+export const deleteSalesController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = +req.params.id;
+    const response = await salesService.deleteSalesService(id);
+    res.status(HttpStatus.ACCEPTED).json({
+      message: "deleted sale successfully",
+      response: response,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
