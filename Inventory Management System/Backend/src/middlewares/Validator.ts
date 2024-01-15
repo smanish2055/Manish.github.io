@@ -5,7 +5,6 @@ import ValidationError from "../errors/Validation";
 export const validateRequestBody =
   (schema: Schema) => (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log(req.body);
       const { error } = schema.validate(req.body);
       if (error) {
         const errorMessage = error.message.replace(new RegExp(/\"/g), "");

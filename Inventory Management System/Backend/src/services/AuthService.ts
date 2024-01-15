@@ -44,43 +44,44 @@ export const login = async (user: any) => {
     }
 
     const accessToken = createAccessToken(foundUser.id);
-    const refreshToken = createRefreshToken(foundUser.id);
+    // const refreshToken = createRefreshToken(foundUser.id);
 
-    foundUser.refreshToken = refreshToken;
-    await foundUser.save();
-    return { accessToken, refreshToken };
+    // foundUser.refreshToken = refreshToken;
+    // await foundUser.save();
+    //  return { accessToken, refreshToken };
+    return { accessToken};
   } catch (error) {
     throw error;
   }
 };
 
-export const logout = async (user: any) => {
-  try {
-    const userFound = await userRepo.getUserById(user.id);
-    await userFound!.update({ refreshToken: "" });
-  } catch (error) {
-    throw error;
-  }
-};
+// export const logout = async (user: any) => {
+//   try {
+//     const userFound = await userRepo.getUserById(user.id);
+//     await userFound!.update({ refreshToken: "" });
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
-export const refresh = async (id: number, refreshToken: any) => {
-  try {
-    const user: any = await userRepo.getUserById(id);
-    if (!user) throw new NotFoundError("User not found");
-    if (user.refreshToken !== refreshToken)
-      throw new ForbiddenError("Invalid refresh token");
+// export const refresh = async (id: number, refreshToken: any) => {
+//   try {
+//     const user: any = await userRepo.getUserById(id);
+//     if (!user) throw new NotFoundError("User not found");
+//     if (user.refreshToken !== refreshToken)
+//       throw new ForbiddenError("Invalid refresh token");
 
-    const accessToken = createAccessToken(user.id);
-    const newRefreshToken = createRefreshToken(user.id);
+//     const accessToken = createAccessToken(user.id);
+//     const newRefreshToken = createRefreshToken(user.id);
 
-    user.refreshToken = newRefreshToken;
-    await user.save();
+//     user.refreshToken = newRefreshToken;
+//     await user.save();
 
-    return { accessToken, refreshToken: newRefreshToken };
-  } catch (error) {
-    throw error;
-  }
-};
+//     return { accessToken, refreshToken: newRefreshToken };
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 const createAccessToken = (id: string) => {
   return jwt.sign({ userid: id }, config.jwt.accessSecret, {
@@ -88,11 +89,11 @@ const createAccessToken = (id: string) => {
   });
 };
 
-const createRefreshToken = (id: string) => {
-  return jwt.sign({ userid: id }, config.jwt.refreshSecret, {
-    expiresIn: JWT_REFRESH_TOKEN_EXPIRY,
-  });
-};
+// const createRefreshToken = (id: string) => {
+//   return jwt.sign({ userid: id }, config.jwt.refreshSecret, {
+//     expiresIn: JWT_REFRESH_TOKEN_EXPIRY,
+//   });
+// };
 
 
 export const getUserById = async (id: number) => {
