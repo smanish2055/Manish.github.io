@@ -2,40 +2,104 @@
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 />
-<div id="message-container1" class="mt-3"></div>
-<div class="input-group rounded-pill" style="width: 800px">
-  <input
-    type="text"
-    class="form-control py-3"
-    placeholder="Search..."
-    aria-label="Search"
-    aria-describedby="searchButton"
-  />
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" id="searchButton">
-      <i class="bi bi-search text-white" id="addproducts">Add Product</i>
-    </button>
+
+<div id="mainpage">
+  <div id="message-container1" class="mt-3"></div>
+  <div class="input-group rounded-pill" style="width: 800px">
+    <input
+      type="text"
+      class="form-control py-3"
+      placeholder="Search..."
+      aria-label="Search"
+      aria-describedby="searchButton"
+    />
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" id="searchButton">
+        <i class="bi bi-search text-white" id="addproducts">Add Product</i>
+      </button>
+    </div>
   </div>
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Per Item Price</th>
+        <th>Cost Price</th>
+        <th>Created Date</th>
+        <th>Updated Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="productList">
+      <!-- Product items will be added here dynamically -->
+    </tbody>
+  </table>
 </div>
-<table class="table table-bordered table-striped mt-4">
-  <thead class="thead-dark">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Per Item Price</th>
-      <th>Cost Price</th>
-      <th>Created Date</th>
-      <th>Updated Date</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody id="productList">
-    <!-- Product items will be added here dynamically -->
-  </tbody>
-</table>
+
+<!-- edit form -->
+<div
+  class="editproduct-container"
+  style="max-width: 400px; margin: auto; position: relative"
+>
+  <div id="messageContainer3"></div>
+  <h2 class="mb-4">Edit Products</h2>
+  <button
+    type="button"
+    class="close mb-3"
+    aria-label="Close"
+    id="closeEditForm"
+    style="position: absolute; top: 10px; right: 10px"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <form id="editProduct">
+    <div class="form-group">
+      <label for="editProductName">Edit Product Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="editProductName"
+        placeholder="Enter Product Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="editQuantity">Edit Quantity:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="editQuantity"
+        placeholder="Enter Quantity"
+      />
+    </div>
+    <div class="form-group">
+      <label for="editPerProductPrice">Edit Per Product Price:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="editPerProductPrice"
+        placeholder="Enter Per Product Price"
+      />
+    </div>
+    <div class="form-group">
+      <label for="editProductDescription">Edit Product Description:</label>
+      <textarea
+        class="form-control"
+        id="editProductDescription"
+        rows="3"
+        placeholder="Enter Product Description"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="editSubmit">
+      Update Product
+    </button>
+  </form>
+</div>
+
 <div class="addproduct-container">
+  <div id="message-container2" class="mt-3"></div>
   <button
     type="button"
     class="close"
@@ -44,7 +108,6 @@
   >
     <span aria-hidden="true">&times;</span>
   </button>
-  <div id="message-container2" class="mt-3"></div>
   <h2 class="text-center mb-4">Add Products</h2>
 
   <!-- Add Product Form -->
@@ -115,55 +178,5 @@
   </form>
   <!-- Product List Table -->
 </div>
-
-<div
-  class="editproduct-container"
-  style="display: none; max-width: 400px; margin: auto"
->
-  <div id="messageContainer3"></div>
-
-  <form id="editProduct">
-    <div class="form-group">
-      <label for="editProductName">Edit Product Name:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="editProductName"
-        placeholder="Enter Product Name"
-      />
-    </div>
-    <div class="form-group">
-      <label for="editQuantity">Edit Quantity:</label>
-      <input
-        type="number"
-        class="form-control"
-        id="editQuantity"
-        placeholder="Enter Quantity"
-      />
-    </div>
-    <div class="form-group">
-      <label for="editPerProductPrice">Edit Per Product Price:</label>
-      <input
-        type="number"
-        class="form-control"
-        id="editPerProductPrice"
-        placeholder="Enter Per Product Price"
-      />
-    </div>
-    <div class="form-group">
-      <label for="editProductDescription">Edit Product Description:</label>
-      <textarea
-        class="form-control"
-        id="editProductDescription"
-        rows="3"
-        placeholder="Enter Product Description"
-      ></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" id="editSubmit">
-      Update Product
-    </button>
-  </form>
-</div>
-
 <script type="module" src="../../Script/addproduct.ts"></script>
 <!-- <script type="module" src="../../Script/getproductlist.ts"></script> -->

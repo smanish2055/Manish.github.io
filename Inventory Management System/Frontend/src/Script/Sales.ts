@@ -6,17 +6,28 @@ const addSalesButton = document.getElementById(
   "addSalesButton"
 ) as HTMLButtonElement;
 const salesForm = document.getElementById("salesForm") as HTMLFormElement;
+// const salesTable = document.getElementById("salesTable") as HTMLTableElement;
+// salesTable.classList.add("table", "table-striped");
+const mainpage = document.getElementById("mainpage") as HTMLElement;
+
+// const salesTableBody = document.getElementById(
+//   "salesTableBody"
+// ) as HTMLTableElement;
+
 const closeFormButton = document.getElementById(
   "closeFormButton"
 ) as HTMLButtonElement;
 
 salesForm.style.display = "none";
+
 addSalesButton.addEventListener("click", function () {
+  mainpage.style.display = "none";
   salesForm.style.display = "block";
 });
 
 closeFormButton.addEventListener("click", function () {
   salesForm.style.display = "none";
+  mainpage.style.display = "block";
 });
 
 const productName = document.getElementById("productName") as HTMLInputElement;
@@ -36,7 +47,7 @@ submitSales.addEventListener("click", async (event) => {
   const productNameInput = productName.value.trim();
   const quantitySoldInput = parseInt(quantitySold.value.trim());
   const pricePerItemInput = parseInt(pricePerItem.value.trim());
-  const saleDateInput = JSON.stringify(saleDate.value.trim());
+  const saleDateInput = saleDate.value.trim();
 
   if (
     validateForm(
@@ -124,6 +135,7 @@ const addSales = async (
   try {
     const response = await createPostRequest("/sales/", salesInfo);
     console.log(response.data);
+    renderSalesData();
     return response;
   } catch (err: any) {
     displayErrorMessage(err.response.data.message);
@@ -131,13 +143,10 @@ const addSales = async (
   }
 };
 
-// Assuming createGetRequest is defined as before
-
-const renderSalesData = async () => {
+export const renderSalesData = async () => {
   try {
     const response = await createGetRequest("/sales/");
     console.log("Response:", response);
-    // Call a function to dynamically display sales data
     displaySalesData(response);
   } catch (error: any) {
     console.error("Error fetching sales data:", error.message);
@@ -160,9 +169,11 @@ const displaySalesData = (salesData: any[]) => {
       <td>${sale.price_per_item}</td>
       <td>${sale.total_sales_price}</td>
       <td>${sale.sales_profit}</td>
-      <td>${sale.sale_date}</td>
+      <td>${new Date(sale.sale_date).toLocaleDateString()}</td>
       <td>
-        <button class="btn btn-danger btn-sm delete-button" data-sales-id="${sale.sales_id}">Delete</button>
+        <button class="btn btn-danger btn-sm delete-button" data-sales-id="${
+          sale.sales_id
+        }">Delete</button>
       </td>
     `;
     salesTableBody!.appendChild(row);
@@ -187,17 +198,9 @@ import createDeleteRequest from "../Repositries/DeleteRequest";
 const handleDeleteSales = async (id: number) => {
   try {
     await createDeleteRequest(`/sales/${id}`);
-    // console.log(response.data.message);
-    // messageContainer1!.innerHTML = `Sale with ID ${id} ${response.data.message}.`;
     console.log(`Sale with ID ${id} deleted successfully.`);
-    // Fetch and display updated sales data after deletion
     renderSalesData();
   } catch (error: any) {
     console.log(error);
-    // messageContainer2!.innerHTML =
-    // `Sale with ID ${id} ${error.data.message}.`;
-    // setTimeout(() => {
-    //   messageContainer3!.innerHTML = "";
-    // }, 1000);
   }
 };

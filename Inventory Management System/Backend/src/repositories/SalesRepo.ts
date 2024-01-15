@@ -38,7 +38,7 @@ export const AddSales = async (user_id: number, salesproduct: Sales) => {
     // Create a new Sale with the combined attributes
     const newSale = await Sales.create(newSalesProduct);
     return newSale;
-  } catch (error:any) {
+  } catch (error: any) {
     throw new Error(`Failed to add sales: ${error.message}`);
   }
 };
@@ -46,6 +46,7 @@ export const AddSales = async (user_id: number, salesproduct: Sales) => {
 export const getSalesRepo = async (user_id: number) => {
   const getSalesData = await Sales.findAll({
     where: { user_id: user_id },
+    order: [["Created_Date", "DESC"]],
   });
   if (!getSalesData) {
     throw new NotFoundError(`sales data not found`);

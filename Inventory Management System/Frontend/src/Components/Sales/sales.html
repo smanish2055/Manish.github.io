@@ -3,10 +3,7 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 />
 
-<div class="container mt-4">
-  <div id="messageContainer1"></div>
-  <div id="messageContainer2"></div>
-
+<div class="container mt-4" id="mainpage">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <!-- Search Bar and Add Sales Button -->
@@ -38,7 +35,6 @@
     </div>
   </div>
 
-  <!-- Add an id to your table body -->
   <table id="salesTable" class="table table-striped">
     <thead>
       <tr>
@@ -55,9 +51,12 @@
       <!-- Data will be dynamically inserted here -->
     </tbody>
   </table>
+  <!-- Add an id to your table body -->
+</div>
 
-  <!-- Sales Form -->
-  <div class="mt-4 mx-auto col-md-6" id="salesForm">
+<!-- Sales Form -->
+<div class="container mt-4" id="salesForm">
+  <div class="mt-4 mx-auto col-md-6">
     <div id="fromFeedback"></div>
     <div class="d-flex justify-content-between align-items-center">
       <h2 class="mb-4">Add Sales</h2>

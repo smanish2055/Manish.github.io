@@ -1,5 +1,5 @@
 import createGetRequest from "../../Repositries/GetRequest";
-// import { fetchSalesData } from "../../Script/addproduct";
+// import { renderProductList } from "../../Script/addproduct";
 // const displayList = await createGetRequest("/product-list/");
 
 const opensidebar = document.getElementById("opensidebar") as HTMLElement;
@@ -73,11 +73,11 @@ document
     loadPageContent("Dashboard", "dashboard");
   });
 
-document
-  .querySelector<HTMLDivElement>(".sidebar-list-item2")!
-  .addEventListener("click", function () {
+const item2=document.querySelector(".sidebar-list-item2") as HTMLElement;
+
+  item2!.addEventListener("click", function () {
     loadPageContent("AddProducts", "addProduct");
-    // await load(displayList);
+    // renderProductList();
   });
 
 document

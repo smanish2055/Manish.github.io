@@ -5,8 +5,7 @@ import { HttpStatusCode } from "axios";
 const addProduct = document.getElementById("addproducts") as HTMLElement;
 const container = document.querySelector(
   ".addproduct-container"
-) as HTMLElement | null;
-
+) as HTMLElement;
 let productName = document.getElementById("productName") as HTMLInputElement;
 let quantity = document.getElementById("quantity") as HTMLInputElement;
 let quantityPrice = document.getElementById(
@@ -20,21 +19,6 @@ const messageContainer1 = document.getElementById("message-container1");
 const messageContainer2 = document.getElementById("message-container2");
 const table = document.querySelector("table");
 const closeAddProductForm = document.getElementById("closeAddProductForm");
-
-addProduct.addEventListener("click", () => {
-  if (container) {
-    container.style.display = "block";
-    table!.style.display = "none";
-  }
-});
-
-closeAddProductForm!.addEventListener("click", function () {
-  // container!.style.display = "none";
-  // table!.style.display = "block";
-  setTimeout(() => {
-    location.reload();
-  }, 100);
-});
 
 submitProduct.addEventListener("click", (event) => {
   event.preventDefault();
@@ -88,11 +72,11 @@ const addProductToDb = async (
       quantity.value = "";
       description.value = "";
 
-      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+      renderProductList();
+      messageContainer2!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
 
       setTimeout(() => {
-        messageContainer1!.innerHTML = "";
-        location.reload();
+        messageContainer2!.innerHTML = "";
       }, 1000);
     } else {
       messageContainer2!.innerHTML =
@@ -117,7 +101,7 @@ const addProductToDb = async (
 
 // Reading data from the server
 import createGetRequest from "../Repositries/GetRequest";
-const renderProductList = async () => {
+export const renderProductList = async () => {
   try {
     const productList = await createGetRequest("/product-list/");
     displayProductList(productList);
@@ -129,7 +113,6 @@ renderProductList();
 
 const displayProductList = (productList: any[]) => {
   const productListElement = document.getElementById("productList");
-
   productListElement!.innerHTML = "";
 
   productList.forEach((product: any) => {
@@ -156,23 +139,8 @@ const displayProductList = (productList: any[]) => {
   });
 };
 
-// const data = await createGetRequest("/product-list/");
-// const loadData = async (data: any) => {
-//   try {
-//     if (data) {
-//       console.log(data);
-//       renderProductList(data);
-//     }
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//   }
-// };
-// loadData(data);
-// export default loadData;
-
-// editing  product
-
-const productList = document.getElementById("productList") as HTMLElement;
+import updateRequest from "../Repositries/UpdateRequest";
+// const productList = document.getElementById("productList") as HTMLElement;
 const editSubmit = document.getElementById("editSubmit") as HTMLElement;
 // Retrieve values from the form
 const editProductName = document.getElementById(
@@ -191,19 +159,41 @@ const editProductSection = document.querySelector(
   ".editproduct-container"
 ) as HTMLElement;
 const messageContainer3 = document.getElementById("messageContainer3");
+const mainpage = document.getElementById("mainpage") as HTMLElement;
+const closeEditForm = document.getElementById("closeEditForm");
 
-import updateRequest from "../Repositries/UpdateRequest";
+// display menupulation
+editProductSection.style.display = "none";
+container.style.display = "none";
+addProduct.addEventListener("click", () => {
+  if (container) {
+    container.style.display = "block";
+    mainpage.style.display = "none";
+  }
+});
+
+closeAddProductForm!.addEventListener("click", function () {
+  mainpage.style.display = "block";
+  container!.style.display = "none";
+});
+
+closeEditForm?.addEventListener("click", () => {
+  editProductSection.style.display = "none";
+  mainpage.style.display = "block";
+});
+
+// edit and delete
 table?.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
   const editButton = target.closest(".edit-button");
   const deleteButton = target.closest(".delete-button");
 
   if (editButton) {
+    editProductSection.style.display = "block";
+    mainpage.style.display = "none";
     const productId = parseInt(
       editButton.getAttribute("data-product-id") || "null"
     );
-    editProductSection.style.display = "block";
-    productList.style.display = "none";
     editProduct(productId);
   } else if (deleteButton) {
     const productId = parseInt(
@@ -226,7 +216,6 @@ const editProduct = async (productId: number) => {
 
   editSubmit.addEventListener("click", async function (event) {
     event.preventDefault();
-
     // Retrieve values from the form
     const updatedData = {
       product_name: editProductName.value.trim(),
@@ -240,10 +229,10 @@ const editProduct = async (productId: number) => {
         `/product-list/${productId}`,
         updatedData
       );
-
-      messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+      renderProductList();
+      messageContainer3!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
       setTimeout(() => {
-        messageContainer1!.innerHTML = "";
+        messageContainer3!.innerHTML = "";
         // location.reload();
       }, 1000);
     } catch (error) {
@@ -262,19 +251,13 @@ import createDeleteRequest from "../Repositries/DeleteRequest";
 
 const deleteProduct = async (id: number) => {
   try {
-    const response = await createDeleteRequest(`/product-list/${id}`);
+    await createDeleteRequest(`/product-list/${id}`);
     renderProductList();
-    // messageContainer1!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
-    // setTimeout(() => {
-    //   messageContainer1!.innerHTML = "";
-    //   // location.reload();
-    // }, 1000);
-    // }
   } catch (error) {
-    messageContainer3!.innerHTML =
+    messageContainer1!.innerHTML =
       '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
     setTimeout(() => {
-      messageContainer3!.innerHTML = "";
+      messageContainer1!.innerHTML = "";
     }, 1000);
   }
 };
