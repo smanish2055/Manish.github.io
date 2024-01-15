@@ -39,6 +39,7 @@ const barChartFn = (topProducts: any) => {
       labels: xValues,
       datasets: [
         {
+          label:"",
           backgroundColor: barColors,
           data: percentageValues,
         },

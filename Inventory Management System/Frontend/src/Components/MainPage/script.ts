@@ -16,15 +16,6 @@ closesidebar.addEventListener("click", () => {
   sidebar.classList.remove("sidebar-responsive");
 });
 
-// logout
-logout.addEventListener("click", () => {
-  const userConfirmed = confirm("Are you sure you want to log out?");
-  if (userConfirmed) {
-    localStorage.removeItem("jwt");
-    window.location.href = "../Login/login.html";
-  }
-});
-
 // fetch name from user profile
 const data = await createGetRequest("/dashboard/");
 const loadData = async (data: any) => {
@@ -57,7 +48,7 @@ async function loadPageContent(dir: string, page: string) {
     });
 }
 
-// Initial load of the default page 
+// Initial load of the default page
 loadPageContent("Dashboard", "dashboard");
 
 //  Change content when clicking on "Add Products" in the sidebar
@@ -68,7 +59,9 @@ document
     loadPageContent("Dashboard", "dashboard");
   });
 
-const AddProductPage = document.querySelector(".sidebar-list-item2") as HTMLElement;
+const AddProductPage = document.querySelector(
+  ".sidebar-list-item2"
+) as HTMLElement;
 AddProductPage.addEventListener("click", function () {
   loadPageContent("AddProducts", "addProduct");
   // renderProductList();
@@ -82,7 +75,14 @@ document
 
 // export default loadPageContent;
 
-
+// logout
+logout.addEventListener("click", () => {
+  const userConfirmed = confirm("Are you sure you want to log out?");
+  if (userConfirmed) {
+    localStorage.removeItem("jwt");
+    window.location.href = "../Login/login.html";
+  }
+});
 
 function nodeScriptReplace(node: any) {
   if (nodeScriptIs(node) === true) {
@@ -113,3 +113,12 @@ function nodeScriptClone(node: any) {
 function nodeScriptIs(node: any) {
   return node.tagName === "SCRIPT";
 }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const islog = localStorage.getItem("jwt");
+//   if (islog) {
+//     window.location.href = "main.html";
+//   } else {
+//     window.location.href = "/src/Components/Register/register.html";
+//   }
+// });

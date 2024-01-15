@@ -1,7 +1,6 @@
 import { HttpStatusCode } from "axios";
 import createPostRequest from "../../Repositries/PostRequest";
 
-
 const loginForm = document.getElementById("form-login") as HTMLFormElement;
 const validationError = document.getElementById("error-message") as HTMLElement;
 const emailInput = document.getElementById("email") as HTMLInputElement;
@@ -50,7 +49,7 @@ const validateInput = (email: string, password: string): boolean => {
 const sendAuthRequest = async (email: string, password: string) => {
   // Send request
   try {
-    const user:any = { email, password };
+    const user: any = { email, password };
     const response = await createPostRequest("/login", user);
     if (response.status === HttpStatusCode.Accepted) {
       localStorage.setItem("jwt", response.data.tokens.accessToken);
