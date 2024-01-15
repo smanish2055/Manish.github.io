@@ -99,12 +99,14 @@ const addProductToDb = async (
   }
 };
 
+let ProductAllData: any[] = [];
 // Reading data from the server
 import createGetRequest from "../Repositries/GetRequest";
 export const renderProductList = async () => {
   try {
     const productList = await createGetRequest("/product-list/");
     displayProductList(productList);
+    ProductAllData = productList;
   } catch (error: any) {
     console.error("Error fetching sales data:", error.message);
   }
@@ -138,6 +140,23 @@ const displayProductList = (productList: any[]) => {
     productListElement?.appendChild(tr);
   });
 };
+
+// search for products
+const filterProductsData = (searchTerm: string) => {
+  const filteredData = ProductAllData.filter((products) =>
+    products.product_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  displayProductList(filteredData);
+};
+
+const productSearchInput = document.getElementById(
+  "productSearch"
+) as HTMLInputElement;
+
+productSearchInput.addEventListener("input", () => {
+  const searchTerm = productSearchInput.value.trim();
+  filterProductsData(searchTerm);
+});
 
 import updateRequest from "../Repositries/UpdateRequest";
 // const productList = document.getElementById("productList") as HTMLElement;

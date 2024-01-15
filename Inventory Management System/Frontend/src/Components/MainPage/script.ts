@@ -7,7 +7,6 @@ const closesidebar = document.getElementById("closesidebar") as HTMLElement;
 const logout = document.getElementById("logout") as HTMLElement;
 const sidebar = document.getElementById("sidebar") as HTMLElement;
 const username = document.querySelector(".username") as HTMLElement;
-// const sideAddProduct = document.getElementById("sideAddProduct") as HTMLElement;
 
 opensidebar.addEventListener("click", () => {
   sidebar.classList.add("sidebar-responsive");
@@ -17,6 +16,7 @@ closesidebar.addEventListener("click", () => {
   sidebar.classList.remove("sidebar-responsive");
 });
 
+// logout
 logout.addEventListener("click", () => {
   const userConfirmed = confirm("Are you sure you want to log out?");
   if (userConfirmed) {
@@ -25,9 +25,8 @@ logout.addEventListener("click", () => {
   }
 });
 
+// fetch name from user profile
 const data = await createGetRequest("/dashboard/");
-console.log(data);
-
 const loadData = async (data: any) => {
   try {
     if (data) {
@@ -39,6 +38,7 @@ const loadData = async (data: any) => {
 };
 loadData(data);
 
+// load page content
 async function loadPageContent(dir: string, page: string) {
   const mainContent = document.getElementById("mainContent");
   fetch(`../${dir}/${page}.html`)
@@ -57,15 +57,10 @@ async function loadPageContent(dir: string, page: string) {
     });
 }
 
-// function logout() {
-//   localStorage.removeItem("jwt");
-//   window.location.href = "../Login/login.html";
-// }
-
-// Initial load of the default page (e.g., dashboard)
+// Initial load of the default page 
 loadPageContent("Dashboard", "dashboard");
 
-// Example: Change content when clicking on "Add Products" in the sidebar
+//  Change content when clicking on "Add Products" in the sidebar
 document
   .querySelector<HTMLDivElement>(".sidebar-list-item1")!
   .addEventListener("click", function () {
@@ -73,12 +68,11 @@ document
     loadPageContent("Dashboard", "dashboard");
   });
 
-const item2=document.querySelector(".sidebar-list-item2") as HTMLElement;
-
-  item2!.addEventListener("click", function () {
-    loadPageContent("AddProducts", "addProduct");
-    // renderProductList();
-  });
+const AddProductPage = document.querySelector(".sidebar-list-item2") as HTMLElement;
+AddProductPage.addEventListener("click", function () {
+  loadPageContent("AddProducts", "addProduct");
+  // renderProductList();
+});
 
 document
   .querySelector<HTMLDivElement>(".sidebar-list-item3")!
@@ -87,6 +81,8 @@ document
   });
 
 // export default loadPageContent;
+
+
 
 function nodeScriptReplace(node: any) {
   if (nodeScriptIs(node) === true) {

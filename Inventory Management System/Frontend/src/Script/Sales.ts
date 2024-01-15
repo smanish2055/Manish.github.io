@@ -6,29 +6,11 @@ const addSalesButton = document.getElementById(
   "addSalesButton"
 ) as HTMLButtonElement;
 const salesForm = document.getElementById("salesForm") as HTMLFormElement;
-// const salesTable = document.getElementById("salesTable") as HTMLTableElement;
-// salesTable.classList.add("table", "table-striped");
 const mainpage = document.getElementById("mainpage") as HTMLElement;
-
-// const salesTableBody = document.getElementById(
-//   "salesTableBody"
-// ) as HTMLTableElement;
 
 const closeFormButton = document.getElementById(
   "closeFormButton"
 ) as HTMLButtonElement;
-
-salesForm.style.display = "none";
-
-addSalesButton.addEventListener("click", function () {
-  mainpage.style.display = "none";
-  salesForm.style.display = "block";
-});
-
-closeFormButton.addEventListener("click", function () {
-  salesForm.style.display = "none";
-  mainpage.style.display = "block";
-});
 
 const productName = document.getElementById("productName") as HTMLInputElement;
 const quantitySold = document.getElementById(
@@ -41,6 +23,18 @@ const pricePerItem = document.getElementById(
 const saleDate = document.getElementById("saleDate") as HTMLInputElement;
 const submitSales = document.getElementById("submitSales") as HTMLButtonElement;
 const formFeedback = document.getElementById("fromFeedback");
+
+salesForm.style.display = "none";
+
+addSalesButton.addEventListener("click", function () {
+  mainpage.style.display = "none";
+  salesForm.style.display = "block";
+});
+
+closeFormButton.addEventListener("click", function () {
+  salesForm.style.display = "none";
+  mainpage.style.display = "block";
+});
 
 submitSales.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -104,6 +98,7 @@ const validateForm = (
   return true;
 };
 
+//  message display
 const displaySuccessMessage = (message: string) => {
   formFeedback!.innerHTML = `<div class="alert alert-success" role="alert">${message}</div>`;
 };
@@ -143,9 +138,12 @@ const addSales = async (
   }
 };
 
+let salesAllData: any[] = [];
+// rendering data
 export const renderSalesData = async () => {
   try {
     const response = await createGetRequest("/sales/");
+    salesAllData = response;
     console.log("Response:", response);
     displaySalesData(response);
   } catch (error: any) {
@@ -180,7 +178,30 @@ const displaySalesData = (salesData: any[]) => {
   });
 };
 
+// search
+// const searchButton = document.getElementById(
+//   "searchButton"
+// ) as HTMLButtonElement;
+const salesSearchInput = document.getElementById(
+  "salesSearchInput"
+) as HTMLInputElement;
+
+const filterSalesData = (searchTerm: string) => {
+  const filteredData = salesAllData.filter((sale) =>
+    sale.product_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  displaySalesData(filteredData);
+};
+
+salesSearchInput.addEventListener("input", () => {
+  const searchTerm = salesSearchInput.value.trim();
+  filterSalesData(searchTerm);
+});
+
+// delete btton
+import createDeleteRequest from "../Repositries/DeleteRequest";
 const table = document.querySelector("table");
+
 table?.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
   const deleteButton = target.closest(".delete-button");
@@ -192,8 +213,6 @@ table?.addEventListener("click", (event) => {
     handleDeleteSales(salesIdNumber);
   }
 });
-
-import createDeleteRequest from "../Repositries/DeleteRequest";
 
 const handleDeleteSales = async (id: number) => {
   try {
