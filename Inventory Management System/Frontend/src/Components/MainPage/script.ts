@@ -16,19 +16,6 @@ closesidebar.addEventListener("click", () => {
   sidebar.classList.remove("sidebar-responsive");
 });
 
-// fetch name from user profile
-// const data = await createGetRequest("/dashboard/");
-// const loadData = async (data: any) => {
-//   try {
-//     if (data) {
-//       username.innerHTML = data.username;
-//     }
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//   }
-// };
-// loadData(data);
-
 // load page content
 async function loadPageContent(dir: string, page: string) {
   const mainContent = document.getElementById("mainContent");

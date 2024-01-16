@@ -20,6 +20,9 @@ const messageContainer2 = document.getElementById("message-container2");
 const table = document.querySelector("table");
 const closeAddProductForm = document.getElementById("closeAddProductForm");
 
+
+
+// add products
 submitProduct.addEventListener("click", (event) => {
   event.preventDefault();
   const trimmedProductName = productName.value.trim();
@@ -87,8 +90,6 @@ const addProductToDb = async (
     product_quantity,
     per_product_price,
   };
-
-  // const data = await createGetRequest("/product-list/");
 
   try {
     messageContainer2!.innerHTML = "";
@@ -265,36 +266,76 @@ const editProduct = async (productId: number) => {
   editQuantity.value = existingProductData.product_quantity.toString();
   perProductPrice.value = existingProductData.per_product_price.toString();
 
-  editSubmit.addEventListener("click", async function (event) {
-    event.preventDefault();
-    // Retrieve values from the form
-    const updatedData = {
-      product_name: editProductName.value.trim(),
-      product_desc: productDescription.value.trim(),
-      product_quantity: parseInt(editQuantity.value),
-      per_product_price: parseInt(perProductPrice.value),
-    };
+ editSubmit.addEventListener("click", async function (event) {
+   event.preventDefault();
 
-    try {
-      const response = await updateRequest(
-        `/product-list/${productId}`,
-        updatedData
-      );
-      renderProductList();
-      messageContainer3!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
-      setTimeout(() => {
-        messageContainer3!.innerHTML = "";
-        // location.reload();
-      }, 1000);
-    } catch (error) {
-      console.log(error);
-      messageContainer3!.innerHTML =
-        '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
-      setTimeout(() => {
-        messageContainer3!.innerHTML = "";
-      }, 1000);
-    }
-  });
+   // Retrieve values from the form
+   const updatedData = {
+     product_name: editProductName.value.trim(),
+     product_desc: productDescription.value.trim(),
+     product_quantity: parseInt(editQuantity.value),
+     per_product_price: parseInt(perProductPrice.value),
+   };
+
+   // Validate input
+   if (validateEditProductInput(updatedData)) {
+     try {
+       const response = await updateRequest(
+         `/product-list/${productId}`,
+         updatedData
+       );
+       renderProductList();
+       messageContainer3!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+       setTimeout(() => {
+         messageContainer3!.innerHTML = "";
+       }, 1000);
+     } catch (error) {
+       console.log(error);
+       messageContainer3!.innerHTML =
+         '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
+       setTimeout(() => {
+         messageContainer3!.innerHTML = "";
+       }, 1000);
+     }
+   }
+ });
+
+ const validateEditProductInput = (updatedData: any): boolean => {
+   // Check if required fields are not empty
+   if (
+     !updatedData.product_name ||
+     !updatedData.product_quantity ||
+     !updatedData.per_product_price
+   ) {
+     messageContainer3!.innerHTML =
+       '<div class="alert alert-warning text-center" role="alert">Please fill in all required fields.</div>';
+     return false;
+   }
+
+   // Validate product_quantity and per_product_price are positive numbers
+   if (
+     isNaN(updatedData.product_quantity) ||
+     updatedData.product_quantity < 0
+   ) {
+     messageContainer3!.innerHTML =
+       '<div class="alert alert-warning text-center" role="alert">Product quantity must be a positive number.</div>';
+     return false;
+   }
+
+   if (
+     isNaN(updatedData.per_product_price) ||
+     updatedData.per_product_price < 0
+   ) {
+     messageContainer3!.innerHTML =
+       '<div class="alert alert-warning text-center" role="alert">Per product price must be a positive number.</div>';
+     return false;
+   }
+
+   // Validation successful
+   messageContainer3!.innerHTML = "";
+   return true;
+ };
+
 };
 
 // delete product
