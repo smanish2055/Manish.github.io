@@ -28,12 +28,19 @@
           <span class="material-icons-outlined"> menu </span>
         </div>
 
-        <div class="logo"><img src="../../assets/img/lpLogo.jpg" alt="" /></div>
+        <div class="logo"><img src="../../assets/img/Logo.jpg" alt="" /></div>
 
         <div class="header-right">
-          <span class="material-icons-outlined">notifications</span>
-          <span class="username">MANISH</span>
-          <button class="logout" id="logout">Logout</button>
+          <span class="material-icons-outlined" id="usericon"
+            >account_circle</span
+          >
+
+          <!-- Bootstrap Dropdown -->
+          <div class="dropdown-content">
+            <div>
+              <button class="logout" id="logout">Logout</button>
+            </div>
+          </div>
         </div>
       </header>
       <aside id="sidebar">
@@ -41,9 +48,7 @@
           <div class="sidebar-brand">
             <span class="material-icons-outlined">inventory</span> LF Inventory
           </div>
-          <span class="material-icons-outlined" id="closesidebar"
-            >close</span
-          >
+          <span class="material-icons-outlined" id="closesidebar">close</span>
         </div>
 
         <ul class="sidebar-list">
@@ -51,16 +56,15 @@
             <span class="material-icons-outlined">dashboard</span> Dashboard
           </li>
           <li class="sidebar-list-item2">
-            <span class="material-icons-outlined" id="sideAddProduct">inventory_2</span> Add
-            Products
+            <span class="material-icons-outlined" id="sideAddProduct"
+              >inventory_2</span
+            >
+            Add Products
           </li>
           <li class="sidebar-list-item3">
             <span class="material-icons-outlined"> currency_exchange </span>
             Sales
           </li>
-          <!-- <li class="sidebar-list-item3">
-            <span class="material-icons-outlined">fact_check</span> Inventory
-          </li> -->
         </ul>
       </aside>
 
@@ -69,6 +73,5 @@
 
     <!-- <script src="../../Script/dashboard.ts" defer></script> -->
     <script type="module" src="./script.ts"></script>
-    
   </body>
 </html>

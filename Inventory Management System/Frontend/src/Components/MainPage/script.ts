@@ -1,4 +1,4 @@
-import createGetRequest from "../../Repositries/GetRequest";
+// import createGetRequest from "../../Repositries/GetRequest";
 // import { renderProductList } from "../../Script/addproduct";
 // const displayList = await createGetRequest("/product-list/");
 
@@ -17,17 +17,17 @@ closesidebar.addEventListener("click", () => {
 });
 
 // fetch name from user profile
-const data = await createGetRequest("/dashboard/");
-const loadData = async (data: any) => {
-  try {
-    if (data) {
-      username.innerHTML = data.username;
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
-loadData(data);
+// const data = await createGetRequest("/dashboard/");
+// const loadData = async (data: any) => {
+//   try {
+//     if (data) {
+//       username.innerHTML = data.username;
+//     }
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// };
+// loadData(data);
 
 // load page content
 async function loadPageContent(dir: string, page: string) {
@@ -114,11 +114,9 @@ function nodeScriptIs(node: any) {
   return node.tagName === "SCRIPT";
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   const islog = localStorage.getItem("jwt");
-//   if (islog) {
-//     window.location.href = "main.html";
-//   } else {
-//     window.location.href = "/src/Components/Register/register.html";
-//   }
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  const islog = localStorage.getItem("jwt");
+  if (islog) {
+    history.replaceState(null, document.title, window.location.href);
+  }
+});

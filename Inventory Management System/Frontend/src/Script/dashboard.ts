@@ -39,7 +39,7 @@ const barChartFn = (topProducts: any) => {
       labels: xValues,
       datasets: [
         {
-          label:"",
+          label: "",
           backgroundColor: barColors,
           data: percentageValues,
         },
@@ -126,6 +126,10 @@ const pieChartFn = (topQuantitySold: any) => {
 };
 
 const data = await createGetRequest("/dashboard/");
+const dashboardName = document.getElementById(
+  "dashboardwelcome"
+) as HTMLElement;
+
 console.log(data);
 const loadData = async (data: any) => {
   try {
@@ -133,6 +137,7 @@ const loadData = async (data: any) => {
       productNumber!.innerHTML = data.productCount;
       quantitySold!.innerHTML = data.productSoldCount;
       totalProfit!.innerHTML = data.totalProfit;
+      dashboardName.innerHTML = `Welcome ${data.username}`;
 
       if (data.topProducts.length >= 5) {
         barChartFn(data.topProducts);
