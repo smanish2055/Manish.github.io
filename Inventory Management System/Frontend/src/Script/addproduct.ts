@@ -23,29 +23,57 @@ const closeAddProductForm = document.getElementById("closeAddProductForm");
 submitProduct.addEventListener("click", (event) => {
   event.preventDefault();
   const trimmedProductName = productName.value.trim();
-  const trimmedQuantity = quantity.value;
-  const trimmedQuantityPrice = quantityPrice.value;
+  const trimmedQuantity = quantity.value.trim();
+  const trimmedQuantityPrice = quantityPrice.value.trim();
   const trimmedDescription = description.value.trim();
-
-  // Check if required fields are not empty
+  // Validate input
   if (
-    !trimmedProductName ||
-    trimmedQuantity === null ||
-    trimmedQuantityPrice === null ||
-    !trimmedDescription
+    validateProductInput(
+      trimmedProductName,
+      trimmedQuantity,
+      trimmedQuantityPrice,
+      trimmedDescription
+    )
   ) {
-    messageContainer2!.innerHTML = "";
+    addProductToDb(
+      trimmedProductName,
+      parseInt(trimmedQuantity),
+      parseInt(trimmedQuantityPrice),
+      trimmedDescription
+    );
+  }
+});
+
+const validateProductInput = (
+  productName: string,
+  quantity: string,
+  quantityPrice: string,
+  description: string
+): boolean => {
+  // Check if required fields are not empty
+  if (!productName || !quantity || !quantityPrice || !description) {
     messageContainer2!.innerHTML =
       '<div class="alert alert-warning text-center" role="alert">Please fill in all required fields.</div>';
-    return;
+    return false;
   }
-  addProductToDb(
-    trimmedProductName,
-    parseInt(trimmedQuantity),
-    parseInt(trimmedQuantityPrice),
-    trimmedDescription
-  );
-});
+
+  // Validate quantity and quantityPrice are positive numbers
+  if (isNaN(parseInt(quantity)) || parseInt(quantity) < 0) {
+    messageContainer2!.innerHTML =
+      '<div class="alert alert-warning text-center" role="alert">Quantity must be a positive number.</div>';
+    return false;
+  }
+
+  if (isNaN(parseInt(quantityPrice)) || parseInt(quantityPrice) < 0) {
+    messageContainer2!.innerHTML =
+      '<div class="alert alert-warning text-center" role="alert">Quantity price must be a positive number.</div>';
+    return false;
+  }
+
+  // Validation successful
+  messageContainer2!.innerHTML = "";
+  return true;
+};
 
 const addProductToDb = async (
   product_name: string,
@@ -71,10 +99,8 @@ const addProductToDb = async (
       quantityPrice.value = "";
       quantity.value = "";
       description.value = "";
-
       renderProductList();
       messageContainer2!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
-
       setTimeout(() => {
         messageContainer2!.innerHTML = "";
       }, 1000);
