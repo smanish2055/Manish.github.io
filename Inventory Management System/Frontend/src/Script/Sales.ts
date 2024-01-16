@@ -160,6 +160,9 @@ const displaySalesData = (salesData: any[]) => {
   // Loop through the sales data and create table rows
   salesData.forEach((sale) => {
     const row = document.createElement("tr");
+    if (sale.sales_profit < 0) {
+      row.style.backgroundColor = "#ed565e";
+    }
     row.innerHTML = `
       <td>${sale.sales_id}</td>
       <td>${sale.product_name}</td>
@@ -179,9 +182,7 @@ const displaySalesData = (salesData: any[]) => {
 };
 
 // search
-// const searchButton = document.getElementById(
-//   "searchButton"
-// ) as HTMLButtonElement;
+
 const salesSearchInput = document.getElementById(
   "salesSearchInput"
 ) as HTMLInputElement;

@@ -119,6 +119,12 @@ const displayProductList = (productList: any[]) => {
 
   productList.forEach((product: any) => {
     const tr = document.createElement("tr");
+
+    if (product.product_quantity < 5) {
+      tr.style.backgroundColor = "#ed565e";
+    } else if (product.product_quantity >= 5 && product.product_quantity < 15) {
+      tr.style.backgroundColor = "rgb(229, 229, 97)";
+    }
     tr.innerHTML = `
           <td>${product.product_id}</td>
           <td>${product.product_name}</td>
