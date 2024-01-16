@@ -10,7 +10,7 @@ const createDeleteRequest = async (url: string) => {
     return response;
   } catch (error: any) {
     if (error.response.status === HttpStatusCode.Unauthorized) {
-      window.location.href = "/src/Components/Register/register.html";
+      window.location.href = "/src/Components/Login/login.html";
     }
   }
 };

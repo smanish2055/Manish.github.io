@@ -10,9 +10,9 @@ const updateRequest = async (url: string, body: any) => {
       }
     );
     return request;
-  } catch (error:any) {
+  } catch (error: any) {
     if (error.response.status === HttpStatusCode.Unauthorized) {
-      window.location.href = "/src/Components/Register/register.html";
+      window.location.href = "/src/Components/Login/login.html";
     }
     throw error;
   }
