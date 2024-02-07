@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import config from "../configs/index";
 import {
   JWT_ACCESS_TOKEN_EXPIRY,
-  JWT_REFRESH_TOKEN_EXPIRY,
 } from "../constants/index";
 import ForbiddenError from "../errors/Forbidden";
 import NotFoundError from "../errors/NotFound";
@@ -44,16 +43,39 @@ export const login = async (user: any) => {
     }
 
     const accessToken = createAccessToken(foundUser.id);
-    // const refreshToken = createRefreshToken(foundUser.id);
-
-    // foundUser.refreshToken = refreshToken;
-    // await foundUser.save();
-    //  return { accessToken, refreshToken };
+    
     return { accessToken};
   } catch (error) {
     throw error;
   }
 };
+
+
+const createAccessToken = (id: string) => {
+  return jwt.sign({ userid: id }, config.jwt.accessSecret, {
+    expiresIn: JWT_ACCESS_TOKEN_EXPIRY,
+  });
+};
+
+
+
+export const getUserById = async (id: number) => {
+  const user = await userRepo.getUserById(id);
+  if (!user) throw new NotFoundError(`User with id : ${id} not found`);
+  return user;
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const logout = async (user: any) => {
 //   try {
@@ -83,11 +105,7 @@ export const login = async (user: any) => {
 //   }
 // };
 
-const createAccessToken = (id: string) => {
-  return jwt.sign({ userid: id }, config.jwt.accessSecret, {
-    expiresIn: JWT_ACCESS_TOKEN_EXPIRY,
-  });
-};
+
 
 // const createRefreshToken = (id: string) => {
 //   return jwt.sign({ userid: id }, config.jwt.refreshSecret, {
@@ -96,8 +114,3 @@ const createAccessToken = (id: string) => {
 // };
 
 
-export const getUserById = async (id: number) => {
-  const user = await userRepo.getUserById(id);
-  if (!user) throw new NotFoundError(`User with id : ${id} not found`);
-  return user;
-};

@@ -18,18 +18,17 @@ app.use(cors({origin:true,credentials:true,methods:"*"
 // Middleware to parse request body
 app.use(express.json());
 // Middleware to parse url encoded request body
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
 // Middleware to handle routes
 app.use(routes);
 // Middleware to handle 404 routes responses
-app.use(pathNotFound);
+// app.use(pathNotFound);
 // Middleware to handle errors
 app.use(errorHandler);
 /* --------------------------- Running the server --------------------------- */
 // Sync the models with the database
-sequelize
-  .sync({ force: false })
+sequelize.sync({ force: false })
   .then(() => {
     console.log("Table and model synced successfully");
   })

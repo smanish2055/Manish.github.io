@@ -36,8 +36,8 @@ export const register = async (
   }
 };
 
-export const logout = async (req: Request, res: Response) => {
+// export const logout = async (req: Request, res: Response) => {
   
-};
+// };
 
-export const refresh = async (req: Request, res: Response) => {};
+// export const refresh = async (req: Request, res: Response) => {};

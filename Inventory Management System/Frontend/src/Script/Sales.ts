@@ -22,7 +22,7 @@ const pricePerItem = document.getElementById(
 
 const saleDate = document.getElementById("saleDate") as HTMLInputElement;
 const submitSales = document.getElementById("submitSales") as HTMLButtonElement;
-const formFeedback = document.getElementById("fromFeedback");
+const formFeedback = document.getElementById("fromFeedback") ;
 
 salesForm.style.display = "none";
 
@@ -201,9 +201,9 @@ salesSearchInput.addEventListener("input", () => {
 
 // delete btton
 import createDeleteRequest from "../Repositries/DeleteRequest";
-const table = document.querySelector("table");
+const table = document.querySelector("table") as HTMLTableElement;
 
-table?.addEventListener("click", (event) => {
+table.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
   const deleteButton = target.closest(".delete-button");
   const salesId = deleteButton!.getAttribute("data-sales-id");

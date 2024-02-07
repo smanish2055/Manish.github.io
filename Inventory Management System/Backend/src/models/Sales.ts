@@ -75,3 +75,12 @@ Sales.init(
 );
 
 export default Sales;
+
+
+// comments{
+//   sn,
+//   Id,
+//     name,
+//   comments
+    
+// }

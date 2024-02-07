@@ -1,7 +1,4 @@
 import { HttpStatusCode } from "axios";
-
-// import http from "../../utils/utils";
-
 import createPostRequest from "../../Repositries/PostRequest";
 
 const registerForm = document.getElementById(
@@ -90,7 +87,10 @@ const sendPostRequest = async (user: any) => {
 
     if (response.status === HttpStatusCode.Accepted) {
       successMessage.classList.remove("d-none");
-      successMessage.innerHTML = "User Registered successfully";
+      successMessage.innerHTML = `${response.data.message}`;
+      setTimeout(() => {
+        successMessage.classList.add("d-none");
+      }, 1000);
     }
   } catch (error: any) {
     if (
@@ -100,8 +100,9 @@ const sendPostRequest = async (user: any) => {
     ) {
       validationError.classList.remove("d-none");
       validationError.innerHTML = error.response.data.message;
+      setTimeout(() => {
+        validationError.classList.add("d-none");
+      }, 1000);
     }
   }
 };
-
-

@@ -8,6 +8,10 @@ export const getAllProductList = async (user_id: number) => {
       order: [["createdAt", "DESC"]], // Order by product_id in ascending order
     });
 
+    // const commentall = await commen.findAll({
+    //   where:{product:}
+    // })
+
     if (!allProducts || allProducts.length === 0) {
       throw new NotFoundError(`Product not found`);
     }
@@ -31,6 +35,8 @@ export const getProductById = async (id: number) => {
 
   return product;
 };
+
+
 
 export const updateProductById = async (id: number, body: Product) => {
   const { product_name, product_desc, product_quantity, per_product_price } =

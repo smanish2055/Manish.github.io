@@ -1,7 +1,5 @@
 import { Chart, registerables } from "chart.js";
 import createGetRequest from "../Repositries/GetRequest";
-// import loadData from "./getproductlist";
-// Register necessary plugins
 Chart.register(...registerables);
 
 let productNumber = document.getElementById("product-number");
@@ -54,14 +52,14 @@ const barChartFn = (topProducts: any) => {
       },
       scales: {
         x: {
-          display: true,
+          // display: true,
           title: {
             display: true,
             text: "Products",
           },
         },
         y: {
-          display: true,
+          // display: true,
           title: {
             display: true,
             text: "Percentage",
@@ -143,13 +141,8 @@ const loadData = async (data: any) => {
         barChartFn(data.topProducts);
         pieChartFn(data.topQuantitySold);
       } else {
-        chartContainer1!.classList.add(
-          "alert",
-          "alert-danger",
-          "text-center",
-          "mt-4"
-        );
-        chartContainer1!.innerHTML = "There Should Be 5 Earning Products";
+        chartContainer1!.classList.add( "alert","alert-danger","text-center", "mt-4" );
+        chartContainer1!.innerHTML = "There Should Be Top 5 Earning Products";
 
         chartContainer2!.classList.add(
           "alert",
@@ -158,7 +151,7 @@ const loadData = async (data: any) => {
           "mt-4"
         );
         chartContainer2!.innerHTML =
-          "There Should Be 5 Quantity of Sold Products";
+          "There Should Be Top 5 Quantities Sold Products";
       }
     }
   } catch (error) {

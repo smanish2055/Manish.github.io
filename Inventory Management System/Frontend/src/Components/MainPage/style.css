@@ -183,13 +183,13 @@ body {
     margin: 0 auto;
   }
 
-  .charts {
+  /* .charts {
     grid-template-columns: 1fr;
     margin-top: 30px;
     display: block;
     max-width: 100%;
     height: auto;
-  }
+  } */
   #sidebar {
     display: none;
   }
@@ -216,7 +216,7 @@ body {
 }
 
 #sidebar {
-  z-index: 1; 
+  z-index: 1;
 }
 
 /* small <= 768px */
@@ -233,8 +233,8 @@ body {
 }
 
 /* Extra small <= 576px */
-@media screen and (max-width: 576px) {
+/* @media screen and (max-width: 576px) {
   .header-left {
     display: none;
   }
-}
+} */

@@ -58,10 +58,6 @@ User.init(
     refreshToken: {
       type: DataTypes.STRING,
     },
-    // reset_code: {
-    //   type: DataTypes.STRING,
-    //   defaultValue: randomUUID(),
-    // },
   },
   {
     sequelize,

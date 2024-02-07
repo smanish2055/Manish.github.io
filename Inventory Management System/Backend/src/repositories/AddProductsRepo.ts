@@ -20,7 +20,6 @@ export const AddProductRepo = async (user_id: number, product: Product) => {
         total_Cost: +product_quantity * +per_product_price,
       };
 
-      // Create a new Product with the combined attributes
       const newProduct = await Product.create(newUserAttributes);
       return newProduct;
     }

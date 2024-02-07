@@ -55,7 +55,7 @@ const sendAuthRequest = async (email: string, password: string) => {
       localStorage.setItem("jwt", response.data.tokens.accessToken);
       window.location.href = "../MainPage/main.html";
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   } catch (error: any) {
     if (
       error.response.status == HttpStatusCode.BadRequest ||

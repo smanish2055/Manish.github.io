@@ -5,19 +5,15 @@ import UnauthorizedError from "../errors/Unauthorized";
 import ForbiddenError from "../errors/Forbidden";
 import NotFoundError from "../errors/NotFound";
 import NotAcceptableError from "../errors/NotAcceptable";
-
-// import logger from "../utils/logger";
 import ValidationError from "../errors/Validation";
 import WarningError from "../errors/Warning";
+
 const errorHandler = async (
   err: Error,
   _req: Request,
   res: Response,
   _next: NextFunction
 ) => {
-  // if (err.stack) {
-  //   logger.error(err.stack);
-  // }
   if (err instanceof BadRequestError) {
     res.status(Status.BAD_REQUEST).json({ message: err.message });
   } else if (err instanceof UnauthorizedError) {

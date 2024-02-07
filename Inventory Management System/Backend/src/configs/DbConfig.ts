@@ -14,8 +14,7 @@ const sequelize = new Sequelize({
 // Test the database connection
 
 // authenticate function retune promises so that is promise resolved when the database is connected  and rejected when the database is not connected
-sequelize
-  .authenticate()
+sequelize.authenticate()
   .then(() => {
     console.log("Database connected successfully");
   })

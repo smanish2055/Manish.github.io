@@ -17,10 +17,8 @@ let description = document.getElementById(
 const submitProduct = document.getElementById("product-submit") as HTMLElement;
 const messageContainer1 = document.getElementById("message-container1");
 const messageContainer2 = document.getElementById("message-container2");
-const table = document.querySelector("table");
+const table = document.querySelector("table") as HTMLTableElement;
 const closeAddProductForm = document.getElementById("closeAddProductForm");
-
-
 
 // add products
 submitProduct.addEventListener("click", (event) => {
@@ -92,7 +90,6 @@ const addProductToDb = async (
   };
 
   try {
-    messageContainer2!.innerHTML = "";
     const response = await createPostRequest("/add-product", addedProduct);
 
     if (response) {
@@ -129,11 +126,12 @@ const addProductToDb = async (
 let ProductAllData: any[] = [];
 // Reading data from the server
 import createGetRequest from "../Repositries/GetRequest";
+
 export const renderProductList = async () => {
   try {
     const productList = await createGetRequest("/product-list/");
-    displayProductList(productList);
     ProductAllData = productList;
+    displayProductList(productList);
   } catch (error: any) {
     console.error("Error fetching sales data:", error.message);
   }
@@ -141,12 +139,13 @@ export const renderProductList = async () => {
 renderProductList();
 
 const displayProductList = (productList: any[]) => {
-  const productListElement = document.getElementById("productList");
+  const productListElement = document.getElementById(
+    "productList"
+  ) as HTMLDivElement;
   productListElement!.innerHTML = "";
 
   productList.forEach((product: any) => {
     const tr = document.createElement("tr");
-
     if (product.product_quantity < 5) {
       tr.style.backgroundColor = "#ed565e";
     } else if (product.product_quantity >= 5 && product.product_quantity < 15) {
@@ -170,11 +169,15 @@ const displayProductList = (productList: any[]) => {
             }">Delete</button>
           </td>
         `;
-    productListElement?.appendChild(tr);
+    productListElement.appendChild(tr);
   });
 };
 
 // search for products
+const productSearchInput = document.getElementById(
+  "productSearch"
+) as HTMLInputElement;
+
 const filterProductsData = (searchTerm: string) => {
   const filteredData = ProductAllData.filter((products) =>
     products.product_name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -182,17 +185,13 @@ const filterProductsData = (searchTerm: string) => {
   displayProductList(filteredData);
 };
 
-const productSearchInput = document.getElementById(
-  "productSearch"
-) as HTMLInputElement;
-
 productSearchInput.addEventListener("input", () => {
   const searchTerm = productSearchInput.value.trim();
   filterProductsData(searchTerm);
 });
 
+// update
 import updateRequest from "../Repositries/UpdateRequest";
-// const productList = document.getElementById("productList") as HTMLElement;
 const editSubmit = document.getElementById("editSubmit") as HTMLElement;
 // Retrieve values from the form
 const editProductName = document.getElementById(
@@ -235,8 +234,9 @@ closeEditForm?.addEventListener("click", () => {
 });
 
 // edit and delete
-table?.addEventListener("click", (event) => {
+table.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
+  console.log(target);
   const editButton = target.closest(".edit-button");
   const deleteButton = target.closest(".delete-button");
 
@@ -266,76 +266,75 @@ const editProduct = async (productId: number) => {
   editQuantity.value = existingProductData.product_quantity.toString();
   perProductPrice.value = existingProductData.per_product_price.toString();
 
- editSubmit.addEventListener("click", async function (event) {
-   event.preventDefault();
+  editSubmit.addEventListener("click", async function (event) {
+    event.preventDefault();
 
-   // Retrieve values from the form
-   const updatedData = {
-     product_name: editProductName.value.trim(),
-     product_desc: productDescription.value.trim(),
-     product_quantity: parseInt(editQuantity.value),
-     per_product_price: parseInt(perProductPrice.value),
-   };
+    // Retrieve values from the form
+    const updatedData = {
+      product_name: editProductName.value.trim(),
+      product_desc: productDescription.value.trim(),
+      product_quantity: parseInt(editQuantity.value),
+      per_product_price: parseInt(perProductPrice.value),
+    };
 
-   // Validate input
-   if (validateEditProductInput(updatedData)) {
-     try {
-       const response = await updateRequest(
-         `/product-list/${productId}`,
-         updatedData
-       );
-       renderProductList();
-       messageContainer3!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
-       setTimeout(() => {
-         messageContainer3!.innerHTML = "";
-       }, 1000);
-     } catch (error) {
-       console.log(error);
-       messageContainer3!.innerHTML =
-         '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
-       setTimeout(() => {
-         messageContainer3!.innerHTML = "";
-       }, 1000);
-     }
-   }
- });
+    // Validate input
+    if (validateEditProductInput(updatedData)) {
+      try {
+        const response = await updateRequest(
+          `/product-list/${productId}`,
+          updatedData
+        );
+        renderProductList();
+        messageContainer3!.innerHTML = `<div class="alert alert-success alert-sm col-sm-6 offset-sm-3 text-center" role="alert">${response.data.message}!</div>`;
+        setTimeout(() => {
+          messageContainer3!.innerHTML = "";
+        }, 1000);
+      } catch (error) {
+        console.log(error);
+        messageContainer3!.innerHTML =
+          '<div class="alert alert-danger text-center" role="alert">Unexpected error. Please try again later.</div>';
+        setTimeout(() => {
+          messageContainer3!.innerHTML = "";
+        }, 1000);
+      }
+    }
+  });
 
- const validateEditProductInput = (updatedData: any): boolean => {
-   // Check if required fields are not empty
-   if (
-     !updatedData.product_name ||
-     !updatedData.product_quantity ||
-     !updatedData.per_product_price
-   ) {
-     messageContainer3!.innerHTML =
-       '<div class="alert alert-warning text-center" role="alert">Please fill in all required fields.</div>';
-     return false;
-   }
+  const validateEditProductInput = (updatedData: any): boolean => {
+    // Check if required fields are not empty
+    if (
+      !updatedData.product_name ||
+      !updatedData.product_quantity ||
+      !updatedData.per_product_price
+    ) {
+      messageContainer3!.innerHTML =
+        '<div class="alert alert-warning text-center" role="alert">Please fill in all required fields.</div>';
+      return false;
+    }
 
-   // Validate product_quantity and per_product_price are positive numbers
-   if (
-     isNaN(updatedData.product_quantity) ||
-     updatedData.product_quantity < 0
-   ) {
-     messageContainer3!.innerHTML =
-       '<div class="alert alert-warning text-center" role="alert">Product quantity must be a positive number.</div>';
-     return false;
-   }
+    // Validate product_quantity and per_product_price are positive numbers
+    if (
+      isNaN(updatedData.product_quantity) ||
+      updatedData.product_quantity < 0
+    ) {
+      messageContainer3!.innerHTML =
+        '<div class="alert alert-warning text-center" role="alert">Product quantity must be a positive number.</div>';
+      return false;
+    }
 
-   if (
-     isNaN(updatedData.per_product_price) ||
-     updatedData.per_product_price < 0
-   ) {
-     messageContainer3!.innerHTML =
-       '<div class="alert alert-warning text-center" role="alert">Per product price must be a positive number.</div>';
-     return false;
-   }
+    if (
+      isNaN(updatedData.per_product_price) ||
+      updatedData.per_product_price < 0
+    ) {
+      messageContainer3!.innerHTML =
+        '<div class="alert alert-warning text-center" role="alert">Per product price must be a positive number.</div>';
+      return false;
+    }
 
-   // Validation successful
-   messageContainer3!.innerHTML = "";
-   return true;
- };
-
+    // Validation successful
+    messageContainer3!.innerHTML = "";
+    return true;
+  };
 };
 
 // delete product
